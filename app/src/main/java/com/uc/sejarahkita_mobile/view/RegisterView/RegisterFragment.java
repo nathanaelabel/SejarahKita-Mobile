@@ -87,7 +87,7 @@ public class RegisterFragment extends Fragment {
                         }
                     });
                 } else {
-                    Toast.makeText(requireActivity(), "All field must not empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(), "Please fill all field", Toast.LENGTH_SHORT).show();
                 }
             }
         });

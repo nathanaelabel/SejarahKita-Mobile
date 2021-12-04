@@ -18,7 +18,7 @@ import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.view.MainActivity;
 
 public class SplashFragment extends Fragment {
-    private static int splashtime = 3000;
+    private static int splashtime = 500;
     private static final String TAG = "SplashFragment";
 
     public SplashFragment() {
@@ -46,7 +46,7 @@ public class SplashFragment extends Fragment {
             if (helper.getAccessToken().isEmpty()) {
                 action = SplashFragmentDirections.actionSplashFragmentToLoginFragment();
             } else {
-                action = SplashFragmentDirections.actionSplashFragmentToRegisterFragment();
+                action = SplashFragmentDirections.actionSplashFragmentToProfileFragment();
             }
             Navigation.findNavController(view).navigate(action);
         }, splashtime);

@@ -46,13 +46,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         app:counterEnabled="true"
         app:counterTextAppearance="@style/SejarahKitaTextView.Regular"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:helperText="Min. 8 Karakter"
+        app:helperTextTextAppearance="@style/SejarahKitaTextView.Regular"
+        app:layout_constraintEnd_toEndOf="@+id/email_input"
         app:layout_constraintStart_toStartOf="@+id/email_input"
         app:layout_constraintTop_toBottomOf="@+id/email_input"
         app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorSecondary"
         app:startIconDrawable="@drawable/ic_password">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -64,16 +66,20 @@
             android:password="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         style="@style/SejarahKitaTextView.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/bg_btn"
+        android:background="@drawable/btn_primary"
+        android:letterSpacing="0.05"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/colorTextPrimary"
+        app:icon="@drawable/ic_login"
+        app:iconGravity="textStart"
+        app:iconTint="@color/colorTextPrimary"
         app:layout_constraintEnd_toEndOf="@+id/pass_input"
         app:layout_constraintStart_toStartOf="@+id/pass_input"
         app:layout_constraintTop_toBottomOf="@+id/pass_input" />

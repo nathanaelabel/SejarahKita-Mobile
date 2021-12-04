@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.bottom_nav_menu);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
 
-        AppBarConfiguration configuration = new AppBarConfiguration.Builder(R.id.blankFragment).build();
+        AppBarConfiguration configuration = new AppBarConfiguration.Builder(R.id.profileFragment).build();
         navController = navHostFragment.getNavController();
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.blankFragment) {
+            if (destination.getId() == R.id.profileFragment) {
                 navigationView.setVisibility(View.VISIBLE);
                 getSupportActionBar().show();
             } else {

@@ -76,7 +76,7 @@ public class LoginFragment extends Fragment {
                 loginViewModel.login(email, pass).observe(requireActivity(), tokenResponse -> {
                     if (tokenResponse != null) {
                         helper.saveAccessToken(tokenResponse.getAuthorization());
-                        NavDirections actions = LoginFragmentDirections.actionLoginFragmentToRegisterFragment();
+                        NavDirections actions = LoginFragmentDirections.actionLoginFragmentToProfileFragment();
                         Navigation.findNavController(view1).navigate(actions);
                         Toast.makeText(requireActivity(), "Login Success", Toast.LENGTH_SHORT).show();
                     } else {
@@ -84,7 +84,7 @@ public class LoginFragment extends Fragment {
                     }
                 });
             } else {
-                Toast.makeText(requireActivity(), "Insert Email and Password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireActivity(), "Please fill all field", Toast.LENGTH_SHORT).show();
             }
         });
     }

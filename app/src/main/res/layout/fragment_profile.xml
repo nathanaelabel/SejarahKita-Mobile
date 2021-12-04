@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cons_profile_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ProfileView.ProfileFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView_profile_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_scrollView_profile_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_ill_profile_fragment"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ill_profile" />
+
+            <TextView
+                android:id="@+id/user_name"
+                style="@style/SejarahKitaTextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Username"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_ill_profile_fragment" />
+
+            <TextView
+                android:id="@+id/user_email"
+                style="@style/SejarahKitaTextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="user@email.com"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/user_name"
+                app:layout_constraintStart_toStartOf="@+id/user_name"
+                app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+            <TextView
+                android:id="@+id/register_since_profile_fragment"
+                style="@style/SejarahKitaTextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_dark"
+                android:padding="10dp"
+                android:text="Register: Date Month Year"
+                app:layout_constraintEnd_toEndOf="@+id/user_email"
+                app:layout_constraintStart_toStartOf="@+id/user_email"
+                app:layout_constraintTop_toBottomOf="@+id/user_email" />
+
+            <Button
+                android:id="@+id/btn_easy_profile_fragment"
+                style="@style/SejarahKitaTextView.Semibold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/btn_easy_profile"
+                android:textColor="@color/colorTextPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_ranked_point_terkini_profile_fragment"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_hard_profile_fragment"
+                style="@style/SejarahKitaTextView.Semibold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_hard_profile"
+                android:textColor="@color/colorTextPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/btn_easy_profile_fragment"
+                app:layout_constraintStart_toStartOf="@+id/btn_easy_profile_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/btn_easy_profile_fragment"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txt_ranked_point_terkini_profile_fragment"
+                style="@style/SejarahKitaTextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_ranked_point"
+                android:drawablePadding="8dp"
+                android:text="Ranked Point Terkini"
+                android:textColor="@color/colorTextPrimary"
+                app:drawableTint="@color/colorSecondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_since_profile_fragment" />
+
+            <TextView
+                android:id="@+id/easy_level_profile_fragment"
+                style="@style/SejarahKitaTextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Easy"
+                android:textColor="@color/colorTextPrimary"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_hard_profile_fragment"
+                app:layout_constraintStart_toStartOf="@+id/btn_easy_profile_fragment"
+                app:layout_constraintTop_toTopOf="@+id/btn_easy_profile_fragment" />
+
+            <TextView
+                android:id="@+id/easy_ranked_point_profile_fragment"
+                style="@style/SejarahKitaTextView.Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="710 RP"
+                android:textColor="@color/colorTextPrimary"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_hard_profile_fragment"
+                app:layout_constraintEnd_toEndOf="@+id/btn_easy_profile_fragment"
+                app:layout_constraintTop_toTopOf="@+id/btn_easy_profile_fragment" />
+
+            <TextView
+                android:id="@+id/hard_level_profile_fragment"
+                style="@style/SejarahKitaTextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Hard"
+                android:textColor="@color/colorTextPrimary"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_hard_profile_fragment"
+                app:layout_constraintStart_toStartOf="@+id/btn_hard_profile_fragment"
+                app:layout_constraintTop_toTopOf="@+id/btn_hard_profile_fragment" />
+
+            <TextView
+                android:id="@+id/hard_ranked_point_profile_fragment"
+                style="@style/SejarahKitaTextView.Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="2500 RP"
+                android:textColor="@color/colorTextPrimary"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_hard_profile_fragment"
+                app:layout_constraintEnd_toEndOf="@+id/btn_hard_profile_fragment"
+                app:layout_constraintTop_toTopOf="@+id/btn_hard_profile_fragment" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout_riwayat_bermain_profile_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_hard_profile_fragment">
+
+                <TextView
+                    android:id="@+id/txt_riwayat_bermain_profile_fragment"
+                    style="@style/SejarahKitaTextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riwayat Bermain"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <ImageView
+                    android:id="@+id/btn_riwayat_bermain_profile_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="217dp"
+                    app:srcCompat="@drawable/ic_arrow" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_logout"
+                style="@style/SejarahKitaTextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_primary"
+                android:backgroundTint="@color/design_default_color_error"
+                android:drawableStart="@drawable/ic_logout"
+                android:drawablePadding="8dp"
+                android:letterSpacing="0.05"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp"
+                android:text="@string/logout"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_riwayat_bermain_profile_fragment" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

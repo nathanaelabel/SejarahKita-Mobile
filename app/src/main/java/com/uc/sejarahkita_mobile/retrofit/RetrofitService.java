@@ -60,7 +60,6 @@ public class RetrofitService {
         return api.register(name, email, password, password_confirmation);
     }
 
-
     public Call<JsonObject> logout() {
         return api.logout();
     }
