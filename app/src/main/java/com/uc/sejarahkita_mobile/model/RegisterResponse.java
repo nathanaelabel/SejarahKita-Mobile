@@ -6,17 +6,24 @@ import android.os.Parcelable;
 import com.google.gson.Gson;
 
 public class RegisterResponse implements Parcelable {
-
-    private String name;
     private String email;
     private String password;
     private String password_confirmation;
+    private String username;
+    private String name;
+    private String school;
+    private String city;
+    private String birthyear;
 
     protected RegisterResponse(Parcel in) {
-        name = in.readString();
         email = in.readString();
         password = in.readString();
         password_confirmation = in.readString();
+        username = in.readString();
+        name = in.readString();
+        school = in.readString();
+        city = in.readString();
+        birthyear = in.readString();
     }
 
     public static final Creator<RegisterResponse> CREATOR = new Creator<RegisterResponse>() {
@@ -34,14 +41,6 @@ public class RegisterResponse implements Parcelable {
     public static RegisterResponse objectFromData(String str) {
 
         return new Gson().fromJson(str, RegisterResponse.class);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -68,6 +67,46 @@ public class RegisterResponse implements Parcelable {
         this.password_confirmation = password_confirmation;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getBirthyear() {
+        return birthyear;
+    }
+
+    public void setBirthyear(String birthyear) {
+        this.birthyear = birthyear;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -75,9 +114,13 @@ public class RegisterResponse implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
         parcel.writeString(email);
         parcel.writeString(password);
         parcel.writeString(password_confirmation);
+        parcel.writeString(username);
+        parcel.writeString(name);
+        parcel.writeString(school);
+        parcel.writeString(city);
+        parcel.writeString(birthyear);
     }
 }

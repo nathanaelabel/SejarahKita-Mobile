@@ -1,16 +1,29 @@
 <resources>
+    <!--Application Name-->
     <string name="app_name">SejarahKita</string>
     <string name="app_version">Version 1.0</string>
+
+    <!--BottomNavigationView Menu-->
     <string name="game">Game</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="profile">Profile</string>
-    <string name="name">Username</string>
+
+    <!--LoginFragment.java-->
     <string name="email">Email</string>
     <string name="pass">Password</string>
-    <string name="cpass">Confirm Password</string>
     <string name="belum">Belum punya akun?</string>
     <string name="goToRegister">Register</string>
+
+    <!--RegisterFragment.java-->
+    <string name="cpass">Confirm Password</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="school">School</string>
+    <string name="city">City</string>
+    <string name="birthyear">Birthyear</string>
     <string name="sudah">Sudah punya akun?</string>
     <string name="goToLogin">Login</string>
+
+    <!--ProfileFragment.java-->
     <string name="logout">Logout</string>
 </resources>

@@ -22,7 +22,7 @@ import com.uc.sejarahkita_mobile.view.MainActivity;
 public class RegisterFragment extends Fragment {
     TextView login_btn;
 
-    TextInputLayout name_register, email_register, pass_register, cpass_register;
+    TextInputLayout email_register, pass_register, cpass_register, username_register, name_register, school_register, city_register, birthyear_register;
     Button btn_reg;
 
     private RegisterViewModel registerViewModel;
@@ -58,10 +58,14 @@ public class RegisterFragment extends Fragment {
             }
         });
 
-        name_register = view.findViewById(R.id.name_register);
         email_register = view.findViewById(R.id.email_register);
         pass_register = view.findViewById(R.id.pass_register);
         cpass_register = view.findViewById(R.id.cpass_register);
+        username_register = view.findViewById(R.id.username_register);
+        name_register = view.findViewById(R.id.name_register);
+        school_register = view.findViewById(R.id.school_register);
+        city_register = view.findViewById(R.id.city_register);
+        birthyear_register = view.findViewById(R.id.birthyear_register);
         btn_reg = view.findViewById(R.id.btn_reg);
 
         registerViewModel = new ViewModelProvider(getActivity()).get(RegisterViewModel.class);
@@ -69,15 +73,23 @@ public class RegisterFragment extends Fragment {
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!name_register.getEditText().getText().toString().isEmpty()
-                        && !email_register.getEditText().getText().toString().isEmpty()
+                if (!email_register.getEditText().getText().toString().isEmpty()
                         && !pass_register.getEditText().getText().toString().isEmpty()
-                        && !cpass_register.getEditText().getText().toString().isEmpty()) {
-                    String name = name_register.getEditText().getText().toString().trim();
+                        && !cpass_register.getEditText().getText().toString().isEmpty()
+                        && !username_register.getEditText().getText().toString().isEmpty()
+                        && !name_register.getEditText().getText().toString().isEmpty()
+                        && !school_register.getEditText().getText().toString().isEmpty()
+                        && !city_register.getEditText().getText().toString().isEmpty()
+                        && !birthyear_register.getEditText().getText().toString().isEmpty()) {
                     String email = email_register.getEditText().getText().toString().trim();
                     String pass = pass_register.getEditText().getText().toString().trim();
                     String cpass = cpass_register.getEditText().getText().toString().trim();
-                    registerViewModel.register(name, email, pass, cpass).observe(requireActivity(), registerResponse -> {
+                    String username = username_register.getEditText().getText().toString().trim();
+                    String name = name_register.getEditText().getText().toString().trim();
+                    String school = school_register.getEditText().getText().toString().trim();
+                    String city = city_register.getEditText().getText().toString().trim();
+                    String birthyear = username_register.getEditText().getText().toString().trim();
+                    registerViewModel.register(email, pass, cpass, username, name, school, city, birthyear).observe(requireActivity(), registerResponse -> {
                         if (registerResponse != null) {
                             NavDirections actions = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment();
                             Navigation.findNavController(view).navigate(actions);

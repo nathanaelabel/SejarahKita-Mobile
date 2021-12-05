@@ -10,46 +10,16 @@
         android:id="@+id/img_logo_register_fragment"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="56dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_register"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:boxStrokeColor="@drawable/selector_states_textinputlayout"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo_register_fragment"
-        app:startIconDrawable="@drawable/ic_username">
-
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/SejarahKitaTextView.Medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_register"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
@@ -57,9 +27,10 @@
         app:boxStrokeColor="@drawable/selector_states_textinputlayout"
         app:boxStrokeWidth="2dp"
         app:boxStrokeWidthFocused="3dp"
-        app:layout_constraintEnd_toEndOf="@+id/name_register"
-        app:layout_constraintStart_toStartOf="@+id/name_register"
-        app:layout_constraintTop_toBottomOf="@+id/name_register"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
+        app:layout_constraintEnd_toEndOf="@+id/username_register"
+        app:layout_constraintStart_toStartOf="@+id/username_register"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_register_fragment"
         app:startIconDrawable="@drawable/ic_email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -75,7 +46,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
@@ -87,6 +58,7 @@
         app:counterTextAppearance="@style/SejarahKitaTextView.Regular"
         app:helperText="Min. 8 Karakter"
         app:helperTextTextAppearance="@style/SejarahKitaTextView.Regular"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
         app:layout_constraintEnd_toEndOf="@+id/email_register"
         app:layout_constraintStart_toStartOf="@+id/email_register"
         app:layout_constraintTop_toBottomOf="@+id/email_register"
@@ -108,7 +80,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:boxCornerRadiusBottomEnd="5dp"
         app:boxCornerRadiusBottomStart="5dp"
         app:boxCornerRadiusTopEnd="5dp"
@@ -120,6 +92,7 @@
         app:counterTextAppearance="@style/SejarahKitaTextView.Regular"
         app:helperText="Min. 8 Karakter"
         app:helperTextTextAppearance="@style/SejarahKitaTextView.Regular"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
         app:layout_constraintEnd_toEndOf="@+id/pass_register"
         app:layout_constraintStart_toStartOf="@+id/pass_register"
         app:layout_constraintTop_toBottomOf="@+id/pass_register"
@@ -136,15 +109,159 @@
             android:password="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeColor="@drawable/selector_states_textinputlayout"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpass_register"
+        app:startIconDrawable="@drawable/ic_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/SejarahKitaTextView.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeColor="@drawable/selector_states_textinputlayout"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_register"
+        app:startIconDrawable="@drawable/ic_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/SejarahKitaTextView.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/school_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeColor="@drawable/selector_states_textinputlayout"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_register"
+        app:startIconDrawable="@drawable/ic_school">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/SejarahKitaTextView.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/school"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/city_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeColor="@drawable/selector_states_textinputlayout"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/school_register"
+        app:startIconDrawable="@drawable/ic_city">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/SejarahKitaTextView.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/birthyear_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeColor="@drawable/selector_states_textinputlayout"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+        app:hintTextColor="@drawable/selector_states_textinputlayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_register"
+        app:startIconDrawable="@drawable/ic_birthyear">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/SejarahKitaTextView.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/birthyear"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_reg"
         style="@style/SejarahKitaTextView.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:background="@drawable/btn_primary"
         android:letterSpacing="0.05"
-        android:text="Register"
+        android:text="@string/goToRegister"
         android:textAllCaps="false"
         android:textColor="@color/colorTextPrimary"
         app:icon="@drawable/ic_register"
@@ -152,7 +269,7 @@
         app:iconTint="@color/colorTextPrimary"
         app:layout_constraintEnd_toEndOf="@+id/cpass_register"
         app:layout_constraintStart_toStartOf="@+id/cpass_register"
-        app:layout_constraintTop_toBottomOf="@+id/cpass_register" />
+        app:layout_constraintTop_toBottomOf="@+id/birthyear_register" />
 
     <LinearLayout
         android:id="@+id/linearLayout_goToLogin_register_fragment"
