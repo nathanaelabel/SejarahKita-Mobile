@@ -9,12 +9,16 @@
     <string name="profile">Profile</string>
 
     <!--LoginFragment.java-->
+    <string name="title_login">Selamat Datang Kembali 😁</string>
+    <string name="caption_login">Isi form dulu yaa untuk bermain</string>
     <string name="email">Email</string>
     <string name="pass">Password</string>
     <string name="belum">Belum punya akun?</string>
-    <string name="goToRegister">Register</string>
+    <string name="go_to_register">Register</string>
 
     <!--RegisterFragment.java-->
+    <string name="title_register">Halo 👋</string>
+    <string name="caption_register">Daftar akun dulu yuk</string>
     <string name="cpass">Confirm Password</string>
     <string name="username">Username</string>
     <string name="name">Name</string>
@@ -22,7 +26,7 @@
     <string name="city">City</string>
     <string name="birthyear">Birthyear</string>
     <string name="sudah">Sudah punya akun?</string>
-    <string name="goToLogin">Login</string>
+    <string name="go_to_login">Login</string>
 
     <!--ProfileFragment.java-->
     <string name="logout">Logout</string>

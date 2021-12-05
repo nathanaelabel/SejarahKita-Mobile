@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.LoginView.LoginFragment">
 
-
     <ScrollView
         android:id="@+id/scrollView_login_fragment"
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Selamat Datang Kembali 😁"
+                android:text="@string/title_login"
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +39,7 @@
                 style="@style/SejarahKitaTextView.Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Isi form dulu yaa untuk bermain"
+                android:text="@string/caption_login"
                 app:layout_constraintEnd_toEndOf="@+id/txt_title_login_fragment"
                 app:layout_constraintStart_toStartOf="@+id/txt_title_login_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/txt_title_login_fragment" />
@@ -154,7 +153,7 @@
                 android:background="@drawable/btn_primary"
                 android:enabled="true"
                 android:letterSpacing="0.05"
-                android:text="Login"
+                android:text="@string/go_to_login"
                 android:textAllCaps="false"
                 android:textColor="@color/colorTextPrimary"
                 app:icon="@drawable/ic_login"
@@ -168,7 +167,7 @@
                 android:id="@+id/linearLayout_goToRegister_login_fragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="88dp"
                 android:layout_marginBottom="32dp"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -182,19 +181,17 @@
                     style="@style/SejarahKitaTextView.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/belum"
-                    android:textSize="16sp" />
+                    android:text="@string/belum" />
 
                 <TextView
                     android:id="@+id/buttonReg"
-                    style="@style/SejarahKitaTextView.Medium"
+                    style="@style/SejarahKitaTextView.Semibold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/goToRegister"
+                    android:text="@string/go_to_register"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

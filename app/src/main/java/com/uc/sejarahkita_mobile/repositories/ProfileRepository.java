@@ -22,7 +22,7 @@ public class ProfileRepository {
     private static final String TAG = "ProfileRepository";
 
     private ProfileRepository(String token) {
-        Log.d(TAG, "token" + token);
+        Log.d(TAG, "token: " + token);
         apiService = RetrofitService.getInstance(token);
     }
 
