@@ -8,18 +8,10 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class Profile implements Parcelable {
-    private List<Users> users;
+
+    private List<Students> students;
 
     protected Profile(Parcel in) {
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public static final Creator<Profile> CREATOR = new Creator<Profile>() {
@@ -39,27 +31,41 @@ public class Profile implements Parcelable {
         return new Gson().fromJson(str, Profile.class);
     }
 
-    public List<Users> getUsers() {
-        return users;
+    public List<Students> getStudents() {
+        return students;
     }
 
-    public void setUsers(List<Users> users) {
-        this.users = users;
+    public void setStudents(List<Students> students) {
+        this.students = students;
     }
 
-    public static class Users {
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+    }
+
+    public static class Students {
         private int id;
-        private String name;
         private String email;
-        private String password;
-        private String role;
-        private String created_at;
+        private String email_verified_at;
         private String is_login;
         private String is_active;
+        private String username;
+        private String name;
+        private String school;
+        private String city;
+        private String birthyear;
+        private String created_at;
+        private String updated_at;
+        private String role;
 
-        public static Users objectFromData(String str) {
+        public static Students objectFromData(String str) {
 
-            return new Gson().fromJson(str, Users.class);
+            return new Gson().fromJson(str, Students.class);
         }
 
         public int getId() {
@@ -70,14 +76,6 @@ public class Profile implements Parcelable {
             this.id = id;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
         public String getEmail() {
             return email;
         }
@@ -86,28 +84,12 @@ public class Profile implements Parcelable {
             this.email = email;
         }
 
-        public String getPassword() {
-            return password;
+        public String getEmail_verified_at() {
+            return email_verified_at;
         }
 
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getRole() {
-            return role;
-        }
-
-        public void setRole(String role) {
-            this.role = role;
-        }
-
-        public String getCreated_at() {
-            return created_at;
-        }
-
-        public void setCreated_at(String created_at) {
-            this.created_at = created_at;
+        public void setEmail_verified_at(String email_verified_at) {
+            this.email_verified_at = email_verified_at;
         }
 
         public String getIs_login() {
@@ -124,6 +106,70 @@ public class Profile implements Parcelable {
 
         public void setIs_active(String is_active) {
             this.is_active = is_active;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSchool() {
+            return school;
+        }
+
+        public void setSchool(String school) {
+            this.school = school;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getBirthyear() {
+            return birthyear;
+        }
+
+        public void setBirthyear(String birthyear) {
+            this.birthyear = birthyear;
+        }
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
+        }
+
+        public String getUpdated_at() {
+            return updated_at;
+        }
+
+        public void setUpdated_at(String updated_at) {
+            this.updated_at = updated_at;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
         }
     }
 }

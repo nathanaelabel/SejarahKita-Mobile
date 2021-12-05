@@ -31,19 +31,18 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.bottom_nav_menu);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
 
-        AppBarConfiguration configuration = new AppBarConfiguration.Builder(R.id.profileFragment).build();
-        navController = navHostFragment.getNavController();
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.profileFragment).build();
+        NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navHostFragment.getNavController());
+
+        navHostFragment.getNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.profileFragment) {
+                toolbar.setVisibility(View.GONE);
                 navigationView.setVisibility(View.VISIBLE);
-                getSupportActionBar().show();
             } else {
                 navigationView.setVisibility(View.GONE);
             }
         });
-
-        NavigationUI.setupActionBarWithNavController(MainActivity.this, navController, configuration);
-        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override

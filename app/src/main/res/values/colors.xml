@@ -5,10 +5,9 @@
     <color name="colorSecondary">#FFB800</color>
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#000000</color>
-    <color name="colorCard">#313465</color>
+    <color name="cardView">#313465</color>
     <color name="easy1">#00B88C</color>
     <color name="easy2">#3695B2</color>
     <color name="hard1">#DC3C6C</color>
     <color name="hard2">#AD06B0</color>
-    <color name="mtrl_textinput_default_box_stroke_color">@color/colorSecondary</color>
 </resources>
