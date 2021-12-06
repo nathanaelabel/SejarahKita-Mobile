@@ -4,9 +4,9 @@ public class Const {
     //!Vanness
 //    public final static String BASE_URL = "http://192.168.0.8/SejarahKita-Web/public/api/";
     //!Abel
-//    public final static String BASE_URL = "http://192.168.1.8/SejarahKita-Web/public/api/";
+    public final static String BASE_URL = "http://192.168.1.8/SejarahKita-Web/public/api/";
     //!Krishna
-    public final static String BASE_URL = "http://192.168.0.8/SejarahKita-Web/public/api/";
+//    public final static String BASE_URL = "http://192.168.0.8/SejarahKita-Web/public/api/";
     //!Michael
 //    public final static String BASE_URL = "http://192.168.11.102/SejarahKita-Web/public/api/";
 }

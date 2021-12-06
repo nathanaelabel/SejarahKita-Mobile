@@ -88,7 +88,7 @@ public class RegisterFragment extends Fragment {
                     String name = name_register.getEditText().getText().toString().trim();
                     String school = school_register.getEditText().getText().toString().trim();
                     String city = city_register.getEditText().getText().toString().trim();
-                    String birthyear = username_register.getEditText().getText().toString().trim();
+                    String birthyear = birthyear_register.getEditText().getText().toString().trim();
                     registerViewModel.register(email, pass, cpass, username, name, school, city, birthyear).observe(requireActivity(), registerResponse -> {
                         if (registerResponse != null) {
                             NavDirections actions = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment();
