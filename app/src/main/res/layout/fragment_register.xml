@@ -313,7 +313,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_reg"
-                style="@style/SejarahKitaTextView.Medium"
+                style="@style/SejarahKitaTextView.Semibold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -324,6 +324,7 @@
                 android:textColor="@color/colorTextPrimary"
                 app:icon="@drawable/ic_register"
                 app:iconGravity="textStart"
+                app:iconSize="26dp"
                 app:iconTint="@color/colorTextPrimary"
                 app:layout_constraintEnd_toEndOf="@id/cv_register_fragment"
                 app:layout_constraintStart_toStartOf="@+id/cv_register_fragment"

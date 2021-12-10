@@ -45,6 +45,20 @@
     </fragment>
 
     <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game">
+    </fragment>
+
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard">
+    </fragment>
+
+    <fragment
         android:id="@+id/profileFragment"
         android:name="com.uc.sejarahkita_mobile.view.ProfileView.ProfileFragment"
         android:label="fragment_profile"

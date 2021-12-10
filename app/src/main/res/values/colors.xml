@@ -10,4 +10,5 @@
     <color name="easy2">#3695B2</color>
     <color name="hard1">#DC3C6C</color>
     <color name="hard2">#AD06B0</color>
+    <color name="highlight">#636BE5</color>
 </resources>
