@@ -16,8 +16,9 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_splashFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_splashFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -29,8 +30,8 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_loginFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
 
     <fragment
@@ -47,21 +48,27 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.uc.sejarahkita_mobile.view.GameView.GameFragment"
-        android:label="fragment_game"
+        android:label="@string/game"
         tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_gameLoadingFragment"
+            app:destination="@id/gameLoadingFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/leaderboardFragment"
         android:name="com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardFragment"
-        android:label="fragment_leaderboard"
+        android:label="@string/leaderboard"
         tools:layout="@layout/fragment_leaderboard">
+        <action
+            android:id="@+id/action_leaderboardFragment_to_detailLeaderboardFragment"
+            app:destination="@id/detailLeaderboardFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.uc.sejarahkita_mobile.view.ProfileView.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/profile"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
@@ -69,6 +76,24 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_playingHistoryFragment"
+            app:destination="@id/playingHistoryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailLeaderboardFragment"
+        android:name="com.uc.sejarahkita_mobile.view.LeaderboardView.DetailLeaderboard.DetailLeaderboardFragment"
+        android:label="fragment_detail_leaderboard"
+        tools:layout="@layout/fragment_detail_leaderboard" />
+    <fragment
+        android:id="@+id/gameLoadingFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.GameLoading.GameLoadingFragment"
+        android:label="fragment_game_loading"
+        tools:layout="@layout/fragment_game_loading" />
+    <fragment
+        android:id="@+id/playingHistoryFragment"
+        android:name="com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragment"
+        android:label="fragment_playing_history"
+        tools:layout="@layout/fragment_playing_history" />
 
 </navigation>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 
 public class ProfileFragment extends Fragment {
     Button btn_logout;
+    TextView txt_riwayat_bermain;
 
     private ProfileViewModel profileViewModel;
     private SharedPreferenceHelper helper;
@@ -51,7 +53,17 @@ public class ProfileFragment extends Fragment {
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
         profileViewModel.init(helper.getAccessToken());
 
+        txt_riwayat_bermain = view.findViewById(R.id.txt_riwayat_bermain_profile_fragment);
         btn_logout = view.findViewById(R.id.btn_logout);
+
+        txt_riwayat_bermain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = ProfileFragmentDirections.actionProfileFragmentToPlayingHistoryFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
+
         btn_logout.setOnClickListener(view1 -> {
             profileViewModel.logout().observe(requireActivity(), s -> {
                 if (!s.isEmpty()) {

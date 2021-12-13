@@ -46,7 +46,7 @@ public class SplashFragment extends Fragment {
             if (helper.getAccessToken().isEmpty()) {
                 action = SplashFragmentDirections.actionSplashFragmentToLoginFragment();
             } else {
-                action = SplashFragmentDirections.actionSplashFragmentToProfileFragment();
+                action = SplashFragmentDirections.actionSplashFragmentToGameFragment();
             }
             Navigation.findNavController(view).navigate(action);
         }, splashtime);

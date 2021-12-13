@@ -31,13 +31,12 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.bottom_nav_menu);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.profileFragment).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.gameFragment, R.id.leaderboardFragment, R.id.profileFragment).build();
         NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navHostFragment.getNavController());
 
         navHostFragment.getNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.profileFragment) {
-                toolbar.setVisibility(View.GONE);
+            if (destination.getId() == R.id.gameFragment || destination.getId() == R.id.leaderboardFragment || destination.getId() == R.id.profileFragment) {
                 navigationView.setVisibility(View.VISIBLE);
             } else {
                 navigationView.setVisibility(View.GONE);

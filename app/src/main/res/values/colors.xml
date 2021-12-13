@@ -6,9 +6,12 @@
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#000000</color>
     <color name="cardView">#313465</color>
+    <color name="toolbar_bottomNavigationView">#0D216A</color>
     <color name="easy1">#00B88C</color>
     <color name="easy2">#3695B2</color>
     <color name="hard1">#DC3C6C</color>
     <color name="hard2">#AD06B0</color>
+    <color name="casual">#3288B9</color>
+    <color name="icon">#FFFF00</color>
     <color name="highlight">#636BE5</color>
 </resources>

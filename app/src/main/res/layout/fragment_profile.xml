@@ -110,7 +110,7 @@
                 android:drawablePadding="8dp"
                 android:text="Ranked Point Terkini"
                 android:textColor="@color/colorTextPrimary"
-                app:drawableTint="@color/colorSecondary"
+                app:drawableTint="@color/icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/register_since_profile_fragment" />
 
@@ -188,14 +188,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Riwayat Bermain"
-                    android:textColor="@color/colorTextPrimary" />
+                    android:textColor="@color/colorSecondary" />
 
                 <ImageView
                     android:id="@+id/btn_riwayat_bermain_profile_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="217dp"
-                    app:srcCompat="@drawable/ic_arrow" />
+                    app:srcCompat="@drawable/ic_arrow"
+                    app:tint="@color/colorSecondary" />
             </LinearLayout>
 
             <Button
