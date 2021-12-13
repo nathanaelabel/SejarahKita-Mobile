@@ -14,4 +14,7 @@
     <color name="casual">#3288B9</color>
     <color name="icon">#FFFF00</color>
     <color name="highlight">#636BE5</color>
+    <color name="thead">#BBBBBB</color>
+    <color name="tbody_odd">#404040</color>
+    <color name="tbody_even">#606060</color>
 </resources>

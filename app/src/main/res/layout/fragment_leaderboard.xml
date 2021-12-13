@@ -13,8 +13,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons_scrollView_playing_history_fragment"
@@ -88,7 +90,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txt_easy_leaderboard_fragment"
                 style="@style/SejarahKitaTextView.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,12 +98,12 @@
                 android:layout_marginTop="16dp"
                 android:text="Level Easy"
                 android:textColor="@color/colorTextPrimary"
-                android:textSize="22sp"
+                android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_playing_history_fragment" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/btn_detail_easy_leaderboard_fragment"
                 style="@style/SejarahKitaTextView.Semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,8 +113,405 @@
                 android:drawablePadding="8dp"
                 android:text="Show All"
                 android:textColor="@color/colorSecondary"
+                android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_playing_history_fragment" />
+
+            <TableLayout
+                android:id="@+id/tableLayout_easy_leaderboard_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_easy_leaderboard_fragment">>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr_thead_easy_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_tablelayout_first_child">
+
+                    <TextView
+                        android:id="@+id/thead1_easy_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="No."
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/thead2_easy_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="Username"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/thead3_easy_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="Ranked Point"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr1_easy_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/tbody_odd">
+
+                    <TextView
+                        android:id="@+id/tbody1_easy_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="1"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody1_easy_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="jane_doe"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody1_easy_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="5000 RP"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr2_easy_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/tbody_even">
+
+                    <TextView
+                        android:id="@+id/tbody2_easy_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="2"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody2_easy_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="lucky7"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody2_easy_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="4775 RP"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr3_easy_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_tablelayout_last_child">
+
+                    <TextView
+                        android:id="@+id/tbody3_easy_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="3"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody3_easy_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="j.appleseed"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody3_easy_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="4345 RP"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/txt_hard_leaderboard_fragment"
+                style="@style/SejarahKitaTextView.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Level Hard"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="21sp"
+                app:layout_constraintStart_toStartOf="@+id/tableLayout_easy_leaderboard_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout_easy_leaderboard_fragment" />
+
+            <TextView
+                android:id="@+id/btn_detail_hard_leaderboard_fragment"
+                style="@style/SejarahKitaTextView.Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_open"
+                android:drawablePadding="8dp"
+                android:text="Show All"
+                android:textColor="@color/colorSecondary"
+                android:textSize="21sp"
+                app:layout_constraintEnd_toEndOf="@+id/tableLayout_easy_leaderboard_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout_easy_leaderboard_fragment" />
+
+            <TableLayout
+                android:id="@+id/tableLayout_hard_leaderboard_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_hard_leaderboard_fragment">>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr_thead_hard_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_tablelayout_first_child">
+
+                    <TextView
+                        android:id="@+id/thead1_hard_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="No."
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/thead2_hard_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="Username"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/thead3_hard_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="Ranked Point"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr1_hard_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/tbody_odd">
+
+                    <TextView
+                        android:id="@+id/tbody1_hard_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="1"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody1_hard_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="johndoe01"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody1_hard_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="2500 RP"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr2_hard_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/tbody_even">
+
+                    <TextView
+                        android:id="@+id/tbody2_hard_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="2"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody2_hard_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="will_smith"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody2_hard_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="2225 RP"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_tr3_hard_leaderboard_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_tablelayout_last_child">
+
+                    <TextView
+                        android:id="@+id/tbody3_hard_nomor_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="3"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody3_hard_username_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="hello.world"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tbody3_hard_rp_leaderboard_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.25"
+                        android:gravity="start"
+                        android:padding="10sp"
+                        android:text="2020 RP"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp" />
+                </TableRow>
+            </TableLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
