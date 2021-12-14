@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class ProfileFragment extends Fragment {
     private ProfileViewModel profileViewModel;
     private SharedPreferenceHelper helper;
     private static final String TAG = "ProfileFragment";
+    private TextView user_email, user_name, register_since_profile_fragment;
 
     public ProfileFragment() {
     }
