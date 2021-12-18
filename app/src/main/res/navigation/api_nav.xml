@@ -51,8 +51,13 @@
         android:label="@string/game"
         tools:layout="@layout/fragment_game">
         <action
-            android:id="@+id/action_gameFragment_to_gameLoadingFragment"
-            app:destination="@id/gameLoadingFragment" />
+            android:id="@+id/action_gameFragment_to_countdownFragment"
+            app:destination="@id/countdownFragment">
+            <argument
+                android:name="GameTypeArgument"
+                android:defaultValue="1"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
@@ -86,14 +91,34 @@
         android:label="fragment_detail_leaderboard"
         tools:layout="@layout/fragment_detail_leaderboard" />
     <fragment
-        android:id="@+id/gameLoadingFragment"
-        android:name="com.uc.sejarahkita_mobile.view.GameView.GameLoading.GameLoadingFragment"
+        android:id="@+id/countdownFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.Countdown.CountdownFragment"
         android:label="fragment_game_loading"
-        tools:layout="@layout/fragment_game_loading" />
+        tools:layout="@layout/fragment_countdown">
+        <action
+            android:id="@+id/action_countdownFragment_to_playingGameFragment"
+            app:destination="@id/playingGameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/playingHistoryFragment"
         android:name="com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragment"
         android:label="fragment_playing_history"
         tools:layout="@layout/fragment_playing_history" />
+    <fragment
+        android:id="@+id/gameEndedFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.GameEnded.GameEndedFragment"
+        android:label="GameEndedFragment">
+        <action
+            android:id="@+id/action_gameEndedFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playingGameFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.PlayingGame.PlayingGameFragment"
+        android:label="PlayingGameFragment">
+        <action
+            android:id="@+id/action_playingGameFragment_to_gameEndedFragment"
+            app:destination="@id/gameEndedFragment" />
+    </fragment>
 
 </navigation>

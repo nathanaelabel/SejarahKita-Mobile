@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         navHostFragment.getNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.gameFragment || destination.getId() == R.id.leaderboardFragment || destination.getId() == R.id.profileFragment) {
                 navigationView.setVisibility(View.VISIBLE);
+            } else if (destination.getId() == R.id.countdownFragment) {
+                toolbar.setVisibility(View.GONE);
+                navigationView.setVisibility(View.GONE);
             } else {
                 navigationView.setVisibility(View.GONE);
             }

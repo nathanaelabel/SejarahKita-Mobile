@@ -38,15 +38,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linearLayout_nyawa"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_quit"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_quit"
-                app:srcCompat="@drawable/ic_life" />
+                app:layout_constraintStart_toEndOf="@+id/btn_quit"
+                app:layout_constraintTop_toTopOf="@+id/btn_quit">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_show_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_quit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_quit"
+                app:layout_constraintTop_toTopOf="@+id/btn_quit" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
