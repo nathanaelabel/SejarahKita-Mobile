@@ -37,13 +37,13 @@
         android:id="@+id/toolbar_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/toolbar_bottomNavigationView"
+        android:background="@color/footer"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextAppearance="@style/SejarahKitaTextView.Semibold"
-        app:titleTextColor="@color/colorTextPrimary" />
+        app:titleTextColor="@color/textPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

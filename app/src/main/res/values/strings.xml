@@ -30,6 +30,6 @@
 
     <!--ProfileFragment.java-->
     <string name="logout">Logout</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="playing_history">Playing History</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

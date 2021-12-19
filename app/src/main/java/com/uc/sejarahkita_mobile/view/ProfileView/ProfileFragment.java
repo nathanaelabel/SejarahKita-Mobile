@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,8 +20,11 @@ import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 
 public class ProfileFragment extends Fragment {
-    Button btn_logout;
-    LinearLayout playing_history;
+    Button btn_logout_profile_fragment;
+    LinearLayout linearLayout_playing_history_profile_fragment;
+    TextView lbl_register_since_profile_fragment, lbl_username_profile_fragment, lbl_name_profile_fragment, lbl_email_profile_fragment,
+            lbl_school_profile_fragment, lbl_city_profile_fragment, lbl_birthyear_profile_fragment,
+            lbl_easy_ranked_point_profile_fragment, lbl_hard_ranked_point_profile_fragment;
 
     private ProfileViewModel profileViewModel;
     private SharedPreferenceHelper helper;
@@ -53,10 +57,19 @@ public class ProfileFragment extends Fragment {
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
         profileViewModel.init(helper.getAccessToken());
 
-        playing_history = view.findViewById(R.id.linearLayout_playing_history_profile_fragment);
-        btn_logout = view.findViewById(R.id.btn_logout);
+        linearLayout_playing_history_profile_fragment = view.findViewById(R.id.linearLayout_playing_history_profile_fragment);
+        lbl_register_since_profile_fragment = view.findViewById(R.id.lbl_register_since_profile_fragment);
+        lbl_username_profile_fragment = view.findViewById(R.id.lbl_username_profile_fragment);
+        lbl_name_profile_fragment = view.findViewById(R.id.lbl_name_profile_fragment);
+        lbl_email_profile_fragment = view.findViewById(R.id.lbl_email_profile_fragment);
+        lbl_school_profile_fragment = view.findViewById(R.id.lbl_school_profile_fragment);
+        lbl_city_profile_fragment = view.findViewById(R.id.lbl_city_profile_fragment);
+        lbl_birthyear_profile_fragment = view.findViewById(R.id.lbl_birthyear_profile_fragment);
+        lbl_easy_ranked_point_profile_fragment = view.findViewById(R.id.lbl_easy_ranked_point_profile_fragment);
+        lbl_hard_ranked_point_profile_fragment = view.findViewById(R.id.lbl_hard_ranked_point_profile_fragment);
+        btn_logout_profile_fragment = view.findViewById(R.id.btn_logout_profile_fragment);
 
-        playing_history.setOnClickListener(new View.OnClickListener() {
+        linearLayout_playing_history_profile_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavDirections action = ProfileFragmentDirections.actionProfileFragmentToPlayingHistoryFragment();
@@ -64,7 +77,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        btn_logout.setOnClickListener(view1 -> {
+        btn_logout_profile_fragment.setOnClickListener(view1 -> {
             profileViewModel.logout().observe(requireActivity(), s -> {
                 if (!s.isEmpty()) {
                     helper.clearPref();

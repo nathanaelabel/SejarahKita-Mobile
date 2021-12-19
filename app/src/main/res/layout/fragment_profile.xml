@@ -13,8 +13,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,54 +24,146 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/img_ill_profile_fragment"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profile_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_hard"
+                app:cardBackgroundColor="@color/cardPrimaryBackground"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ill_profile" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/user_name"
-                style="@style/SejarahKitaTextView.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Username"
-                android:textAlignment="center"
-                android:textColor="@color/colorTextPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_ill_profile_fragment" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_cv_profile_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/user_email"
-                style="@style/SejarahKitaTextView.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="user@email.com"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/user_name"
-                app:layout_constraintStart_toStartOf="@+id/user_name"
-                app:layout_constraintTop_toBottomOf="@+id/user_name" />
+                    <ImageView
+                        android:id="@+id/img_ill_profile_fragment"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ill_profile" />
 
-            <TextView
-                android:id="@+id/register_since_profile_fragment"
-                style="@style/SejarahKitaTextView.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/bg_dark"
-                android:padding="10dp"
-                android:text="Register: Date Month Year"
-                app:layout_constraintEnd_toEndOf="@+id/user_email"
-                app:layout_constraintStart_toStartOf="@+id/user_email"
-                app:layout_constraintTop_toBottomOf="@+id/user_email" />
+                    <TextView
+                        android:id="@+id/lbl_username_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:drawablePadding="8dp"
+                        android:text="@string/username"
+                        android:textColor="@color/textPrimary"
+                        app:drawableStartCompat="@drawable/ic_username"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                    <TextView
+                        android:id="@+id/lbl_name_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:drawablePadding="8dp"
+                        android:text="@string/name"
+                        android:textColor="@color/textPrimary"
+                        app:drawableStartCompat="@drawable/ic_name"
+                        app:layout_constraintStart_toStartOf="@+id/lbl_username_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_username_profile_fragment" />
+
+                    <TextView
+                        android:id="@+id/lbl_email_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:drawablePadding="8dp"
+                        android:text="@string/email"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_email"
+                        app:layout_constraintStart_toStartOf="@+id/lbl_name_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_name_profile_fragment" />
+
+                    <TextView
+                        android:id="@+id/lbl_school_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:drawablePadding="8dp"
+                        android:text="@string/school"
+                        android:textColor="@color/textPrimary"
+                        app:drawableStartCompat="@drawable/ic_school"
+                        app:layout_constraintStart_toStartOf="@+id/lbl_email_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_email_profile_fragment" />
+
+                    <TextView
+                        android:id="@+id/lbl_city_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:drawablePadding="8dp"
+                        android:text="@string/city"
+                        android:textColor="@color/textPrimary"
+                        app:drawableStartCompat="@drawable/ic_city"
+                        app:layout_constraintStart_toStartOf="@+id/lbl_school_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_school_profile_fragment" />
+
+                    <TextView
+                        android:id="@+id/lbl_birthyear_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:drawablePadding="8dp"
+                        android:text="@string/birthyear"
+                        android:textColor="@color/textPrimary"
+                        app:drawableStartCompat="@drawable/ic_birthyear"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/lbl_city_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_city_profile_fragment" />
+
+                    <TextView
+                        android:id="@+id/lbl_register_since_profile_fragment"
+                        style="@style/SejarahKitaTextView.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_dark"
+                        android:padding="10dp"
+                        android:text="Register: Date Month Year"
+                        app:layout_constraintEnd_toEndOf="@+id/img_ill_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/img_ill_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/img_ill_profile_fragment" />
+
+                    <View
+                        android:id="@+id/divider4"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_register_since_profile_fragment" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btn_easy_profile_fragment"
@@ -80,7 +174,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/btn_easy_profile"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_ranked_point_terkini_profile_fragment"
@@ -92,7 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_hard_profile"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/btn_easy_profile_fragment"
                 app:layout_constraintStart_toStartOf="@+id/btn_easy_profile_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/btn_easy_profile_fragment"
@@ -106,16 +200,16 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_ranked_point"
                 android:drawablePadding="8dp"
                 android:text="Ranked Point Terkini"
-                android:textColor="@color/colorTextPrimary"
-                app:drawableTint="@color/icon"
+                android:textColor="@color/textPrimary"
+                app:drawableTint="@color/staticIcon"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/register_since_profile_fragment" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_fragment"
+                app:drawableStartCompat="@drawable/ic_ranked_point" />
 
             <TextView
-                android:id="@+id/easy_level_profile_fragment"
+                android:id="@+id/txt_easy_level_profile_fragment"
                 style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,27 +217,27 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Easy"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 android:translationZ="2dp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_hard_profile_fragment"
                 app:layout_constraintStart_toStartOf="@+id/btn_easy_profile_fragment"
                 app:layout_constraintTop_toTopOf="@+id/btn_easy_profile_fragment" />
 
             <TextView
-                android:id="@+id/easy_ranked_point_profile_fragment"
+                android:id="@+id/lbl_easy_ranked_point_profile_fragment"
                 style="@style/SejarahKitaTextView.Semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="710 RP"
-                android:textColor="@color/colorTextPrimary"
+                android:text="%s RP"
+                android:textColor="@color/textPrimary"
                 android:translationZ="2dp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_hard_profile_fragment"
                 app:layout_constraintEnd_toEndOf="@+id/btn_easy_profile_fragment"
                 app:layout_constraintTop_toTopOf="@+id/btn_easy_profile_fragment" />
 
             <TextView
-                android:id="@+id/hard_level_profile_fragment"
+                android:id="@+id/txt_hard_level_profile_fragment"
                 style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -151,20 +245,20 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Hard"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 android:translationZ="2dp"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_hard_profile_fragment"
                 app:layout_constraintStart_toStartOf="@+id/btn_hard_profile_fragment"
                 app:layout_constraintTop_toTopOf="@+id/btn_hard_profile_fragment" />
 
             <TextView
-                android:id="@+id/hard_ranked_point_profile_fragment"
+                android:id="@+id/lbl_hard_ranked_point_profile_fragment"
                 style="@style/SejarahKitaTextView.Semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="2500 RP"
-                android:textColor="@color/colorTextPrimary"
+                android:text="%s RP"
+                android:textColor="@color/textPrimary"
                 android:translationZ="2dp"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_hard_profile_fragment"
                 app:layout_constraintEnd_toEndOf="@+id/btn_hard_profile_fragment"
@@ -188,7 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Playing History"
-                    android:textColor="@color/colorSecondary" />
+                    android:textColor="@color/buttonSecondary" />
 
                 <ImageView
                     android:id="@+id/btn_playing_history_profile_fragment"
@@ -196,11 +290,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="235dp"
                     app:srcCompat="@drawable/ic_arrow"
-                    app:tint="@color/colorSecondary" />
+                    app:tint="@color/buttonSecondary" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_logout"
+                android:id="@+id/btn_logout_profile_fragment"
                 style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,7 +311,7 @@
                 android:paddingBottom="10dp"
                 android:text="@string/logout"
                 android:textAllCaps="false"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

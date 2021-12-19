@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBackground">#020E3A</color>
-    <color name="colorPrimary">#2256B8</color>
-    <color name="colorSecondary">#FFB800</color>
-    <color name="colorTextPrimary">#FFFFFF</color>
-    <color name="colorTextSecondary">#000000</color>
-    <color name="cardView">#313465</color>
-    <color name="toolbar_bottomNavigationView">#0D216A</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#000000</color>
+    <color name="background">#020E3A</color>
+    <color name="footer">#0D216A</color>
+    <color name="cardSecondary">#313465</color>
+    <color name="buttonPrimary">#2256B8</color>
+    <color name="buttonSecondary">#FFB800</color>
+    <color name="cardPrimaryBackground">#2AFFFFFF</color>
     <color name="easy1">#00B88C</color>
     <color name="easy2">#3695B2</color>
     <color name="hard1">#DC3C6C</color>
     <color name="hard2">#AD06B0</color>
     <color name="casual">#3288B9</color>
-    <color name="icon">#FFFF00</color>
+    <color name="table_thead">#BBBBBB</color>
+    <color name="table_tbody_odd">#404040</color>
+    <color name="table_tbody_even">#606060</color>
+    <color name="delete">#ff0000</color>
     <color name="highlight">#636BE5</color>
-    <color name="thead">#BBBBBB</color>
-    <color name="tbody_odd">#404040</color>
-    <color name="tbody_even">#606060</color>
+    <color name="staticIcon">#FFFF00</color>
 </resources>

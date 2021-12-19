@@ -30,7 +30,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/cardView"
+                app:cardBackgroundColor="@color/cardSecondary"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="true"
@@ -62,7 +62,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mainkan Gamenya,"
-                            android:textColor="@color/colorTextPrimary" />
+                            android:textColor="@color/textPrimary" />
 
                         <TextView
                             android:id="@+id/txt_title2_playing_history_fragment"
@@ -97,7 +97,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Level Easy"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_playing_history_fragment" />
@@ -112,7 +112,7 @@
                 android:drawableStart="@drawable/ic_open"
                 android:drawablePadding="8dp"
                 android:text="Show All"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/buttonSecondary"
                 android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_playing_history_fragment" />
@@ -143,7 +143,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="No."
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -155,7 +155,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="Username"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -167,7 +167,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="Ranked Point"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -175,7 +175,7 @@
                     android:id="@+id/tableRow_tr1_easy_leaderboard_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/tbody_odd">
+                    android:background="@color/table_tbody_odd">
 
                     <TextView
                         android:id="@+id/tbody1_easy_nomor_leaderboard_fragment"
@@ -186,7 +186,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="1"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -198,7 +198,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="jane_doe"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -210,7 +210,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="5000 RP"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -218,7 +218,7 @@
                     android:id="@+id/tableRow_tr2_easy_leaderboard_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/tbody_even">
+                    android:background="@color/table_tbody_even">
 
                     <TextView
                         android:id="@+id/tbody2_easy_nomor_leaderboard_fragment"
@@ -229,7 +229,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="2"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -241,7 +241,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="lucky7"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -253,7 +253,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="4775 RP"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -272,7 +272,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="3"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -284,7 +284,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="j.appleseed"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -296,7 +296,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="4345 RP"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
                 </TableRow>
             </TableLayout>
@@ -308,7 +308,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Level Hard"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="@+id/tableLayout_easy_leaderboard_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/tableLayout_easy_leaderboard_fragment" />
@@ -322,7 +322,7 @@
                 android:drawableStart="@drawable/ic_open"
                 android:drawablePadding="8dp"
                 android:text="Show All"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/buttonSecondary"
                 android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="@+id/tableLayout_easy_leaderboard_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/tableLayout_easy_leaderboard_fragment" />
@@ -355,7 +355,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="No."
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -367,7 +367,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="Username"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -379,7 +379,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="Ranked Point"
-                        android:textColor="@color/colorTextSecondary"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -387,7 +387,7 @@
                     android:id="@+id/tableRow_tr1_hard_leaderboard_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/tbody_odd">
+                    android:background="@color/table_tbody_odd">
 
                     <TextView
                         android:id="@+id/tbody1_hard_nomor_leaderboard_fragment"
@@ -398,7 +398,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="1"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -410,7 +410,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="johndoe01"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -422,7 +422,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="2500 RP"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -430,7 +430,7 @@
                     android:id="@+id/tableRow_tr2_hard_leaderboard_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/tbody_even">
+                    android:background="@color/table_tbody_even">
 
                     <TextView
                         android:id="@+id/tbody2_hard_nomor_leaderboard_fragment"
@@ -441,7 +441,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="2"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -453,7 +453,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="will_smith"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -465,7 +465,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="2225 RP"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -484,7 +484,7 @@
                         android:gravity="center"
                         android:padding="10sp"
                         android:text="3"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -496,7 +496,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="hello.world"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -508,7 +508,7 @@
                         android:gravity="start"
                         android:padding="10sp"
                         android:text="2020 RP"
-                        android:textColor="@color/colorTextPrimary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="14sp" />
                 </TableRow>
             </TableLayout>

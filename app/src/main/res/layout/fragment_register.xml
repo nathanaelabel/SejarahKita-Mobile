@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/title_register"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/cardView"
+                app:cardBackgroundColor="@color/cardSecondary"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="true"
@@ -260,7 +260,7 @@
                         app:layout_constraintStart_toStartOf="@+id/birthyear_register"
                         app:layout_constraintTop_toBottomOf="@+id/birthyear_register"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/colorSecondary"
+                        app:passwordToggleTint="@color/buttonSecondary"
                         app:startIconDrawable="@drawable/ic_password">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -296,7 +296,7 @@
                         app:layout_constraintStart_toStartOf="@+id/pass_register"
                         app:layout_constraintTop_toBottomOf="@+id/pass_register"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/colorSecondary"
+                        app:passwordToggleTint="@color/buttonSecondary"
                         app:startIconDrawable="@drawable/ic_confirm_password">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -321,11 +321,11 @@
                 android:letterSpacing="0.05"
                 android:text="@string/go_to_register"
                 android:textAllCaps="false"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 app:icon="@drawable/ic_register"
                 app:iconGravity="textStart"
                 app:iconSize="26dp"
-                app:iconTint="@color/colorTextPrimary"
+                app:iconTint="@color/textPrimary"
                 app:layout_constraintEnd_toEndOf="@id/cv_register_fragment"
                 app:layout_constraintStart_toStartOf="@+id/cv_register_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/cv_register_fragment" />
@@ -358,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/go_to_login"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/buttonSecondary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>

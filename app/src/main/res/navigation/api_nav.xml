@@ -102,7 +102,7 @@
     <fragment
         android:id="@+id/playingHistoryFragment"
         android:name="com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragment"
-        android:label="fragment_playing_history"
+        android:label="@string/playing_history"
         tools:layout="@layout/fragment_playing_history" />
     <fragment
         android:id="@+id/gameEndedFragment"

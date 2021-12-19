@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/title_login"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/cardView"
+                app:cardBackgroundColor="@color/cardSecondary"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="1dp"
                 app:cardPreventCornerOverlap="true"
@@ -129,7 +129,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/email_input"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/colorSecondary"
+                        app:passwordToggleTint="@color/buttonSecondary"
                         app:startIconDrawable="@drawable/ic_password">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -154,11 +154,11 @@
                 android:letterSpacing="0.05"
                 android:text="@string/go_to_login"
                 android:textAllCaps="false"
-                android:textColor="@color/colorTextPrimary"
+                android:textColor="@color/textPrimary"
                 app:icon="@drawable/ic_login"
                 app:iconGravity="textStart"
                 app:iconSize="26dp"
-                app:iconTint="@color/colorTextPrimary"
+                app:iconTint="@color/textPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/cv_login_fragment"
                 app:layout_constraintStart_toStartOf="@+id/cv_login_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/cv_login_fragment" />
@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/go_to_register"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/buttonSecondary"
                     android:textSize="16sp" />
             </LinearLayout>
 
