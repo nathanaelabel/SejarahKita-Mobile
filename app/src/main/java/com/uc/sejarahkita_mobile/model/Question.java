@@ -1,11 +1,29 @@
 package com.uc.sejarahkita_mobile.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.Gson;
 
 import java.util.List;
 
-public class Question {
+public class Question implements Parcelable {
     private List<Questions> questions;
+
+    protected Question(Parcel in) {
+    }
+
+    public static final Creator<Question> CREATOR = new Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel in) {
+            return new Question(in);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
 
     public static Question objectFromData(String str) {
 
@@ -18,6 +36,15 @@ public class Question {
 
     public void setQuestions(List<Questions> questions) {
         this.questions = questions;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
     }
 
     public static class Questions {
