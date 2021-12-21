@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_game_loading_fragment"
+                android:id="@+id/btn_cancel_game_loading_fragment"
                 style="@style/SejarahKitaTextView.Semibold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -43,18 +43,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lbl_mode_game_loading_fragment"
+                android:id="@+id/lbl_match_game_loading_fragment"
                 style="@style/SejarahKitaTextView.Semibold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="72dp"
                 android:text="%sMode"
                 android:textAlignment="center"
                 android:textColor="@color/textPrimary"
                 android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_game_loading_fragment"
-                app:layout_constraintStart_toStartOf="@+id/btn_game_loading_fragment"
-                app:layout_constraintTop_toBottomOf="@+id/btn_game_loading_fragment" />
+                app:layout_constraintEnd_toEndOf="@+id/btn_cancel_game_loading_fragment"
+                app:layout_constraintStart_toStartOf="@+id/btn_cancel_game_loading_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/btn_cancel_game_loading_fragment" />
 
             <TextView
                 android:id="@+id/txt_subtitle_game_loading_fragment"
@@ -65,9 +65,9 @@
                 android:text="GET READY"
                 android:textColor="@color/textPrimary"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_mode_game_loading_fragment"
-                app:layout_constraintStart_toStartOf="@+id/lbl_mode_game_loading_fragment"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_mode_game_loading_fragment" />
+                app:layout_constraintEnd_toEndOf="@+id/lbl_match_game_loading_fragment"
+                app:layout_constraintStart_toStartOf="@+id/lbl_match_game_loading_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_match_game_loading_fragment" />
 
             <TextView
                 android:id="@+id/lbl_countdown_game_loading_fragment"
@@ -93,9 +93,10 @@
                 android:layout_marginBottom="32dp"
                 android:elevation="1dp"
                 android:keepScreenOn="true"
+                android:progress="@integer/material_motion_duration_long_1"
+                android:progressTint="@color/buttonPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_countdown_game_loading_fragment" />
         </androidx.constraintlayout.widget.ConstraintLayout>

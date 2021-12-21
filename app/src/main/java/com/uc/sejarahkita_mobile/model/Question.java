@@ -5,22 +5,22 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class Question {
-    private List<Questions> questions;
+    private List<QuestionItem> questions;
 
     public static Question objectFromData(String str) {
 
         return new Gson().fromJson(str, Question.class);
     }
 
-    public List<Questions> getQuestions() {
+    public List<QuestionItem> getQuestionItem() {
         return questions;
     }
 
-    public void setQuestions(List<Questions> questions) {
+    public void setQuestionItem(List<QuestionItem> questions) {
         this.questions = questions;
     }
 
-    public static class Questions {
+    public static class QuestionItem {
         private int id_question;
         private String pertanyaan_kalimat;
         private String pertanyaan_path_gambar;
@@ -29,9 +29,9 @@ public class Question {
         private String updated_at;
         private int id_level;
 
-        public static Questions objectFromData(String str) {
+        public static QuestionItem objectFromData(String str) {
 
-            return new Gson().fromJson(str, Questions.class);
+            return new Gson().fromJson(str, QuestionItem.class);
         }
 
         public int getId_question() {

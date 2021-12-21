@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cons_layout_show_answer"
+    android:id="@+id/cons_layout_show_answer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_layout_show_answer"
+        android:id="@+id/cv_layout_show_answer_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/cardSecondary"
@@ -16,12 +16,22 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_cv_layout_show_answer"
+            android:id="@+id/cons_cv_layout_show_answer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/btn_close_layout_show_answer_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
             <TextView
-                android:id="@+id/txt_title_layout_show_answer"
+                android:id="@+id/txt_title_layout_show_answer_layout"
                 style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,28 +43,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lbl_jawaban_layout_show_answer"
+                android:id="@+id/lbl_jawaban_layout_show_answer_layout"
                 style="@style/SejarahKitaTextView.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="64dp"
+                android:layout_marginBottom="24dp"
                 android:text="JAWABAN"
                 android:textAllCaps="true"
                 android:textColor="@color/textPrimary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_title_layout_show_answer"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title_layout_show_answer" />
+                app:layout_constraintBottom_toTopOf="@+id/btn_lanjut_show_answer_layout"
+                app:layout_constraintStart_toStartOf="@+id/txt_title_layout_show_answer_layout"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title_layout_show_answer_layout" />
 
-            <ImageView
-                android:id="@+id/btn_close_layout_show_answer"
+            <Button
+                android:id="@+id/btn_lanjut_show_answer_layout"
+                style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_primary"
+                android:letterSpacing="0.05"
+                android:padding="10dp"
+                android:text="Lanjut Bermain"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_close" />
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

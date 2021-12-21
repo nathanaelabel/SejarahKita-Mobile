@@ -18,8 +18,8 @@ import com.uc.sejarahkita_mobile.helper.GameType;
 
 public class CountdownFragment extends Fragment {
 
-    TextView lbl_mode_game_loading_fragment, lbl_countdown_game_loading_fragment;
-    Button btn_game_loading_fragment;
+    TextView lbl_match_game_loading_fragment, lbl_countdown_game_loading_fragment;
+    Button btn_cancel_game_loading_fragment;
     CountDownTimer countDownTimer;
     int gameType;
 
@@ -48,17 +48,17 @@ public class CountdownFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        lbl_mode_game_loading_fragment = view.findViewById(R.id.lbl_mode_game_loading_fragment);
+        lbl_match_game_loading_fragment = view.findViewById(R.id.lbl_match_game_loading_fragment);
         lbl_countdown_game_loading_fragment = view.findViewById(R.id.lbl_countdown_game_loading_fragment);
-        btn_game_loading_fragment = view.findViewById(R.id.btn_game_loading_fragment);
+        btn_cancel_game_loading_fragment = view.findViewById(R.id.btn_cancel_game_loading_fragment);
 
         gameType = getArguments().getInt("GameTypeArgument");
         if (gameType == GameType.CASUAL) {
-            lbl_mode_game_loading_fragment.setText("Casual Match");
+            lbl_match_game_loading_fragment.setText("Casual Match");
         } else if (gameType == GameType.EASY) {
-            lbl_mode_game_loading_fragment.setText("Easy Match");
+            lbl_match_game_loading_fragment.setText("Easy Match");
         } else {
-            lbl_mode_game_loading_fragment.setText("Hard Match");
+            lbl_match_game_loading_fragment.setText("Hard Match");
         }
 
         initAction();
@@ -73,7 +73,7 @@ public class CountdownFragment extends Fragment {
     }
 
     public void initAction() {
-        btn_game_loading_fragment.setOnClickListener(new View.OnClickListener() {
+        btn_cancel_game_loading_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).popBackStack();

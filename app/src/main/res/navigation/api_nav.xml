@@ -105,11 +105,11 @@
         android:label="@string/playing_history"
         tools:layout="@layout/fragment_playing_history" />
     <fragment
-        android:id="@+id/gameEndedFragment"
-        android:name="com.uc.sejarahkita_mobile.view.GameView.GameEnded.GameEndedFragment"
-        android:label="GameEndedFragment">
+        android:id="@+id/scoreResultFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.ScoreResult.ScoreResultFragment"
+        android:label="ScoreResultFragment">
         <action
-            android:id="@+id/action_gameEndedFragment_to_leaderboardFragment"
+            android:id="@+id/action_scoreResultFragment_to_leaderboardFragment"
             app:destination="@id/leaderboardFragment" />
     </fragment>
     <fragment
@@ -117,8 +117,11 @@
         android:name="com.uc.sejarahkita_mobile.view.GameView.PlayingGame.PlayingGameFragment"
         android:label="PlayingGameFragment">
         <action
-            android:id="@+id/action_playingGameFragment_to_gameEndedFragment"
-            app:destination="@id/gameEndedFragment" />
+            android:id="@+id/action_playingGameFragment_to_scoreResultFragment"
+            app:destination="@id/scoreResultFragment" />
+        <action
+            android:id="@+id/action_playingGameFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
 
 </navigation>

@@ -8,7 +8,9 @@ import com.uc.sejarahkita_mobile.model.TokenResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiEndPoints {
     @POST("login")
@@ -28,6 +30,6 @@ public interface ApiEndPoints {
     @POST("logout")
     Call<JsonObject> logout();
 
-    @POST("question")
-    Call<Question> question(@Field("id_level") int id_level);
+    @GET("question")
+    Call<Question> question(@Query("id_level") int id_level);
 }
