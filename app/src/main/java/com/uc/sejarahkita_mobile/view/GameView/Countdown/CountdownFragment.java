@@ -1,6 +1,7 @@
 package com.uc.sejarahkita_mobile.view.GameView.Countdown;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ public class CountdownFragment extends Fragment {
 
     TextView lbl_mode_game_loading_fragment, lbl_countdown_game_loading_fragment;
     Button btn_game_loading_fragment;
+    CountDownTimer countDownTimer;
+    int gameType;
 
     public CountdownFragment() {
     }
@@ -49,7 +52,7 @@ public class CountdownFragment extends Fragment {
         lbl_countdown_game_loading_fragment = view.findViewById(R.id.lbl_countdown_game_loading_fragment);
         btn_game_loading_fragment = view.findViewById(R.id.btn_game_loading_fragment);
 
-        int gameType = getArguments().getInt("GameTypeArgument");
+        gameType = getArguments().getInt("GameTypeArgument");
         if (gameType == GameType.CASUAL) {
             lbl_mode_game_loading_fragment.setText("Casual Match");
         } else if (gameType == GameType.EASY) {
@@ -59,6 +62,14 @@ public class CountdownFragment extends Fragment {
         }
 
         initAction();
+        startCountdownTimer();
+    }
+
+    public void goToPlayingGame(View view, int gameType) {
+//        NavDirections actions = PlayingGameFragmentDirections.actionPlayingGameFragmentToGameEndedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("GameTypeArgument", gameType);
+        Navigation.findNavController(view).navigate(R.id.action_countdownFragment_to_playingGameFragment, bundle);
     }
 
     public void initAction() {
@@ -68,5 +79,20 @@ public class CountdownFragment extends Fragment {
                 Navigation.findNavController(view).popBackStack();
             }
         });
+    }
+
+    public void startCountdownTimer() {
+        countDownTimer = new CountDownTimer(3000, 1000) {
+            @Override
+            public void onTick(long l) {
+                String seconds = String.valueOf((l / 1000) + 1);
+                lbl_countdown_game_loading_fragment.setText(seconds);
+            }
+
+            @Override
+            public void onFinish() {
+                goToPlayingGame(lbl_countdown_game_loading_fragment, gameType);
+            }
+        }.start();
     }
 }

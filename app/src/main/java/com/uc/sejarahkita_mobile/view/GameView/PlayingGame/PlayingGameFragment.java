@@ -41,4 +41,6 @@ public class PlayingGameFragment extends Fragment {
         lbl_anagram_playing_game_fragment = view.findViewById(R.id.lbl_anagram_playing_game_fragment);
         til_jawaban_playing_game_fragment = view.findViewById(R.id.til_jawaban_playing_game_fragment);
     }
+
+
 }

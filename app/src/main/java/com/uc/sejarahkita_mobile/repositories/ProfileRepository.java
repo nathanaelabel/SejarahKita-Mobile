@@ -18,6 +18,7 @@ import retrofit2.Response;
 
 public class ProfileRepository {
     private static ProfileRepository profileRepository;
+    private static GameRepository gameRepository;
     private RetrofitService apiService;
     private static final String TAG = "ProfileRepository";
 

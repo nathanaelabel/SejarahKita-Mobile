@@ -1,6 +1,7 @@
 package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
+import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
 
@@ -26,4 +27,7 @@ public interface ApiEndPoints {
 
     @POST("logout")
     Call<JsonObject> logout();
+
+    @POST("question")
+    Call<Question> question(@Field("id_level") int id_level);
 }
