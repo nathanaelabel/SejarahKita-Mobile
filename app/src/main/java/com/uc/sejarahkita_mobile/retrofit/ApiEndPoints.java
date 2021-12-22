@@ -30,6 +30,6 @@ public interface ApiEndPoints {
     @POST("logout")
     Call<JsonObject> logout();
 
-    @GET("question")
+    @GET("questions")
     Call<Question> question(@Query("id_level") int id_level);
 }
