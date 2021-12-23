@@ -30,6 +30,7 @@ public class ProfileFragment extends Fragment {
     TextView lbl_register_since_profile_fragment, lbl_username_profile_fragment, lbl_name_profile_fragment, lbl_email_profile_fragment,
             lbl_school_profile_fragment, lbl_city_profile_fragment, lbl_birthyear_profile_fragment,
             lbl_easy_ranked_point_profile_fragment, lbl_hard_ranked_point_profile_fragment;
+    Profile.Students students;
 
     private ProfileViewModel profileViewModel;
     private SharedPreferenceHelper helper;
@@ -77,19 +78,6 @@ public class ProfileFragment extends Fragment {
         profileViewModel.getProfile();
         profileViewModel.getResultProfiles().observe(getActivity(), showProfile);
 
-//        profileViewModel.getCurrentUser().observe(getViewLifecycleOwner(), new Observer<Profile.Students>() {
-//            @Override
-//            public void onChanged(Profile.Students students) {
-//                lbl_username_profile_fragment.setText(students.getUsername());
-//                lbl_name_profile_fragment.setText(students.getName());
-//                lbl_email_profile_fragment.setText(students.getEmail());
-//                lbl_school_profile_fragment.setText(students.getSchool());
-//                lbl_city_profile_fragment.setText(students.getCity());
-//                String registerSince = "Register: " + students.getCreated_at();
-//                lbl_register_since_profile_fragment.setText(registerSince);
-//            }
-//        });
-
         linearLayout_playing_history_profile_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,16 +101,17 @@ public class ProfileFragment extends Fragment {
     private Observer<Profile> showProfile = new Observer<Profile>() {
         @Override
         public void onChanged(Profile profile) {
-            // saat login user Johndoe tapi yang muncul Vanness, masih ada kesalahan.
-            Profile.Students results = profile.getStudents().get(0);
-            lbl_username_profile_fragment.setText(results.getUsername());
-            lbl_name_profile_fragment.setText(results.getName());
-            lbl_email_profile_fragment.setText(results.getEmail());
-            lbl_school_profile_fragment.setText(results.getSchool());
-            lbl_city_profile_fragment.setText(results.getCity());
-            lbl_birthyear_profile_fragment.setText(String.valueOf(results.getBirthyear()));
-            String registerSince = "Register: " + results.getCreated_at();
-            lbl_register_since_profile_fragment.setText(registerSince);
+            if (!profile.getStudents().isEmpty()) {
+                students = profile.getStudents().get(0);
+                lbl_username_profile_fragment.setText(students.getUsername());
+                lbl_name_profile_fragment.setText(students.getName());
+                lbl_email_profile_fragment.setText(students.getEmail());
+                lbl_school_profile_fragment.setText(students.getSchool());
+                lbl_city_profile_fragment.setText(students.getCity());
+                lbl_birthyear_profile_fragment.setText(String.valueOf(students.getBirthyear()));
+                String registerSince = "Register: " + String.valueOf(students.getCreated_at());
+                lbl_register_since_profile_fragment.setText(registerSince);
+            }
         }
     };
 
