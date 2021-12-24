@@ -13,10 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiEndPoints {
-    @POST("login")
-    @FormUrlEncoded
-    Call<TokenResponse> login(@Field("email") String email, @Field("password") String password);
-
+    //* Register
     @POST("register")
     @FormUrlEncoded
     Call<RegisterResponse> register(@Field("email") String email,
@@ -27,9 +24,26 @@ public interface ApiEndPoints {
                                     @Field("birthyear") String birthyear
     );
 
+    //* Login
+    @POST("login")
+    @FormUrlEncoded
+    Call<TokenResponse> login(@Field("email") String email, @Field("password") String password);
+
+    //* Logout
     @POST("logout")
     Call<JsonObject> logout();
 
+    //* Game
     @GET("questions")
     Call<Question> question(@Query("id_level") int id_level);
+
+    @POST("checkAnswer")
+    @FormUrlEncoded
+    Call<JsonObject> checkAnswer();
+
+    //* Leaderboard
+
+
+    //* Playing History
+
 }

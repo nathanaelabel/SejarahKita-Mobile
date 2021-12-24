@@ -28,7 +28,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_quit_playing_game_fragment"
                     style="@style/SejarahKitaTextView.Semibold"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
@@ -48,13 +48,16 @@
                 <RatingBar
                     android:id="@+id/rb_nyawa_ranked_playing_game_fragment"
                     style="@style/ImageRatingBar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:progressDrawable="@drawable/ic_life"
+                    android:isIndicator="true"
+                    android:numStars="3"
+                    android:progressDrawable="@drawable/ic_nyawa"
+                    android:progressTint="@color/delete"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_quit_playing_game_fragment"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/btn_quit_playing_game_fragment" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout_nyawa_ranked_playing_game_fragment"
@@ -88,7 +91,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_pertanyaan_playing_game_fragment"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="16dp"
@@ -109,7 +112,7 @@
                             android:id="@+id/lbl_pertanyaan_playing_game_fragment"
                             style="@style/SejarahKitaTextView.Medium"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
@@ -129,8 +132,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/btn_primary"
+                    android:backgroundTint="@color/table_thead"
+                    android:paddingStart="10dp"
+                    android:paddingTop="7.5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="2.5dp"
                     android:text="%sAnagram"
-                    android:textColor="@color/textPrimary"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textSecondary"
                     android:textSize="26sp"
                     app:layout_constraintEnd_toEndOf="@+id/cv_pertanyaan_playing_game_fragment"
                     app:layout_constraintStart_toStartOf="@+id/cv_pertanyaan_playing_game_fragment"
@@ -141,11 +151,13 @@
                     style="@style/SejarahKitaTextView.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="56dp"
+                    android:drawablePadding="8dp"
                     android:text="Masukkan Jawaban"
                     android:textColor="@color/textPrimary"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_anagram_playing_game_fragment"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_anagram_playing_game_fragment"
+                    app:drawableStartCompat="@drawable/ic_answer"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_anagram_playing_game_fragment" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +166,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     app:boxCornerRadiusBottomEnd="5dp"
                     app:boxCornerRadiusBottomStart="5dp"
@@ -169,6 +181,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_masukkan_jawaban_playing_game_fragment">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_jawaban_playing_game_fragment"
                         style="@style/SejarahKitaTextView.Medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

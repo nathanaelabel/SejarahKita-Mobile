@@ -26,10 +26,13 @@
                 android:id="@+id/btn_close_layout_show_answer_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_dark"
+                android:backgroundTint="@color/delete"
+                android:padding="2.5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_title_layout_show_answer_layout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_title_layout_show_answer_layout"
                 app:srcCompat="@drawable/ic_close" />
 
             <TextView
@@ -38,11 +41,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="👇 Ini Jawabannya.."
                 android:textColor="@color/textPrimary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <TextView
                 android:id="@+id/lbl_jawaban_layout_show_answer_layout"
@@ -50,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="32dp"
                 android:text="JAWABAN"
                 android:textAllCaps="true"
                 android:textColor="@color/textPrimary"
@@ -65,6 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/btn_primary"
+                android:drawableStart="@drawable/ic_game"
+                android:drawablePadding="8dp"
                 android:letterSpacing="0.05"
                 android:padding="10dp"
                 android:text="Lanjut Bermain"
@@ -72,6 +77,17 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="50dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_primary"
+                android:backgroundTint="@color/table_thead"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
