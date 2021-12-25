@@ -9,34 +9,35 @@
     app:behavior_peekHeight="0dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_layout_show_answer_layout"
+        android:id="@+id/cv_show_answer_casual_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/cardSecondary"
+        app:cardElevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_cv_layout_show_answer_layout"
+            android:id="@+id/cons_cv_show_answer_casual_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/btn_close_layout_show_answer_layout"
+                android:id="@+id/btn_close_show_answer_casual_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_dark"
                 android:backgroundTint="@color/delete"
                 android:padding="2.5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_title_layout_show_answer_layout"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_title_show_answer_casual_layout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txt_title_layout_show_answer_layout"
+                app:layout_constraintTop_toTopOf="@+id/txt_title_show_answer_casual_layout"
                 app:srcCompat="@drawable/ic_close" />
 
             <TextView
-                android:id="@+id/txt_title_layout_show_answer_layout"
+                android:id="@+id/txt_title_show_answer_casual_layout"
                 style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,10 +46,10 @@
                 android:text="👇 Ini Jawabannya.."
                 android:textColor="@color/textPrimary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                app:layout_constraintTop_toBottomOf="@+id/divider_swipeable_show_answer_casual_layout" />
 
             <TextView
-                android:id="@+id/lbl_jawaban_layout_show_answer_layout"
+                android:id="@+id/lbl_jawaban_show_answer_casual_layout"
                 style="@style/SejarahKitaTextView.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,8 +59,8 @@
                 android:textAllCaps="true"
                 android:textColor="@color/textPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/btn_lanjut_show_answer_layout"
-                app:layout_constraintStart_toStartOf="@+id/txt_title_layout_show_answer_layout"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title_layout_show_answer_layout" />
+                app:layout_constraintStart_toStartOf="@+id/txt_title_show_answer_casual_layout"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title_show_answer_casual_layout" />
 
             <Button
                 android:id="@+id/btn_lanjut_show_answer_layout"
@@ -79,7 +80,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <View
-                android:id="@+id/divider"
+                android:id="@+id/divider_swipeable_show_answer_casual_layout"
                 android:layout_width="50dp"
                 android:layout_height="5dp"
                 android:layout_marginTop="16dp"

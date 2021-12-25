@@ -1,5 +1,8 @@
 package com.uc.sejarahkita_mobile.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -20,7 +23,7 @@ public class Question {
         this.questions = questions;
     }
 
-    public static class QuestionItem {
+    public static class QuestionItem implements Parcelable {
         private int id_question;
         private String pertanyaan_kalimat;
         private String pertanyaan_path_gambar;
@@ -28,6 +31,28 @@ public class Question {
         private String created_at;
         private String updated_at;
         private int id_level;
+
+        protected QuestionItem(Parcel in) {
+            id_question = in.readInt();
+            pertanyaan_kalimat = in.readString();
+            pertanyaan_path_gambar = in.readString();
+            kunci_jawaban = in.readString();
+            created_at = in.readString();
+            updated_at = in.readString();
+            id_level = in.readInt();
+        }
+
+        public static final Creator<QuestionItem> CREATOR = new Creator<QuestionItem>() {
+            @Override
+            public QuestionItem createFromParcel(Parcel in) {
+                return new QuestionItem(in);
+            }
+
+            @Override
+            public QuestionItem[] newArray(int size) {
+                return new QuestionItem[size];
+            }
+        };
 
         public static QuestionItem objectFromData(String str) {
 
@@ -88,6 +113,22 @@ public class Question {
 
         public void setId_level(int id_level) {
             this.id_level = id_level;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeInt(id_question);
+            parcel.writeString(pertanyaan_kalimat);
+            parcel.writeString(pertanyaan_path_gambar);
+            parcel.writeString(kunci_jawaban);
+            parcel.writeString(created_at);
+            parcel.writeString(updated_at);
+            parcel.writeInt(id_level);
         }
     }
 }

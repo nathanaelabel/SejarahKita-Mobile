@@ -85,25 +85,42 @@
             android:id="@+id/action_profileFragment_to_playingHistoryFragment"
             app:destination="@id/playingHistoryFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/detailLeaderboardFragment"
         android:name="com.uc.sejarahkita_mobile.view.LeaderboardView.DetailLeaderboard.DetailLeaderboardFragment"
         android:label="fragment_detail_leaderboard"
         tools:layout="@layout/fragment_detail_leaderboard" />
+
     <fragment
         android:id="@+id/countdownFragment"
         android:name="com.uc.sejarahkita_mobile.view.GameView.Countdown.CountdownFragment"
         android:label="fragment_game_loading"
         tools:layout="@layout/fragment_countdown">
         <action
-            android:id="@+id/action_countdownFragment_to_playingGameFragment"
-            app:destination="@id/playingGameFragment" />
+            android:id="@+id/action_countdownFragment_to_playingGameBaseFragment"
+            app:destination="@id/playingGameBaseFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/playingGameBaseFragment"
+        android:name="com.uc.sejarahkita_mobile.view.GameView.PlayingGame.PlayingGameBaseFragment"
+        android:label="fragment_playing_game_base"
+        tools:layout="@layout/fragment_playing_game_base">
+        <action
+            android:id="@+id/action_playingGameBaseFragment_to_playingGameFragment"
+            app:destination="@id/playingGameFragment" />
+        <action
+            android:id="@+id/action_playingGameBaseFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/playingHistoryFragment"
         android:name="com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragment"
         android:label="@string/playing_history"
         tools:layout="@layout/fragment_playing_history" />
+
     <fragment
         android:id="@+id/scoreResultFragment"
         android:name="com.uc.sejarahkita_mobile.view.GameView.ScoreResult.ScoreResultFragment"
@@ -112,6 +129,7 @@
             android:id="@+id/action_scoreResultFragment_to_leaderboardFragment"
             app:destination="@id/leaderboardFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/playingGameFragment"
         android:name="com.uc.sejarahkita_mobile.view.GameView.PlayingGame.PlayingGameFragment"
