@@ -175,6 +175,7 @@
                     app:boxStrokeColor="@drawable/selector_states_textinputlayout"
                     app:boxStrokeWidth="2dp"
                     app:boxStrokeWidthFocused="3dp"
+                    app:errorEnabled="true"
                     app:hintTextColor="@drawable/selector_states_textinputlayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -113,6 +113,9 @@
         <action
             android:id="@+id/action_playingGameBaseFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_playingGameBaseFragment_to_scoreResultFragment"
+            app:destination="@id/scoreResultFragment" />
     </fragment>
 
     <fragment
@@ -134,9 +137,6 @@
         android:id="@+id/playingGameFragment"
         android:name="com.uc.sejarahkita_mobile.view.GameView.PlayingGame.PlayingGameFragment"
         android:label="PlayingGameFragment">
-        <action
-            android:id="@+id/action_playingGameFragment_to_scoreResultFragment"
-            app:destination="@id/scoreResultFragment" />
         <action
             android:id="@+id/action_playingGameFragment_to_gameFragment"
             app:destination="@id/gameFragment" />

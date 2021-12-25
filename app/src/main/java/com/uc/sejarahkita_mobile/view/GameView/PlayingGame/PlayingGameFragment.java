@@ -165,11 +165,17 @@ public class PlayingGameFragment extends Fragment {
         btn_jawab_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                hideKeyboard();
-                if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
-                    playingGameListener.onSubmitClicked(page + 1);
+                if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
+                    til_jawaban_playing_game_fragment.setError("Harap isi jawaban terlebih dahulu.");
+                    hideKeyboard();
                 } else {
-                    calculateAnswer(life);
+                    if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
+                        playingGameListener.onSubmitClicked(page + 1);
+                        hideKeyboard();
+                    } else {
+                        calculateAnswer(life);
+                        playingGameListener.onSubmitClicked(page + 1);
+                    }
                 }
             }
         });
@@ -197,6 +203,9 @@ public class PlayingGameFragment extends Fragment {
             }
             return new String(a);
         }
+        if (word.equals(answer)) {
+            getAnagram(word);
+        }
         return word;
     }
 
@@ -204,11 +213,18 @@ public class PlayingGameFragment extends Fragment {
     public void calculateAnswer(int nyawa) {
         life = nyawa - 1;
         rb_nyawa_ranked_playing_game_fragment.setNumStars(life);
+        if (life == 0) {
+            playingGameListener.onGameEnded();
+        }
     }
 
     //* Menutup keyboard setelah Button 'Jawab' diklik
     public void hideKeyboard() {
-        InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null)
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

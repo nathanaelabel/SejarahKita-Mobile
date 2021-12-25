@@ -4,4 +4,6 @@ public interface PlayingGameListener {
     void onExitClicked();
 
     void onSubmitClicked(int page);
+
+    void onGameEnded();
 }
