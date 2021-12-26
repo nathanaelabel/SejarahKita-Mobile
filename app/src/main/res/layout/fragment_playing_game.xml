@@ -52,7 +52,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:isIndicator="true"
-                    android:numStars="3"
                     android:progressDrawable="@drawable/ic_nyawa"
                     android:progressTint="@color/delete"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_exit_playing_game_fragment"

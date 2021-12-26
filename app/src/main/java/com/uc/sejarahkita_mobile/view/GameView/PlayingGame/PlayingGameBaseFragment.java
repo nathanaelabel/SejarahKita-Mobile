@@ -1,13 +1,11 @@
 package com.uc.sejarahkita_mobile.view.GameView.PlayingGame;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,22 +15,27 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
+import com.uc.sejarahkita_mobile.helper.GameType;
 import com.uc.sejarahkita_mobile.helper.PlayingGameListener;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.Question;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PlayingGameBaseFragment extends Fragment implements PlayingGameListener {
     FrameLayout playingGameBaseFragmentContainer;
     ProgressBar progBar_loading_playing_game_base_fragment;
 
     int gameType;
-    int life;
+    int life = 0;
     int page = 0;
     private GameViewModel gameViewModel;
     private SharedPreferenceHelper helper;
-    List<Question.QuestionItem> questions;
+    List<Question.QuestionItem> casualQuestions;
+    List<Question.QuestionItem> easyQuestions;
+    List<Question.QuestionItem> hardQuestions;
 
     public PlayingGameBaseFragment() {
     }
@@ -63,7 +66,6 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         progBar_loading_playing_game_base_fragment = view.findViewById(R.id.progBar_loading_playing_game_base_fragment);
 
         gameType = getArguments().getInt("GameTypeArgument");
-        life = getArguments().getInt("LifeArgument");
         gameViewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         gameViewModel.init(helper.getAccessToken());
@@ -75,15 +77,33 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
     private Observer<Question> showQuestion = new Observer<Question>() {
         @Override
         public void onChanged(Question question) {
-            questions = question.getQuestionItem();
-            for (int i = 0; i <= questions.size(); i++) {
-                if (questions.get(i).getId_level() == 1) {
-                    questions.add(i);
-                }
+            List<Question.QuestionItem> questions = question.getQuestionItem();
+
+            switch (gameType) {
+                case GameType.CASUAL:
+                    casualQuestions = getFilteredQuestions(questions, gameType);
+                    goToNextQuestion(casualQuestions.get(page), gameType, life);
+                    break;
+                case GameType.EASY:
+                    life = 5;
+                    easyQuestions = getFilteredQuestions(questions, gameType);
+                    goToNextQuestion(easyQuestions.get(page), gameType, life);
+                    break;
+                case GameType.HARD:
+                    life = 3;
+                    hardQuestions = getFilteredQuestions(questions, gameType);
+                    goToNextQuestion(hardQuestions.get(page), gameType, life);
+                    break;
             }
-            goToNextQuestion(questions.get(page), gameType, life);
-            Log.i("onChanged: ,", String.valueOf(questions.size()));
-            Toast.makeText(requireActivity(), String.valueOf(questions.size()), Toast.LENGTH_SHORT).show();
+//            List<Question.QuestionItem> questionsNew = null;
+
+//            for (int i = 0; i < questions.size(); i++) {
+//                if (questions.get(i).getId_level() == 1) {
+//                    assert questionsNew != null;
+//                    questionsNew.add(questions.get(i));
+//                }
+//            }
+//            Log.i("onChanged: ", String.valueOf(questionsNew.size()));
         }
     };
 
@@ -92,12 +112,29 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         bundle.putParcelable("questionItem", questionItem);
         bundle.putInt("gameType", gameType);
         bundle.putInt("page", page);
-        bundle.putInt("life", life);
+        bundle.putInt("LifeArgument", life);
         PlayingGameFragment fragment = new PlayingGameFragment();
         fragment.setArguments(bundle);
         fragment.setPlayingGameListener(this);
         replaceFragment(fragment);
         progBar_loading_playing_game_base_fragment.setVisibility(View.GONE);
+    }
+
+    public List<Question.QuestionItem> getFilteredQuestions(List<Question.QuestionItem> questions, int gameType) {
+        List<Question.QuestionItem> filteredQuestions = new ArrayList<>();
+
+        Random random = new Random();
+
+        for (int i = 0; i < questions.size(); i++) {
+            int randomIndex = random.nextInt(questions.size());
+            Question.QuestionItem questionItem = questions.get(randomIndex);
+            if (questionItem.getId_level() == gameType) {
+                if (gameType == GameType.CASUAL && filteredQuestions.size() == 9)
+                    break;
+                filteredQuestions.add(questionItem);
+            }
+        }
+        return filteredQuestions;
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -112,8 +149,24 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
     }
 
     @Override
-    public void onSubmitClicked(int page) {
+    public void onSubmitClicked(int page, int life) {
         this.page = page;
+        this.life = life;
+
+        switch (gameType) {
+            case GameType.CASUAL:
+                goToNextPage(casualQuestions, gameType);
+                break;
+            case GameType.EASY:
+                goToNextPage(easyQuestions, gameType);
+                break;
+            case GameType.HARD:
+                goToNextPage(hardQuestions, gameType);
+                break;
+        }
+    }
+
+    public void goToNextPage(List<Question.QuestionItem> questions, int gameType) {
         if (page == questions.size()) {
             Navigation.findNavController(playingGameBaseFragmentContainer).navigate(R.id.action_playingGameBaseFragment_to_scoreResultFragment);
         } else {

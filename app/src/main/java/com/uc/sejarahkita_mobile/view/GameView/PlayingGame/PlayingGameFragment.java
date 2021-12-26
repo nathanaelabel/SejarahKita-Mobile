@@ -78,26 +78,19 @@ public class PlayingGameFragment extends Fragment {
 
         questionItem = getArguments().getParcelable("questionItem");
         gameType = getArguments().getInt("gameType");
+        life = getArguments().getInt("LifeArgument");
         page = getArguments().getInt("page");
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
 
         showQuestionItem();
 
         //* Mengatur jumlah awal Nyawa pada Ranked Mode
-        if (gameType == 2) {
-            life = 5;
-            rb_nyawa_ranked_playing_game_fragment.setNumStars(5);
-        } else if (gameType == 3) {
-            life = 3;
-            rb_nyawa_ranked_playing_game_fragment.setNumStars(3);
-        }
+        rb_nyawa_ranked_playing_game_fragment.setNumStars(life);
 
         //* Untuk Exit Game
         btn_exit_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavDirections action = PlayingGameFragmentDirections.actionPlayingGameFragmentToGameFragment();
-//                Navigation.findNavController(view).navigate(action);
                 playingGameListener.onExitClicked();
             }
         });
@@ -121,6 +114,7 @@ public class PlayingGameFragment extends Fragment {
                     bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
                 } else {
                     bottomSheetBehavior.setState(bottomSheetBehavior.STATE_EXPANDED);
+                    lbl_jawaban_show_answer_casual_layout.setText(questionItem.getKunci_jawaban());
                 }
             }
         });
@@ -165,16 +159,18 @@ public class PlayingGameFragment extends Fragment {
         btn_jawab_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //? User diwajibkan mengisi EditText pada TextInputLayout terlebih dahulu sebelum klik Button 'Jawab'
                 if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
-                    til_jawaban_playing_game_fragment.setError("Harap isi jawaban terlebih dahulu.");
+                    //? Tampilkan validasi peringatan input kosongnya
+                    til_jawaban_playing_game_fragment.setError("Silakan isi jawaban terlebih dahulu.");
                     hideKeyboard();
                 } else {
+                    //? Cek kecocokan input jawaban terhadap kolom "kunci_jawaban" dengan mengabaikan uppercase & lowercase
                     if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
-                        playingGameListener.onSubmitClicked(page + 1);
+                        playingGameListener.onSubmitClicked(page + 1, life);
                         hideKeyboard();
                     } else {
                         calculateAnswer(life);
-                        playingGameListener.onSubmitClicked(page + 1);
                     }
                 }
             }
@@ -197,12 +193,13 @@ public class PlayingGameFragment extends Fragment {
 
             for (int i = 0; i < a.length; i++) {
                 int j = random.nextInt(a.length);
-                char tmp = a[i];
+                char temp = a[i];
                 a[i] = a[j];
-                a[j] = tmp;
+                a[j] = temp;
             }
             return new String(a);
         }
+        //? Melakukan randomize lagi untuk mencegah hasil Anagram tidak menjadi sama dengan isi kolom "kunci_jawaban"
         if (word.equals(answer)) {
             getAnagram(word);
         }
@@ -212,9 +209,11 @@ public class PlayingGameFragment extends Fragment {
     //* Mengurangi jumlah Nyawa setiap salah menjawab
     public void calculateAnswer(int nyawa) {
         life = nyawa - 1;
-        rb_nyawa_ranked_playing_game_fragment.setNumStars(life);
+        //? Jika Nyawa habis, maka Game Over
         if (life == 0) {
             playingGameListener.onGameEnded();
+        } else {
+            playingGameListener.onSubmitClicked(page + 1, life);
         }
     }
 
