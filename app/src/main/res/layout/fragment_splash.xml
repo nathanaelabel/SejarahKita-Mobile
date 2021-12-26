@@ -23,7 +23,7 @@
             android:id="@+id/img_logo_splash_screen_fragment"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            app:srcCompat="@drawable/ic_logo1" />
+            app:srcCompat="@drawable/logo_splashscreen" />
 
         <TextView
             android:id="@+id/txt_logo_splash_screen_fragment"

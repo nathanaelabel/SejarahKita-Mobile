@@ -9,4 +9,6 @@ public class Const {
     public final static String BASE_URL = "http://192.168.0.7/SejarahKita-Web/public/api/";
     //!Michael
 //    public final static String BASE_URL = "http://192.168.11.102/SejarahKita-Web/public/api/";
+
+    public final static String BASE_PERTANYAAN_PATH_GAMBAR_URL = "http://sejarahkita.test/storage/";
 }

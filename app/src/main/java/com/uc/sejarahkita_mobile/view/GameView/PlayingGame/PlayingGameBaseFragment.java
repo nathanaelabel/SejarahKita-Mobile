@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -26,7 +28,9 @@ import java.util.Random;
 
 public class PlayingGameBaseFragment extends Fragment implements PlayingGameListener {
     FrameLayout playingGameBaseFragmentContainer;
+    CardView cv_playing_game_base_fragment;
     ProgressBar progBar_loading_playing_game_base_fragment;
+    TextView txt_title_playing_game_base_fragment;
 
     int gameType;
     int life = 0;
@@ -63,7 +67,9 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         super.onViewCreated(view, savedInstanceState);
 
         playingGameBaseFragmentContainer = view.findViewById(R.id.playingGameBaseFragmentContainer);
+        cv_playing_game_base_fragment = view.findViewById(R.id.cv_playing_game_base_fragment);
         progBar_loading_playing_game_base_fragment = view.findViewById(R.id.progBar_loading_playing_game_base_fragment);
+        txt_title_playing_game_base_fragment = view.findViewById(R.id.txt_title_playing_game_base_fragment);
 
         gameType = getArguments().getInt("GameTypeArgument");
         gameViewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
@@ -117,7 +123,9 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         fragment.setArguments(bundle);
         fragment.setPlayingGameListener(this);
         replaceFragment(fragment);
+        cv_playing_game_base_fragment.setVisibility(View.GONE);
         progBar_loading_playing_game_base_fragment.setVisibility(View.GONE);
+        txt_title_playing_game_base_fragment.setVisibility(View.GONE);
     }
 
     public List<Question.QuestionItem> getFilteredQuestions(List<Question.QuestionItem> questions, int gameType) {
