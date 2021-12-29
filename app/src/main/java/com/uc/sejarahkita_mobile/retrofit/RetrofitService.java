@@ -3,6 +3,7 @@ package com.uc.sejarahkita_mobile.retrofit;
 import com.google.gson.JsonObject;
 import com.uc.sejarahkita_mobile.helper.Const;
 import com.uc.sejarahkita_mobile.model.Question;
+import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
 
@@ -59,6 +60,10 @@ public class RetrofitService {
 
     public Call<RegisterResponse> register(String email, String password, String password_confirmation, String username, String name, String school, String city, String birthyear) {
         return api.register(email, password, password_confirmation, username, name, school, city, birthyear);
+    }
+
+    public Call<Profile> getProfile() {
+        return api.getProfile();
     }
 
     public Call<JsonObject> logout() {

@@ -12,12 +12,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
+import com.uc.sejarahkita_mobile.model.Profile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
     Button btn_logout_profile_fragment;
@@ -25,6 +30,7 @@ public class ProfileFragment extends Fragment {
     TextView lbl_register_since_profile_fragment, lbl_username_profile_fragment, lbl_name_profile_fragment, lbl_email_profile_fragment,
             lbl_school_profile_fragment, lbl_city_profile_fragment, lbl_birthyear_profile_fragment,
             lbl_easy_ranked_point_profile_fragment, lbl_hard_ranked_point_profile_fragment;
+    Profile.Students students;
 
     private ProfileViewModel profileViewModel;
     private SharedPreferenceHelper helper;
@@ -69,6 +75,9 @@ public class ProfileFragment extends Fragment {
         lbl_hard_ranked_point_profile_fragment = view.findViewById(R.id.lbl_hard_ranked_point_profile_fragment);
         btn_logout_profile_fragment = view.findViewById(R.id.btn_logout_profile_fragment);
 
+        profileViewModel.getProfile();
+        profileViewModel.getResultProfiles().observe(getActivity(), showProfile);
+
         linearLayout_playing_history_profile_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +97,23 @@ public class ProfileFragment extends Fragment {
             });
         });
     }
+
+    private Observer<Profile> showProfile = new Observer<Profile>() {
+        @Override
+        public void onChanged(Profile profile) {
+            if (!profile.getStudents().isEmpty()) {
+                students = profile.getStudents().get(0);
+                lbl_username_profile_fragment.setText(students.getUsername());
+                lbl_name_profile_fragment.setText(students.getName());
+                lbl_email_profile_fragment.setText(students.getEmail());
+                lbl_school_profile_fragment.setText(students.getSchool());
+                lbl_city_profile_fragment.setText(students.getCity());
+                lbl_birthyear_profile_fragment.setText(String.valueOf(students.getBirthyear()));
+                String registerSince = "Register: " + String.valueOf(students.getCreated_at());
+                lbl_register_since_profile_fragment.setText(registerSince);
+            }
+        }
+    };
 
     @Override
     public void onDetach() {
