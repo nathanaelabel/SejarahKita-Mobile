@@ -1,6 +1,7 @@
 package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
+import com.uc.sejarahkita_mobile.model.PlayingHistory;
 import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
@@ -45,5 +46,6 @@ public interface ApiEndPoints {
 
 
     //* Playing History
-
+    @GET("playinghistories")
+    Call<PlayingHistory> playingHistory();
 }

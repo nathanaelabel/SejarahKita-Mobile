@@ -170,7 +170,8 @@ public class PlayingGameFragment extends Fragment {
         btn_jawab_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameViewModel.getCheckAnswer(String.valueOf(questionItem.getId_question()), et_jawaban_playing_game_fragment.getText().toString());
+                gameViewModel.getCheckAnswer(String.valueOf(questionItem.getId_question()),
+                        et_jawaban_playing_game_fragment.getText().toString());
                 gameViewModel.getResultCheckAnswer().observe(getActivity(), showCheckAnswer);
                 //? User diwajibkan mengisi EditText pada TextInputLayout terlebih dahulu sebelum klik Button 'Jawab'
                 if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
