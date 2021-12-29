@@ -62,9 +62,9 @@ public class GameRepository {
         return question;
     }
 
-    public MutableLiveData<String> getCheckAnswer(String id, String inputJawaban, int id_level) {
+    public MutableLiveData<String> getCheckAnswer(String id, String inputJawaban) {
         MutableLiveData<String> message = new MutableLiveData<>();
-        apiService.checkAnswer(id, inputJawaban, id_level).enqueue(new Callback<JsonObject>() {
+        apiService.checkAnswer(id, inputJawaban).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Log.d(TAG, "onResponse: " + response.code());
