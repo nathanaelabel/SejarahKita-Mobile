@@ -3,6 +3,7 @@ package com.uc.sejarahkita_mobile.retrofit;
 import com.google.gson.JsonObject;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
 import com.uc.sejarahkita_mobile.model.Question;
+import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
 
@@ -24,6 +25,9 @@ public interface ApiEndPoints {
                                     @Field("school") String school, @Field("city") String city,
                                     @Field("birthyear") String birthyear
     );
+
+    @GET("students")
+    Call<Profile> getProfile();
 
     //* Login
     @POST("login")

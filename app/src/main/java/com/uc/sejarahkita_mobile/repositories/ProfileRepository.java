@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.retrofit.RetrofitService;
 
 import org.json.JSONException;
@@ -39,6 +40,30 @@ public class ProfileRepository {
         if (profileRepository != null) {
             profileRepository = null;
         }
+    }
+
+    public MutableLiveData<Profile> getProfile() {
+        final MutableLiveData<Profile> currentUser = new MutableLiveData<>();
+
+        apiService.getProfile().enqueue(new Callback<Profile>() {
+            @Override
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse" + response.body().getStudents());
+                        currentUser.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Profile> call, Throwable t) {
+                Log.e(TAG, "onFailure" + t.getMessage());
+            }
+        });
+
+        return currentUser;
     }
 
     public LiveData<String> logout() {
