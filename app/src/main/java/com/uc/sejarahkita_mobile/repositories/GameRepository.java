@@ -4,8 +4,13 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.retrofit.RetrofitService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,5 +60,33 @@ public class GameRepository {
         });
 
         return question;
+    }
+
+    public MutableLiveData<String> getCheckAnswer(String id, String inputJawaban) {
+        MutableLiveData<String> message = new MutableLiveData<>();
+        apiService.checkAnswer(id, inputJawaban).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        try {
+                            JSONObject object = new JSONObject(new Gson().toJson(response.body()));
+                            String msg = object.getString("message");
+                            Log.d(TAG, "onResponse: " + msg);
+                            message.postValue(msg);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return message;
     }
 }

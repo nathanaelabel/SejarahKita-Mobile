@@ -24,6 +24,7 @@ public class GameViewModel extends AndroidViewModel {
         gameRepository = GameRepository.getInstance(token);
     }
 
+    //* Question
     private MutableLiveData<Question> resultQuestion = new MutableLiveData<>();
 
     public void getQuestion(int id_level) {
@@ -32,6 +33,17 @@ public class GameViewModel extends AndroidViewModel {
 
     public LiveData<Question> getResultQuestion() {
         return resultQuestion;
+    }
+
+    //* Check Answer
+    private MutableLiveData<String> resultCheckAnswer = new MutableLiveData<>();
+
+    public void getCheckAnswer(String id, String inputJawaban) {
+        resultCheckAnswer = gameRepository.getCheckAnswer(id, inputJawaban);
+    }
+
+    public LiveData<String> getResultCheckAnswer() {
+        return resultCheckAnswer;
     }
 
     @Override

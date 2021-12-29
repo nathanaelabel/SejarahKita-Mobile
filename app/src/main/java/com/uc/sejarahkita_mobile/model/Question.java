@@ -7,47 +7,23 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-public class Question implements Parcelable {
-    private List<Questions> questions;
-
-    protected Question(Parcel in) {
-    }
-
-    public static final Creator<Question> CREATOR = new Creator<Question>() {
-        @Override
-        public Question createFromParcel(Parcel in) {
-            return new Question(in);
-        }
-
-        @Override
-        public Question[] newArray(int size) {
-            return new Question[size];
-        }
-    };
+public class Question {
+    private List<QuestionItem> questions;
 
     public static Question objectFromData(String str) {
 
         return new Gson().fromJson(str, Question.class);
     }
 
-    public List<Questions> getQuestions() {
+    public List<QuestionItem> getQuestionItem() {
         return questions;
     }
 
-    public void setQuestions(List<Questions> questions) {
+    public void setQuestionItem(List<QuestionItem> questions) {
         this.questions = questions;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-    }
-
-    public static class Questions {
+    public static class QuestionItem implements Parcelable {
         private int id_question;
         private String pertanyaan_kalimat;
         private String pertanyaan_path_gambar;
@@ -56,9 +32,31 @@ public class Question implements Parcelable {
         private String updated_at;
         private int id_level;
 
-        public static Questions objectFromData(String str) {
+        protected QuestionItem(Parcel in) {
+            id_question = in.readInt();
+            pertanyaan_kalimat = in.readString();
+            pertanyaan_path_gambar = in.readString();
+            kunci_jawaban = in.readString();
+            created_at = in.readString();
+            updated_at = in.readString();
+            id_level = in.readInt();
+        }
 
-            return new Gson().fromJson(str, Questions.class);
+        public static final Creator<QuestionItem> CREATOR = new Creator<QuestionItem>() {
+            @Override
+            public QuestionItem createFromParcel(Parcel in) {
+                return new QuestionItem(in);
+            }
+
+            @Override
+            public QuestionItem[] newArray(int size) {
+                return new QuestionItem[size];
+            }
+        };
+
+        public static QuestionItem objectFromData(String str) {
+
+            return new Gson().fromJson(str, QuestionItem.class);
         }
 
         public int getId_question() {
@@ -115,6 +113,22 @@ public class Question implements Parcelable {
 
         public void setId_level(int id_level) {
             this.id_level = id_level;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeInt(id_question);
+            parcel.writeString(pertanyaan_kalimat);
+            parcel.writeString(pertanyaan_path_gambar);
+            parcel.writeString(kunci_jawaban);
+            parcel.writeString(created_at);
+            parcel.writeString(updated_at);
+            parcel.writeInt(id_level);
         }
     }
 }

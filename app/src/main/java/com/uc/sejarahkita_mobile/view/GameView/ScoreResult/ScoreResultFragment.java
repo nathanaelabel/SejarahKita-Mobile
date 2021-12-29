@@ -1,4 +1,4 @@
-package com.uc.sejarahkita_mobile.view.GameView.GameEnded;
+package com.uc.sejarahkita_mobile.view.GameView.ScoreResult;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
 
-public class GameEndedFragment extends Fragment {
+public class ScoreResultFragment extends Fragment {
 
     TextView lbl_title_game_ended_layout, lbl_total_skor_game_ended_layout, btn_lihat_leaderboard_game_ended_layout;
     Button btn_main_lagi_game_ended_layout;
@@ -23,7 +23,7 @@ public class GameEndedFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_game_ended, container, false);
+        View view = inflater.inflate(R.layout.fragment_score_result, container, false);
         return view;
     }
 
@@ -36,14 +36,6 @@ public class GameEndedFragment extends Fragment {
         btn_lihat_leaderboard_game_ended_layout = view.findViewById(R.id.btn_lihat_leaderboard_game_ended_layout);
         btn_main_lagi_game_ended_layout = view.findViewById(R.id.btn_main_lagi_game_ended_layout);
 
-        btn_lihat_leaderboard_game_ended_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavDirections action = GameEndedFragmentDirections.actionGameEndedFragmentToLeaderboardFragment();
-                Navigation.findNavController(view).navigate(action);
-            }
-        });
-
 //        btn_main_lagi_game_ended_layout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -51,5 +43,13 @@ public class GameEndedFragment extends Fragment {
 //                Navigation.findNavController(view).navigate(action);
 //            }
 //        });
+
+        btn_lihat_leaderboard_game_ended_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = ScoreResultFragmentDirections.actionScoreResultFragmentToLeaderboardFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 }

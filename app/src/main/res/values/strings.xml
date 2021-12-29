@@ -1,7 +1,7 @@
 <resources>
     <!--Application Name-->
     <string name="app_name">SejarahKita</string>
-    <string name="app_version">Version 1.0</string>
+    <string name="app_version">© 2021 SejarahKita - v1.0</string>
 
     <!--BottomNavigationView Menu-->
     <string name="game">Game</string>

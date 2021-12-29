@@ -2,6 +2,7 @@ package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
 import com.uc.sejarahkita_mobile.helper.Const;
+import com.uc.sejarahkita_mobile.model.PlayingHistory;
 import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
@@ -72,5 +73,13 @@ public class RetrofitService {
 
     public Call<Question> question(int id_level) {
         return api.question(id_level);
+    }
+
+    public Call<JsonObject> checkAnswer(String id, String inputJawaban) {
+        return api.checkAnswer(id, inputJawaban);
+    }
+
+    public Call<PlayingHistory> playingHistory() {
+        return api.playingHistory();
     }
 }

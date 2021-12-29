@@ -1,186 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cons_playing_game_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/scrollView_cons_playing_game_fragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_playing_game_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_scrollView_playing_game_fragment"
+        <ScrollView
+            android:id="@+id/scrollView_cons_playing_game_fragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_quit_playing_game_fragment"
-                style="@style/SejarahKitaTextView.Semibold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/btn_secondary"
-                android:letterSpacing="0.05"
-                android:text="Keluar Game"
-                android:textAllCaps="false"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="16sp"
-                app:backgroundTint="@color/design_default_color_error"
-                app:icon="@drawable/ic_close"
-                app:iconGravity="textStart"
-                app:iconTint="@color/design_default_color_error"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout_nyawa_ranked_playing_game_fragment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_quit_playing_game_fragment"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_quit_playing_game_fragment"
-                app:layout_constraintTop_toTopOf="@+id/btn_quit_playing_game_fragment">
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/btn_show_answer_casual_playing_game_fragment"
-                style="@style/SejarahKitaTextView.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/ic_show_answer"
-                android:drawablePadding="8dp"
-                android:text="Show Answer"
-                android:textColor="@color/buttonSecondary"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_quit_playing_game_fragment"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_quit_playing_game_fragment" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_pertanyaan_playing_game_fragment"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_scrollView_playing_game_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/cardSecondary"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="1dp"
-                app:cardPreventCornerOverlap="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_quit_playing_game_fragment">
+                android:layout_height="wrap_content">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cons_cv_pertanyaan_playing_game_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_exit_playing_game_fragment"
+                    style="@style/SejarahKitaTextView.Semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/btn_secondary"
+                    android:letterSpacing="0.05"
+                    android:text="Keluar Game"
+                    android:textAllCaps="false"
+                    android:textColor="@color/design_default_color_error"
+                    android:textSize="16sp"
+                    app:backgroundTint="@color/design_default_color_error"
+                    app:icon="@drawable/ic_close"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/design_default_color_error"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/lbl_pertanyaan_playing_game_fragment"
-                        style="@style/SejarahKitaTextView.Medium"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="%sPertanyaan"
-                        android:textColor="@color/textPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                <RatingBar
+                    android:id="@+id/rb_nyawa_ranked_playing_game_fragment"
+                    style="@style/ImageRatingBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:isIndicator="true"
+                    android:progressDrawable="@drawable/ic_nyawa"
+                    android:progressTint="@color/delete"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_exit_playing_game_fragment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btn_exit_playing_game_fragment" />
 
-            <TextView
-                android:id="@+id/lbl_anagram_playing_game_fragment"
-                style="@style/SejarahKitaTextView.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="%sAnagram"
-                android:textColor="@color/textPrimary"
-                android:textSize="26sp"
-                app:layout_constraintEnd_toEndOf="@+id/cv_pertanyaan_playing_game_fragment"
-                app:layout_constraintStart_toStartOf="@+id/cv_pertanyaan_playing_game_fragment"
-                app:layout_constraintTop_toBottomOf="@+id/cv_pertanyaan_playing_game_fragment" />
+                <LinearLayout
+                    android:id="@+id/linearLayout_nyawa_ranked_playing_game_fragment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_exit_playing_game_fragment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn_exit_playing_game_fragment"
+                    app:layout_constraintTop_toTopOf="@+id/btn_exit_playing_game_fragment">
 
-            <TextView
-                android:id="@+id/txt_masukkan_jawaban_playing_game_fragment"
-                style="@style/SejarahKitaTextView.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:text="Masukkan Jawaban"
-                android:textColor="@color/textPrimary"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_anagram_playing_game_fragment"
-                app:layout_constraintStart_toStartOf="@+id/lbl_anagram_playing_game_fragment"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_anagram_playing_game_fragment" />
+                </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_jawaban_playing_game_fragment"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                app:boxCornerRadiusBottomEnd="5dp"
-                app:boxCornerRadiusBottomStart="5dp"
-                app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp"
-                app:boxStrokeColor="@drawable/selector_states_textinputlayout"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="3dp"
-                app:hintTextColor="@drawable/selector_states_textinputlayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_masukkan_jawaban_playing_game_fragment">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:id="@+id/btn_show_answer_casual_playing_game_fragment"
                     style="@style/SejarahKitaTextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_show_answer"
+                    android:drawablePadding="8dp"
+                    android:text="Show Answer"
+                    android:textColor="@color/buttonSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_exit_playing_game_fragment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btn_exit_playing_game_fragment" />
+
+                <ImageView
+                    android:id="@+id/img_pertanyaan_path_gambar_playing_game_fragment"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="64dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_exit_playing_game_fragment"
+                    app:srcCompat="@drawable/ic_pertanyaan_path_gambar" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_pertanyaan_playing_game_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapCharacters" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="@color/cardSecondary"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="1dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_pertanyaan_path_gambar_playing_game_fragment">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_jawab_playing_game_fragment"
-                style="@style/SejarahKitaTextView.Semibold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="32dp"
-                android:background="@drawable/btn_primary"
-                android:letterSpacing="0.05"
-                android:text="Jawab"
-                android:textAllCaps="false"
-                android:textColor="@color/textPrimary"
-                app:icon="@drawable/ic_submit"
-                app:iconGravity="textStart"
-                app:iconSize="26dp"
-                app:iconTint="@color/textPrimary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/til_jawaban_playing_game_fragment"
-                app:layout_constraintStart_toStartOf="@+id/til_jawaban_playing_game_fragment"
-                app:layout_constraintTop_toBottomOf="@+id/til_jawaban_playing_game_fragment" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_cv_pertanyaan_playing_game_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                        <TextView
+                            android:id="@+id/lbl_pertanyaan_playing_game_fragment"
+                            style="@style/SejarahKitaTextView.Medium"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="%sPertanyaan"
+                            android:textColor="@color/textPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/lbl_anagram_playing_game_fragment"
+                    style="@style/SejarahKitaTextView.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/btn_primary"
+                    android:backgroundTint="@color/table_thead"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingTop="7.5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="2.5dp"
+                    android:text="%sAnagram"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="26sp"
+                    app:layout_constraintEnd_toEndOf="@+id/cv_pertanyaan_playing_game_fragment"
+                    app:layout_constraintStart_toStartOf="@+id/cv_pertanyaan_playing_game_fragment"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_pertanyaan_playing_game_fragment" />
+
+                <TextView
+                    android:id="@+id/txt_masukkan_jawaban_playing_game_fragment"
+                    style="@style/SejarahKitaTextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="56dp"
+                    android:drawablePadding="8dp"
+                    android:text="Masukkan Jawaban"
+                    android:textColor="@color/textPrimary"
+                    app:drawableStartCompat="@drawable/ic_answer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_anagram_playing_game_fragment" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_jawaban_playing_game_fragment"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    app:boxCornerRadiusBottomEnd="5dp"
+                    app:boxCornerRadiusBottomStart="5dp"
+                    app:boxCornerRadiusTopEnd="5dp"
+                    app:boxCornerRadiusTopStart="5dp"
+                    app:boxStrokeColor="@drawable/selector_states_textinputlayout"
+                    app:boxStrokeWidth="2dp"
+                    app:boxStrokeWidthFocused="3dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@drawable/selector_states_textinputlayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_masukkan_jawaban_playing_game_fragment">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_jawaban_playing_game_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapCharacters" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_jawab_playing_game_fragment"
+                    style="@style/SejarahKitaTextView.Semibold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/btn_primary"
+                    android:letterSpacing="0.05"
+                    android:text="Jawab"
+                    android:textAllCaps="false"
+                    android:textColor="@color/textPrimary"
+                    app:icon="@drawable/ic_submit"
+                    app:iconGravity="textStart"
+                    app:iconSize="26dp"
+                    app:iconTint="@color/textPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/til_jawaban_playing_game_fragment"
+                    app:layout_constraintStart_toStartOf="@+id/til_jawaban_playing_game_fragment"
+                    app:layout_constraintTop_toBottomOf="@+id/til_jawaban_playing_game_fragment" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/layout_show_answer_casual" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
