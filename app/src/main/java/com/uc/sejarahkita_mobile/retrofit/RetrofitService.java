@@ -69,7 +69,7 @@ public class RetrofitService {
         return api.question(id_level);
     }
 
-    public Call<JsonObject> checkAnswer() {
-        return api.checkAnswer();
+    public Call<JsonObject> checkAnswer(String id, String inputJawaban) {
+        return api.checkAnswer(id, inputJawaban);
     }
 }

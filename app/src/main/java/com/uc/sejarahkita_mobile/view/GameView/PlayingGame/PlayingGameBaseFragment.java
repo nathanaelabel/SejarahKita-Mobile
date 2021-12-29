@@ -136,7 +136,7 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         for (int i = 0; i < questions.size(); i++) {
             int randomIndex = random.nextInt(questions.size());
             Question.QuestionItem questionItem = questions.get(randomIndex);
-            if (questionItem.getId_level() == gameType) {
+            if (questionItem.getId_level() == gameType && !questionItem.getPertanyaan_path_gambar().equals("-")) {
                 if (gameType == GameType.CASUAL && filteredQuestions.size() == 9)
                     break;
                 filteredQuestions.add(questionItem);

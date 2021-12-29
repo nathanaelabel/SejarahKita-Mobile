@@ -18,10 +18,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.textfield.TextInputLayout;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.Const;
 import com.uc.sejarahkita_mobile.helper.PlayingGameListener;
@@ -85,6 +88,10 @@ public class PlayingGameFragment extends Fragment {
         life = getArguments().getInt("LifeArgument");
         page = getArguments().getInt("page");
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+
+        gameViewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        gameViewModel.init(helper.getAccessToken());
 
         showQuestionItem();
 
@@ -163,6 +170,8 @@ public class PlayingGameFragment extends Fragment {
         btn_jawab_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gameViewModel.getCheckAnswer(String.valueOf(questionItem.getId_question()), et_jawaban_playing_game_fragment.getText().toString());
+                gameViewModel.getResultCheckAnswer().observe(getActivity(), showCheckAnswer);
                 //? User diwajibkan mengisi EditText pada TextInputLayout terlebih dahulu sebelum klik Button 'Jawab'
                 if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
                     //? Tampilkan validasi peringatan input kosongnya
@@ -188,8 +197,32 @@ public class PlayingGameFragment extends Fragment {
         answer = questionItem.getKunci_jawaban();
         if (!questionItem.getPertanyaan_path_gambar().equals("-")) {
             String URL = Const.BASE_PERTANYAAN_PATH_GAMBAR_URL + questionItem.getPertanyaan_path_gambar();
-            Glide.with(requireContext()).load(URL)
-                    .into(img_pertanyaan_path_gambar_playing_game_fragment);
+            Picasso.get().load(URL).into(img_pertanyaan_path_gambar_playing_game_fragment, new Callback() {
+                @Override
+                public void onSuccess() {
+                    Log.e("TAG", "Success");
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.e("TAG", "onLoadFailed: " + e.getMessage());
+                }
+            });
+
+//            Glide.with(requireContext()).load(URL)
+//                    .listener(new RequestListener<Drawable>() {
+//                        @Override
+//                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                            Log.e("TAG", "onLoadFailed: " + e.getMessage());
+//                            return false;
+//                        }
+//
+//                        @Override
+//                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                            return false;
+//                        }
+//                    })
+//                    .into(img_pertanyaan_path_gambar_playing_game_fragment);
             img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.VISIBLE);
         } else {
             img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.GONE);
@@ -239,4 +272,24 @@ public class PlayingGameFragment extends Fragment {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
+    private Observer<String> showCheckAnswer = new Observer<String>() {
+        @Override
+        public void onChanged(String string) {
+            //? User diwajibkan mengisi EditText pada TextInputLayout terlebih dahulu sebelum klik Button 'Jawab'
+            if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
+                //? Tampilkan validasi peringatan input kosongnya
+                til_jawaban_playing_game_fragment.setError("Silakan isi jawaban terlebih dahulu.");
+                hideKeyboard();
+            } else {
+                //? Cek kecocokan input jawaban terhadap kolom "kunci_jawaban" dengan mengabaikan uppercase & lowercase
+                if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
+                    playingGameListener.onSubmitClicked(page + 1, life);
+                    hideKeyboard();
+                } else {
+                    calculateAnswer(life);
+                }
+            }
+        }
+    };
 }

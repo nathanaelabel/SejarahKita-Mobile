@@ -37,9 +37,9 @@ public interface ApiEndPoints {
     @GET("questions")
     Call<Question> question(@Query("id_level") int id_level);
 
-    @POST("checkAnswer")
+    @POST("check-answer")
     @FormUrlEncoded
-    Call<JsonObject> checkAnswer();
+    Call<JsonObject> checkAnswer(@Field("id") String id, @Field("input_jawaban") String input_jawaban);
 
     //* Leaderboard
 
