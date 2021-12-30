@@ -19,10 +19,9 @@ import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
+import com.uc.sejarahkita_mobile.helper.TimeUtils;
+import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.Profile;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProfileFragment extends Fragment {
     Button btn_logout_profile_fragment;
@@ -31,6 +30,7 @@ public class ProfileFragment extends Fragment {
             lbl_school_profile_fragment, lbl_city_profile_fragment, lbl_birthyear_profile_fragment,
             lbl_easy_ranked_point_profile_fragment, lbl_hard_ranked_point_profile_fragment;
     Profile.Students students;
+    Leaderboard.Leaderboards leaderboards;
 
     private ProfileViewModel profileViewModel;
     private SharedPreferenceHelper helper;
@@ -102,18 +102,30 @@ public class ProfileFragment extends Fragment {
         @Override
         public void onChanged(Profile profile) {
             if (!profile.getStudents().isEmpty()) {
-                students = profile.getStudents().get(0);
+                students = profile.getStudents().get(4);
                 lbl_username_profile_fragment.setText(students.getUsername());
                 lbl_name_profile_fragment.setText(students.getName());
                 lbl_email_profile_fragment.setText(students.getEmail());
                 lbl_school_profile_fragment.setText(students.getSchool());
                 lbl_city_profile_fragment.setText(students.getCity());
                 lbl_birthyear_profile_fragment.setText(String.valueOf(students.getBirthyear()));
-                String registerSince = "Register: " + String.valueOf(students.getCreated_at());
+                String registerSince = TimeUtils.getNewDateFormat("yyyy-MM-dd'T'HH:mm:ss.'000000Z'",
+                        "'Register: 'dd/MM/yyyy", students.getCreated_at());
                 lbl_register_since_profile_fragment.setText(registerSince);
             }
         }
     };
+
+//    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
+//        @Override
+//        public void onChanged(Leaderboard leaderboard) {
+//            if (!leaderboard.getLeaderboards().isEmpty()) {
+//                leaderboards = leaderboard.getLeaderboards().get(0);
+//                lbl_easy_ranked_point_profile_fragment.setText(leaderboards.getRanked_point());
+//                lbl_hard_ranked_point_profile_fragment.setText(leaderboards.getRanked_point());
+//            }
+//        }
+//    };
 
     @Override
     public void onDetach() {

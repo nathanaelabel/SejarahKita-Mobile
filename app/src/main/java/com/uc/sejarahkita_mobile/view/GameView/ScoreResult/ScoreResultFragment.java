@@ -36,13 +36,13 @@ public class ScoreResultFragment extends Fragment {
         btn_lihat_leaderboard_game_ended_layout = view.findViewById(R.id.btn_lihat_leaderboard_game_ended_layout);
         btn_main_lagi_game_ended_layout = view.findViewById(R.id.btn_main_lagi_game_ended_layout);
 
-//        btn_main_lagi_game_ended_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavDirections action = GameEndedFragmentDirections.actionGameEndedFragmentToLeaderboardFragment();
-//                Navigation.findNavController(view).navigate(action);
-//            }
-//        });
+        btn_main_lagi_game_ended_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = ScoreResultFragmentDirections.actionScoreResultFragmentToGameFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
         btn_lihat_leaderboard_game_ended_layout.setOnClickListener(new View.OnClickListener() {
             @Override

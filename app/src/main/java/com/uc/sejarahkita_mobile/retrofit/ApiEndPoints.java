@@ -1,9 +1,10 @@
 package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
+import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
-import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.Profile;
+import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
 
@@ -47,7 +48,8 @@ public interface ApiEndPoints {
     Call<JsonObject> checkAnswer(@Field("id") String id, @Field("input_jawaban") String input_jawaban);
 
     //* Leaderboard
-
+    @GET("leaderboards")
+    Call<Leaderboard> leaderboard();
 
     //* Playing History
     @GET("playinghistories")

@@ -2,9 +2,10 @@ package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
 import com.uc.sejarahkita_mobile.helper.Const;
+import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
-import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.Profile;
+import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
 
@@ -77,6 +78,10 @@ public class RetrofitService {
 
     public Call<JsonObject> checkAnswer(String id, String inputJawaban) {
         return api.checkAnswer(id, inputJawaban);
+    }
+
+    public Call<Leaderboard> leaderboard() {
+        return api.leaderboard();
     }
 
     public Call<PlayingHistory> playingHistory() {

@@ -42,7 +42,14 @@ public class PlayingHistoryAdapter extends RecyclerView.Adapter<PlayingHistoryAd
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final PlayingHistory.Playinghistories results = getPlayingHistoryList().get(position);
-        holder.lbl_id_level_playing_history.setText(String.valueOf(results.getId_playing_history()));
+
+        if (results.getId_level() == 1) {
+            holder.lbl_id_level_playing_history.setText("Casual");
+        } else if (results.getId_level() == 2) {
+            holder.lbl_id_level_playing_history.setText("Easy");
+        } else {
+            holder.lbl_id_level_playing_history.setText("Hard");
+        }
         String createdAt = TimeUtils.getNewDateFormat("yyyy-MM-dd'T'HH:mm:ss.'000000Z'", "dd/MM/yyyy", results.getCreated_at());
         holder.lbl_waktu_bermain_playing_history_fragment.setText(createdAt);
         holder.lbl_skor_playing_history_fragment.setText(String.valueOf(results.getSkor()));
