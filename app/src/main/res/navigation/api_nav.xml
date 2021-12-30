@@ -89,7 +89,7 @@
     <fragment
         android:id="@+id/detailLeaderboardFragment"
         android:name="com.uc.sejarahkita_mobile.view.LeaderboardView.DetailLeaderboard.DetailLeaderboardFragment"
-        android:label="fragment_detail_leaderboard"
+        android:label="Detail Leaderboard"
         tools:layout="@layout/fragment_detail_leaderboard" />
 
     <fragment

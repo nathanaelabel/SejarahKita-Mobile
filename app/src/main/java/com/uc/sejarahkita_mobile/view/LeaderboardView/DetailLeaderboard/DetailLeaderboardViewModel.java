@@ -1,4 +1,4 @@
-package com.uc.sejarahkita_mobile.view.LeaderboardView;
+package com.uc.sejarahkita_mobile.view.LeaderboardView.DetailLeaderboard;
 
 import android.app.Application;
 import android.util.Log;
@@ -11,11 +11,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.repositories.LeaderboardRepository;
 
-public class LeaderboardViewModel extends AndroidViewModel {
+public class DetailLeaderboardViewModel extends AndroidViewModel{
     private LeaderboardRepository leaderboardRepository;
     private static final String TAG = "LeaderboardViewModel";
 
-    public LeaderboardViewModel(@NonNull Application application) {
+    public DetailLeaderboardViewModel(@NonNull Application application) {
         super(application);
     }
 
