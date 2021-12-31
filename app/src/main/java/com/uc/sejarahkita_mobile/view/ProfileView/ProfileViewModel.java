@@ -25,9 +25,17 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     //== Begin of ViewModel to get user profile
+//    private MutableLiveData<Profile> resultProfiles = new MutableLiveData<>();
+//    public void getProfile() {
+//        resultProfiles = profileRepository.getProfile();
+//    }
+//    public LiveData<Profile> getResultProfiles() {
+//        return resultProfiles;
+//    }
+
     private MutableLiveData<Profile> resultProfiles = new MutableLiveData<>();
-    public void getProfile() {
-        resultProfiles = profileRepository.getProfile();
+    public void getProfile(String id) {
+        resultProfiles = profileRepository.getProfile(id);
     }
     public LiveData<Profile> getResultProfiles() {
         return resultProfiles;

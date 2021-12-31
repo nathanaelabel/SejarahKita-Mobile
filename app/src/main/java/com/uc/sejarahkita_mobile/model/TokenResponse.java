@@ -6,12 +6,14 @@ import android.os.Parcelable;
 import com.google.gson.Gson;
 
 public class TokenResponse implements Parcelable {
+    private String id;
     private String token_type;
     private int expires_in;
     private String access_token;
     private String refresh_token;
 
     protected TokenResponse(Parcel in) {
+        id = in.readString();
         token_type = in.readString();
         expires_in = in.readInt();
         access_token = in.readString();
@@ -20,6 +22,7 @@ public class TokenResponse implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
         dest.writeString(token_type);
         dest.writeInt(expires_in);
         dest.writeString(access_token);
@@ -46,6 +49,14 @@ public class TokenResponse implements Parcelable {
     public static TokenResponse objectFromData(String str) {
 
         return new Gson().fromJson(str, TokenResponse.class);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getToken_type() {

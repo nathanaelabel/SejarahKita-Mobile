@@ -75,7 +75,8 @@ public class ProfileFragment extends Fragment {
         lbl_hard_ranked_point_profile_fragment = view.findViewById(R.id.lbl_hard_ranked_point_profile_fragment);
         btn_logout_profile_fragment = view.findViewById(R.id.btn_logout_profile_fragment);
 
-        profileViewModel.getProfile();
+//        profileViewModel.getProfile();
+        profileViewModel.getProfile(helper.getId());
         profileViewModel.getResultProfiles().observe(getActivity(), showProfile);
 
         linearLayout_playing_history_profile_fragment.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +103,7 @@ public class ProfileFragment extends Fragment {
         @Override
         public void onChanged(Profile profile) {
             if (!profile.getStudents().isEmpty()) {
-                students = profile.getStudents().get(4);
+                students = profile.getStudents().get(0);
                 lbl_username_profile_fragment.setText(students.getUsername());
                 lbl_name_profile_fragment.setText(students.getName());
                 lbl_email_profile_fragment.setText(students.getEmail());

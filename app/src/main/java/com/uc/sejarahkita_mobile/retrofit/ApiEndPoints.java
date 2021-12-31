@@ -13,6 +13,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiEndPoints {
@@ -27,8 +28,11 @@ public interface ApiEndPoints {
                                     @Field("birthyear") String birthyear
     );
 
-    @GET("students")
-    Call<Profile> getProfile();
+//    @GET("students")
+//    Call<Profile> getProfile();
+
+    @GET("student-detail/{id}")
+    Call<Profile> getProfile(@Path("id") String id);
 
     //* Login
     @POST("login")

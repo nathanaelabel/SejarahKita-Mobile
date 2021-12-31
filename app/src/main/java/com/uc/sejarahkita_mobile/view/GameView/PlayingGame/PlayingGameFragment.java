@@ -27,6 +27,7 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.Const;
+import com.uc.sejarahkita_mobile.helper.GameType;
 import com.uc.sejarahkita_mobile.helper.PlayingGameListener;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.Question;
@@ -48,7 +49,9 @@ public class PlayingGameFragment extends Fragment {
     int gameType;
     int life;
     int page;
+    int skor;
     String answer;
+    Boolean isShowAnswer;
     private GameViewModel gameViewModel;
     private SharedPreferenceHelper helper;
     PlayingGameListener playingGameListener;
@@ -68,6 +71,8 @@ public class PlayingGameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        isShowAnswer = false;
+
         btn_exit_playing_game_fragment = view.findViewById(R.id.btn_exit_playing_game_fragment);
         btn_jawab_playing_game_fragment = view.findViewById(R.id.btn_jawab_playing_game_fragment);
         linearLayout_nyawa_ranked_playing_game_fragment = view.findViewById(R.id.linearLayout_nyawa_ranked_playing_game_fragment);
@@ -86,6 +91,7 @@ public class PlayingGameFragment extends Fragment {
         questionItem = getArguments().getParcelable("questionItem");
         gameType = getArguments().getInt("gameType");
         life = getArguments().getInt("LifeArgument");
+        skor = getArguments().getInt("skor");
         page = getArguments().getInt("page");
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
 
@@ -121,6 +127,7 @@ public class PlayingGameFragment extends Fragment {
         btn_show_answer_casual_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isShowAnswer = true;
                 if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
                 } else {
@@ -181,7 +188,8 @@ public class PlayingGameFragment extends Fragment {
                 } else {
                     //? Cek kecocokan input jawaban terhadap kolom "kunci_jawaban" dengan mengabaikan uppercase & lowercase
                     if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
-                        playingGameListener.onSubmitClicked(page + 1, life);
+                        gameScore();
+                        playingGameListener.onSubmitClicked(page + 1, life, skor);
                         hideKeyboard();
                     } else {
                         calculateAnswer(life);
@@ -260,7 +268,7 @@ public class PlayingGameFragment extends Fragment {
         if (life == 0) {
             playingGameListener.onGameEnded();
         } else {
-            playingGameListener.onSubmitClicked(page + 1, life);
+            playingGameListener.onSubmitClicked(page + 1, life, skor);
         }
     }
 
@@ -285,7 +293,7 @@ public class PlayingGameFragment extends Fragment {
             } else {
                 //? Cek kecocokan input jawaban terhadap kolom "kunci_jawaban" dengan mengabaikan uppercase & lowercase
                 if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
-                    playingGameListener.onSubmitClicked(page + 1, life);
+                    playingGameListener.onSubmitClicked(page + 1, life, skor);
                     hideKeyboard();
                 } else {
                     calculateAnswer(life);
@@ -293,4 +301,14 @@ public class PlayingGameFragment extends Fragment {
             }
         }
     };
+
+    public void gameScore() {
+        if (gameType == GameType.EASY || gameType == GameType.HARD) {
+            skor = skor + 5;
+        } else {
+            if (!isShowAnswer) {
+                skor = skor + 10;
+            } 
+        }
+    }
 }

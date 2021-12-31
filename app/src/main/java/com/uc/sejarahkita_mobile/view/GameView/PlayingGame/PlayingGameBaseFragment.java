@@ -35,6 +35,7 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
     int gameType;
     int life = 0;
     int page = 0;
+    int skor = 0;
     private GameViewModel gameViewModel;
     private SharedPreferenceHelper helper;
     List<Question.QuestionItem> casualQuestions;
@@ -119,6 +120,7 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         bundle.putInt("gameType", gameType);
         bundle.putInt("page", page);
         bundle.putInt("LifeArgument", life);
+        bundle.putInt("skor", skor);
         PlayingGameFragment fragment = new PlayingGameFragment();
         fragment.setArguments(bundle);
         fragment.setPlayingGameListener(this);
@@ -136,12 +138,12 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
         for (int i = 0; i < questions.size(); i++) {
             int randomIndex = random.nextInt(questions.size());
             Question.QuestionItem questionItem = questions.get(randomIndex);
-            if (questionItem.getId_level() == gameType && !questionItem.getPertanyaan_path_gambar().equals("-")) {
+//            if (questionItem.getId_level() == gameType && !questionItem.getPertanyaan_path_gambar().equals("-")) {
                 if (gameType == GameType.CASUAL && filteredQuestions.size() == 9)
                     break;
                 filteredQuestions.add(questionItem);
             }
-        }
+//        }
         return filteredQuestions;
     }
 
@@ -157,9 +159,10 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
     }
 
     @Override
-    public void onSubmitClicked(int page, int life) {
+    public void onSubmitClicked(int page, int life, int skor) {
         this.page = page;
         this.life = life;
+        this.skor = skor;
 
         switch (gameType) {
             case GameType.CASUAL:
@@ -176,14 +179,22 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
 
     public void goToNextPage(List<Question.QuestionItem> questions, int gameType) {
         if (page == questions.size()) {
-            Navigation.findNavController(playingGameBaseFragmentContainer).navigate(R.id.action_playingGameBaseFragment_to_scoreResultFragment);
+            goToScorePage(false);
         } else {
             goToNextQuestion(questions.get(page), gameType, life);
         }
     }
 
+    public void goToScorePage(Boolean isGameOver) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("GameTypeArgument", gameType);
+        bundle.putInt("skor", skor);
+        bundle.putBoolean("isGameOver", isGameOver);
+        Navigation.findNavController(playingGameBaseFragmentContainer).navigate(R.id.action_playingGameBaseFragment_to_scoreResultFragment, bundle);
+    }
+
     @Override
     public void onGameEnded() {
-        Navigation.findNavController(playingGameBaseFragmentContainer).navigate(R.id.action_playingGameBaseFragment_to_scoreResultFragment);
+        goToScorePage(true);
     }
 }
