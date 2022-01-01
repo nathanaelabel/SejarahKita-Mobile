@@ -22,6 +22,10 @@ import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.helper.TimeUtils;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.Profile;
+import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
     Button btn_logout_profile_fragment;
@@ -33,8 +37,12 @@ public class ProfileFragment extends Fragment {
     Leaderboard.Leaderboards leaderboards;
 
     private ProfileViewModel profileViewModel;
+    private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
     private static final String TAG = "ProfileFragment";
+
+    List<Leaderboard.Leaderboards> easyLeaderboard = new ArrayList<>();
+    List<Leaderboard.Leaderboards> hardLeaderboard = new ArrayList<>();
 
     public ProfileFragment() {
     }
@@ -61,7 +69,10 @@ public class ProfileFragment extends Fragment {
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
+        leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
+
         profileViewModel.init(helper.getAccessToken());
+        leaderboardViewModel.init(helper.getAccessToken());
 
         linearLayout_playing_history_profile_fragment = view.findViewById(R.id.linearLayout_playing_history_profile_fragment);
         lbl_register_since_profile_fragment = view.findViewById(R.id.lbl_register_since_profile_fragment);
@@ -78,6 +89,8 @@ public class ProfileFragment extends Fragment {
 //        profileViewModel.getProfile();
         profileViewModel.getProfile(helper.getId());
         profileViewModel.getResultProfiles().observe(getActivity(), showProfile);
+        leaderboardViewModel.getLeaderboards();
+        leaderboardViewModel.getResultLeaderboards().observe(getActivity(), showLeaderboard);
 
         linearLayout_playing_history_profile_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,16 +130,21 @@ public class ProfileFragment extends Fragment {
         }
     };
 
-//    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
-//        @Override
-//        public void onChanged(Leaderboard leaderboard) {
-//            if (!leaderboard.getLeaderboards().isEmpty()) {
-//                leaderboards = leaderboard.getLeaderboards().get(0);
-//                lbl_easy_ranked_point_profile_fragment.setText(leaderboards.getRanked_point());
-//                lbl_hard_ranked_point_profile_fragment.setText(leaderboards.getRanked_point());
-//            }
-//        }
-//    };
+    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
+        @Override
+        public void onChanged(Leaderboard leaderboard) {
+            easyLeaderboard = leaderboard.getLeaderboards();
+            hardLeaderboard = leaderboard.getLeaderboards();
+
+            if (!leaderboard.getLeaderboards().isEmpty()) {
+                lbl_easy_ranked_point_profile_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRanked_point()) + " RP");
+                lbl_hard_ranked_point_profile_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRanked_point()) + " RP");
+            } else {
+                lbl_easy_ranked_point_profile_fragment.setText("0 RP");
+                lbl_hard_ranked_point_profile_fragment.setText("0 RP");
+            }
+        }
+    };
 
     @Override
     public void onDetach() {
