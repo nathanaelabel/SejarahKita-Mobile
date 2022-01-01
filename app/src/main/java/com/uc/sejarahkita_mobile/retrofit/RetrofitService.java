@@ -8,6 +8,9 @@ import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
+import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
+import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -84,8 +87,20 @@ public class RetrofitService {
         return api.checkAnswer(id, inputJawaban);
     }
 
+    public Call<PlayingHistoryResponse> submitScore(PlayingHistoryBody body) {
+        return api.submitScore(body);
+    }
+
     public Call<Leaderboard> leaderboard() {
         return api.leaderboard();
+    }
+
+    public Call<LeaderboardResponse> leaderboardEasy() {
+        return api.leaderboardEasy();
+    }
+
+    public Call<LeaderboardResponse> leaderboardHard() {
+        return api.leaderboardHard();
     }
 
     public Call<PlayingHistory> playingHistory() {

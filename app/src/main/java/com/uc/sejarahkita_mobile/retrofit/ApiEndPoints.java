@@ -7,8 +7,12 @@ import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.Question;
 import com.uc.sejarahkita_mobile.model.RegisterResponse;
 import com.uc.sejarahkita_mobile.model.TokenResponse;
+import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
+import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -51,6 +55,9 @@ public interface ApiEndPoints {
     @FormUrlEncoded
     Call<JsonObject> checkAnswer(@Field("id") String id, @Field("input_jawaban") String input_jawaban);
 
+    @POST("submit-score")
+    Call<PlayingHistoryResponse> submitScore(@Body PlayingHistoryBody body);
+
     //* Leaderboard
     @GET("leaderboards")
     Call<Leaderboard> leaderboard();
@@ -58,4 +65,10 @@ public interface ApiEndPoints {
     //* Playing History
     @GET("playinghistories")
     Call<PlayingHistory> playingHistory();
+
+    @GET("leaderboards-easy")
+    Call<LeaderboardResponse> leaderboardEasy();
+
+    @GET("leaderboards-hard")
+    Call<LeaderboardResponse> leaderboardHard();
 }

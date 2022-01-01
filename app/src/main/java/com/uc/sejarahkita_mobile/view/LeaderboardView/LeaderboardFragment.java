@@ -17,6 +17,8 @@ import androidx.navigation.Navigation;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,9 @@ public class LeaderboardFragment extends Fragment {
 
     List<Leaderboard.Leaderboards> easyLeaderboard = new ArrayList<>();
     List<Leaderboard.Leaderboards> hardLeaderboard = new ArrayList<>();
+
+    List<LeaderboardsItem> easyLeaderboardv2 = new ArrayList<>();
+    List<LeaderboardsItem> hardLeaderboardv2 = new ArrayList<>();
 
     public LeaderboardFragment() {
     }
@@ -62,7 +67,41 @@ public class LeaderboardFragment extends Fragment {
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
         leaderboardViewModel.init(helper.getAccessToken());
         leaderboardViewModel.getLeaderboards();
-        leaderboardViewModel.getResultLeaderboards().observe(getActivity(), showLeaderboard);
+//        leaderboardViewModel.getResultLeaderboards().observe(getActivity(), showLeaderboard);
+
+        leaderboardViewModel.getLeaderboardEasy();
+        leaderboardViewModel.getResultLeaderboardEasy().observe(getActivity(), new Observer<LeaderboardResponse>() {
+            @Override
+            public void onChanged(LeaderboardResponse leaderboardResponse) {
+                easyLeaderboardv2 = leaderboardResponse.getLeaderboards();
+
+                if (!easyLeaderboardv2.isEmpty() && easyLeaderboardv2.size() > 2) {
+                    tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(0).getIdStudent()));
+                    tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(1).getIdStudent()));
+                    tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(2).getIdStudent()));
+                    tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(0).getRankedPoint()));
+                    tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(1).getRankedPoint()));
+                    tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(2).getRankedPoint()));
+                }
+            }
+        });
+
+        leaderboardViewModel.getLeaderboardHard();
+        leaderboardViewModel.getResultLeaderboardHard().observe(getActivity(), new Observer<LeaderboardResponse>() {
+            @Override
+            public void onChanged(LeaderboardResponse leaderboardResponse) {
+                hardLeaderboardv2 = leaderboardResponse.getLeaderboards();
+
+                if (!hardLeaderboardv2.isEmpty() && hardLeaderboardv2.size() > 2) {
+                    tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(0).getIdStudent()));
+                    tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(1).getIdStudent()));
+                    tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(2).getIdStudent()));
+                    tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(0).getRankedPoint()));
+                    tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(1).getRankedPoint()));
+                    tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(2).getRankedPoint()));
+                }
+            }
+        });
 
         btn_detail_easy_leaderboard_fragment = view.findViewById(R.id.btn_detail_easy_leaderboard_fragment);
         btn_detail_hard_leaderboard_fragment = view.findViewById(R.id.btn_detail_hard_leaderboard_fragment);

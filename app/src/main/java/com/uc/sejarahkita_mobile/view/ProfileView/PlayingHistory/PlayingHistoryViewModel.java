@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
+import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
+import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
 import com.uc.sejarahkita_mobile.repositories.PlayingHistoryRepository;
 
 public class PlayingHistoryViewModel extends AndroidViewModel {
@@ -24,6 +26,7 @@ public class PlayingHistoryViewModel extends AndroidViewModel {
         playingHistoryRepository = PlayingHistoryRepository.getInstance(token);
     }
 
+    //* Playing History
     private MutableLiveData<PlayingHistory> resultPlayingHistories = new MutableLiveData<>();
 
     public void getPlayingHistories() {
@@ -32,6 +35,17 @@ public class PlayingHistoryViewModel extends AndroidViewModel {
 
     public LiveData<PlayingHistory> getResultPlayingHistories() {
         return resultPlayingHistories;
+    }
+
+    //* Score Result
+    private MutableLiveData<PlayingHistoryResponse> resultSubmitScore = new MutableLiveData<>();
+
+    public void getSubmitScore(PlayingHistoryBody body) {
+        resultSubmitScore = playingHistoryRepository.getSubmitScore(body);
+    }
+
+    public LiveData<PlayingHistoryResponse> getResultSubmitScore() {
+        return resultSubmitScore;
     }
 
     @Override

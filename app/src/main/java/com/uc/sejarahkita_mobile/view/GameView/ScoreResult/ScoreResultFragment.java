@@ -1,6 +1,7 @@
 package com.uc.sejarahkita_mobile.view.GameView.ScoreResult;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +12,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
+import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
+import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
+import com.uc.sejarahkita_mobile.view.GameView.PlayingGame.GameViewModel;
+import com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryViewModel;
 
 public class ScoreResultFragment extends Fragment {
+    private static final String TAG = "ScoreResult";
     TextView lbl_title_game_ended_layout, lbl_total_skor_game_ended_layout, btn_lihat_leaderboard_game_ended_layout;
     Button btn_main_lagi_game_ended_layout;
 
+    private PlayingHistoryViewModel playingHistoryViewModel;
     private SharedPreferenceHelper helper;
 
     int gameType;
@@ -42,11 +51,31 @@ public class ScoreResultFragment extends Fragment {
         skor = getArguments().getInt("skor");
         isGameOver = getArguments().getBoolean("isGameOver");
 
-        Toast.makeText(requireActivity(), gameType + "_" + skor + "_" + helper.getId(), Toast.LENGTH_SHORT).show();
+        PlayingHistoryBody body = new PlayingHistoryBody();
+        body.setIdStudent(helper.getId());
+        body.setIdLevel(gameType + "");
+        body.setSkor(skor + "");
+        body.setRankedPoint(skor + "");
+        Log.d(TAG, "onViewCreated: " + body.toString());
+
         lbl_title_game_ended_layout = view.findViewById(R.id.lbl_title_game_ended_layout);
         lbl_total_skor_game_ended_layout = view.findViewById(R.id.lbl_total_skor_game_ended_layout);
         btn_lihat_leaderboard_game_ended_layout = view.findViewById(R.id.btn_lihat_leaderboard_game_ended_layout);
         btn_main_lagi_game_ended_layout = view.findViewById(R.id.btn_main_lagi_game_ended_layout);
+
+        playingHistoryViewModel = new ViewModelProvider(getActivity()).get(PlayingHistoryViewModel.class);
+        playingHistoryViewModel.init(helper.getAccessToken());
+        playingHistoryViewModel.getSubmitScore(body);
+        playingHistoryViewModel.getResultSubmitScore().observe(getActivity(), new Observer<PlayingHistoryResponse>() {
+            @Override
+            public void onChanged(PlayingHistoryResponse playingHistoryResponse) {
+                if (playingHistoryResponse.isStatus()) {
+                    Toast.makeText(requireActivity(), "Data Sukses Disimpan", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(requireActivity(), "Data Gagal Disimpan", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         if (isGameOver) {
             lbl_title_game_ended_layout.setText("Game Over");
