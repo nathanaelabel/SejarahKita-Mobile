@@ -32,9 +32,6 @@ public interface ApiEndPoints {
                                     @Field("birthyear") String birthyear
     );
 
-//    @GET("students")
-//    Call<Profile> getProfile();
-
     @GET("student-detail/{id}")
     Call<Profile> getProfile(@Path("id") String id);
 
@@ -62,13 +59,13 @@ public interface ApiEndPoints {
     @GET("leaderboards")
     Call<Leaderboard> leaderboard();
 
-    //* Playing History
-    @GET("playinghistories")
-    Call<PlayingHistory> playingHistory();
-
     @GET("leaderboards-easy")
     Call<LeaderboardResponse> leaderboardEasy();
 
     @GET("leaderboards-hard")
     Call<LeaderboardResponse> leaderboardHard();
+
+    //* Playing History
+    @GET("playing-history/{id}")
+    Call<PlayingHistory> playingHistory(@Path("id") String id);
 }

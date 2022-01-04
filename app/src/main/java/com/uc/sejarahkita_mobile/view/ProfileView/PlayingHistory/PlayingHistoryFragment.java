@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
-import com.uc.sejarahkita_mobile.view.GameView.ScoreResult.ScoreResultFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,7 @@ public class PlayingHistoryFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         playingHistoryViewModel = new ViewModelProvider(getActivity()).get(PlayingHistoryViewModel.class);
         playingHistoryViewModel.init(helper.getAccessToken());
-        playingHistoryViewModel.getPlayingHistories();
+        playingHistoryViewModel.getPlayingHistories(helper.getId());
         playingHistoryViewModel.getResultPlayingHistories().observe(getActivity(), showPlayingHistory);
         toolbar_playing_history_fragment = view.findViewById(R.id.toolbar_playing_history_fragment);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_playing_history_fragment);

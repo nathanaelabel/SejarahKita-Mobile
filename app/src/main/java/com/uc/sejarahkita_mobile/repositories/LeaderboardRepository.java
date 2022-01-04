@@ -61,6 +61,7 @@ public class LeaderboardRepository {
         return listLeaderboards;
     }
 
+    //* Leaderboard - Easy
     public MutableLiveData<LeaderboardResponse> getLeaderboardEasy() {
         final MutableLiveData<LeaderboardResponse> listLeaderboardEasy = new MutableLiveData<>();
 
@@ -85,6 +86,7 @@ public class LeaderboardRepository {
         return listLeaderboardEasy;
     }
 
+    //* Leaderboard - Hard
     public MutableLiveData<LeaderboardResponse> getLeaderboardHard() {
         final MutableLiveData<LeaderboardResponse> listLeaderboardHard = new MutableLiveData<>();
 

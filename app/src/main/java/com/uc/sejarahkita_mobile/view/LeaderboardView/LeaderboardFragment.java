@@ -16,7 +16,6 @@ import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
 
@@ -24,7 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeaderboardFragment extends Fragment {
-    TextView btn_detail_easy_leaderboard_fragment, btn_detail_hard_leaderboard_fragment, tbody1_easy_username_leaderboard_fragment, tbody2_easy_username_leaderboard_fragment, tbody3_easy_username_leaderboard_fragment,
+    TextView btn_detail_easy_leaderboard_fragment, btn_detail_hard_leaderboard_fragment,
+            tbody1_easy_username_leaderboard_fragment, tbody2_easy_username_leaderboard_fragment, tbody3_easy_username_leaderboard_fragment,
             tbody1_easy_rp_leaderboard_fragment, tbody2_easy_rp_leaderboard_fragment, tbody3_easy_rp_leaderboard_fragment,
             tbody1_hard_username_leaderboard_fragment, tbody2_hard_username_leaderboard_fragment, tbody3_hard_username_leaderboard_fragment,
             tbody1_hard_rp_leaderboard_fragment, tbody2_hard_rp_leaderboard_fragment, tbody3_hard_rp_leaderboard_fragment;
@@ -32,11 +32,11 @@ public class LeaderboardFragment extends Fragment {
     private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
 
-    List<Leaderboard.Leaderboards> easyLeaderboard = new ArrayList<>();
-    List<Leaderboard.Leaderboards> hardLeaderboard = new ArrayList<>();
+//    List<Leaderboard.Leaderboards> easyLeaderboard = new ArrayList<>();
+//    List<Leaderboard.Leaderboards> hardLeaderboard = new ArrayList<>();
 
-    List<LeaderboardsItem> easyLeaderboardv2 = new ArrayList<>();
-    List<LeaderboardsItem> hardLeaderboardv2 = new ArrayList<>();
+    List<LeaderboardsItem> easyLeaderboard = new ArrayList<>();
+    List<LeaderboardsItem> hardLeaderboard = new ArrayList<>();
 
     public LeaderboardFragment() {
     }
@@ -66,22 +66,21 @@ public class LeaderboardFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
         leaderboardViewModel.init(helper.getAccessToken());
-        leaderboardViewModel.getLeaderboards();
+//        leaderboardViewModel.getLeaderboards();
 //        leaderboardViewModel.getResultLeaderboards().observe(getActivity(), showLeaderboard);
-
         leaderboardViewModel.getLeaderboardEasy();
         leaderboardViewModel.getResultLeaderboardEasy().observe(getActivity(), new Observer<LeaderboardResponse>() {
             @Override
             public void onChanged(LeaderboardResponse leaderboardResponse) {
-                easyLeaderboardv2 = leaderboardResponse.getLeaderboards();
+                easyLeaderboard = leaderboardResponse.getLeaderboards();
 
-                if (!easyLeaderboardv2.isEmpty() && easyLeaderboardv2.size() > 2) {
-                    tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(0).getIdStudent()));
-                    tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(1).getIdStudent()));
-                    tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(2).getIdStudent()));
-                    tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(0).getRankedPoint()));
-                    tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(1).getRankedPoint()));
-                    tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboardv2.get(2).getRankedPoint()));
+                if (!easyLeaderboard.isEmpty() && easyLeaderboard.size() > 2) {
+                    tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getIdStudent()));
+                    tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getIdStudent()));
+                    tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getIdStudent()));
+                    tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRankedPoint()));
+                    tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getRankedPoint()));
+                    tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getRankedPoint()));
                 }
             }
         });
@@ -90,15 +89,15 @@ public class LeaderboardFragment extends Fragment {
         leaderboardViewModel.getResultLeaderboardHard().observe(getActivity(), new Observer<LeaderboardResponse>() {
             @Override
             public void onChanged(LeaderboardResponse leaderboardResponse) {
-                hardLeaderboardv2 = leaderboardResponse.getLeaderboards();
+                hardLeaderboard = leaderboardResponse.getLeaderboards();
 
-                if (!hardLeaderboardv2.isEmpty() && hardLeaderboardv2.size() > 2) {
-                    tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(0).getIdStudent()));
-                    tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(1).getIdStudent()));
-                    tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(2).getIdStudent()));
-                    tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(0).getRankedPoint()));
-                    tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(1).getRankedPoint()));
-                    tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboardv2.get(2).getRankedPoint()));
+                if (!hardLeaderboard.isEmpty() && hardLeaderboard.size() > 2) {
+                    tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getIdStudent()));
+                    tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getIdStudent()));
+                    tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getIdStudent()));
+                    tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRankedPoint()));
+                    tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getRankedPoint()));
+                    tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getRankedPoint()));
                 }
             }
         });
@@ -135,28 +134,28 @@ public class LeaderboardFragment extends Fragment {
         });
     }
 
-    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
-        @Override
-        public void onChanged(Leaderboard leaderboard) {
-            easyLeaderboard = leaderboard.getLeaderboards();
-            hardLeaderboard = leaderboard.getLeaderboards();
-
-            if (!easyLeaderboard.isEmpty() && easyLeaderboard.size() > 2) {
-                tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getId_student()));
-                tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getId_student()));
-                tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getId_student()));
-                tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRanked_point()));
-                tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getRanked_point()));
-                tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getRanked_point()));
-                tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getId_student()));
-                tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getId_student()));
-                tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getId_student()));
-                tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRanked_point()));
-                tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getRanked_point()));
-                tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getRanked_point()));
-            }
-        }
-    };
+//    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
+//        @Override
+//        public void onChanged(Leaderboard leaderboard) {
+//            easyLeaderboard = leaderboard.getLeaderboards();
+//            hardLeaderboard = leaderboard.getLeaderboards();
+//
+//            if (!easyLeaderboard.isEmpty() && easyLeaderboard.size() > 2) {
+//                tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getId_student()));
+//                tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getId_student()));
+//                tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getId_student()));
+//                tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRanked_point()));
+//                tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getRanked_point()));
+//                tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getRanked_point()));
+//                tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getId_student()));
+//                tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getId_student()));
+//                tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getId_student()));
+//                tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRanked_point()));
+//                tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getRanked_point()));
+//                tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getRanked_point()));
+//            }
+//        }
+//    };
 
 //    public void getFilteredLeaderboard(List<Leaderboard.Leaderboards> leaderboards){
 //        List<Leaderboard.Leaderboards> filteredLeaderboard = new ArrayList<Leaderboard.Leaderboards>();

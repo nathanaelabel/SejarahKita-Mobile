@@ -1,6 +1,8 @@
 package com.uc.sejarahkita_mobile.view;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.uc.sejarahkita_mobile.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     NavHostFragment navHostFragment;
     NavController navController;
     Toolbar toolbar;
+
+    boolean clickedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,5 +54,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         return navHostFragment.getNavController().navigateUp() || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (clickedOnce) {
+            super.onBackPressed();
+            return;
+        }
+        this.clickedOnce = true;
+        Snackbar.make(findViewById(android.R.id.content), "Double Click to Exit", Snackbar.LENGTH_LONG)
+                .show();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                clickedOnce = false;
+            }
+        }, 2000);
     }
 }

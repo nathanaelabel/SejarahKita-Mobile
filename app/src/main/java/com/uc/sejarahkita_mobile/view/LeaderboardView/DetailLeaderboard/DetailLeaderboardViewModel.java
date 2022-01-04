@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.uc.sejarahkita_mobile.model.Leaderboard;
-import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.repositories.LeaderboardRepository;
 
 public class DetailLeaderboardViewModel extends AndroidViewModel{
@@ -35,27 +34,27 @@ public class DetailLeaderboardViewModel extends AndroidViewModel{
         return resultLeaderboards;
     }
 
-    //* Leaderboard - Easy
-    private MutableLiveData<LeaderboardResponse> resultLeaderboardEasy = new MutableLiveData<>();
-
-    public void getLeaderboardEasy() {
-        resultLeaderboardEasy = leaderboardRepository.getLeaderboardEasy();
-    }
-
-    public LiveData<LeaderboardResponse> getResultLeaderboardEasy() {
-        return resultLeaderboardEasy;
-    }
-
-    //* Leaderboard - Hard
-    private MutableLiveData<LeaderboardResponse> resultLeaderboardHard = new MutableLiveData<>();
-
-    public void getLeaderboardHard() {
-        resultLeaderboardHard = leaderboardRepository.getLeaderboardHard();
-    }
-
-    public LiveData<LeaderboardResponse> getResultLeaderboardHard() {
-        return resultLeaderboardHard;
-    }
+//    //* Leaderboard - Easy
+//    private MutableLiveData<LeaderboardResponse> resultLeaderboardEasy = new MutableLiveData<>();
+//
+//    public void getLeaderboardEasy() {
+//        resultLeaderboardEasy = leaderboardRepository.getLeaderboardEasy();
+//    }
+//
+//    public LiveData<LeaderboardResponse> getResultLeaderboardEasy() {
+//        return resultLeaderboardEasy;
+//    }
+//
+//    //* Leaderboard - Hard
+//    private MutableLiveData<LeaderboardResponse> resultLeaderboardHard = new MutableLiveData<>();
+//
+//    public void getLeaderboardHard() {
+//        resultLeaderboardHard = leaderboardRepository.getLeaderboardHard();
+//    }
+//
+//    public LiveData<LeaderboardResponse> getResultLeaderboardHard() {
+//        return resultLeaderboardHard;
+//    }
 
     @Override
     protected void onCleared() {

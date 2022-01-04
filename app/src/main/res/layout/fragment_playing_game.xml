@@ -94,6 +94,7 @@
                     android:layout_marginStart="64dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="64dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn_exit_playing_game_fragment"
@@ -104,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
                     app:cardBackgroundColor="@color/cardSecondary"
                     app:cardCornerRadius="15dp"
@@ -112,7 +113,7 @@
                     app:cardPreventCornerOverlap="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_pertanyaan_path_gambar_playing_game_fragment">
+                    app:layout_constraintTop_toBottomOf="@+id/btn_exit_playing_game_fragment">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/cons_cv_pertanyaan_playing_game_fragment"
@@ -187,6 +188,8 @@
                     app:boxStrokeColor="@drawable/selector_states_textinputlayout"
                     app:boxStrokeWidth="2dp"
                     app:boxStrokeWidthFocused="3dp"
+                    app:counterEnabled="true"
+                    app:counterTextAppearance="@style/SejarahKitaTextView.Regular"
                     app:errorEnabled="true"
                     app:hintTextColor="@drawable/selector_states_textinputlayout"
                     app:layout_constraintEnd_toEndOf="parent"

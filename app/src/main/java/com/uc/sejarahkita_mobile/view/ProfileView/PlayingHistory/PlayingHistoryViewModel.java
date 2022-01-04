@@ -29,8 +29,8 @@ public class PlayingHistoryViewModel extends AndroidViewModel {
     //* Playing History
     private MutableLiveData<PlayingHistory> resultPlayingHistories = new MutableLiveData<>();
 
-    public void getPlayingHistories() {
-        resultPlayingHistories = playingHistoryRepository.getPlayingHistories();
+    public void getPlayingHistories(String id) {
+        resultPlayingHistories = playingHistoryRepository.getPlayingHistories(id);
     }
 
     public LiveData<PlayingHistory> getResultPlayingHistories() {

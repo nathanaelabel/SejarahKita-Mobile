@@ -38,10 +38,10 @@ public class PlayingHistoryRepository {
         }
     }
 
-    public MutableLiveData<PlayingHistory> getPlayingHistories() {
+    public MutableLiveData<PlayingHistory> getPlayingHistories(String id) {
         final MutableLiveData<PlayingHistory> listPlayingHistories = new MutableLiveData<>();
 
-        apiService.playingHistory().enqueue(new Callback<PlayingHistory>() {
+        apiService.playingHistory(id).enqueue(new Callback<PlayingHistory>() {
             @Override
             public void onResponse(Call<PlayingHistory> call, Response<PlayingHistory> response) {
                 Log.d(TAG, "onResponse: " + response.code());

@@ -67,10 +67,6 @@ public class RetrofitService {
         return api.register(email, password, password_confirmation, username, name, school, city, birthyear);
     }
 
-//    public Call<Profile> getProfile() {
-//        return api.getProfile();
-//    }
-
     public Call<Profile> getProfile(String id) {
         return api.getProfile(id);
     }
@@ -103,7 +99,7 @@ public class RetrofitService {
         return api.leaderboardHard();
     }
 
-    public Call<PlayingHistory> playingHistory() {
-        return api.playingHistory();
+    public Call<PlayingHistory> playingHistory(String id) {
+        return api.playingHistory(id);
     }
 }

@@ -17,7 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.uc.sejarahkita_mobile.R;
-import com.uc.sejarahkita_mobile.view.MainActivity;
 
 public class RegisterFragment extends Fragment {
     TextView login_btn;
@@ -105,21 +104,21 @@ public class RegisterFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        ((MainActivity) getActivity()).getSupportActionBar().hide();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity) getActivity()).getSupportActionBar().hide();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        ((MainActivity) getActivity()).getSupportActionBar().hide();
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        ((MainActivity) getActivity()).getSupportActionBar().hide();
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        ((MainActivity) getActivity()).getSupportActionBar().hide();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        ((MainActivity) getActivity()).getSupportActionBar().hide();
+//    }
 }
