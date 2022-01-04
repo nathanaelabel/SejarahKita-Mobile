@@ -90,7 +90,11 @@
         android:id="@+id/detailLeaderboardFragment"
         android:name="com.uc.sejarahkita_mobile.view.LeaderboardView.DetailLeaderboard.DetailLeaderboardFragment"
         android:label="Detail Leaderboard"
-        tools:layout="@layout/fragment_detail_leaderboard" />
+        tools:layout="@layout/fragment_detail_leaderboard" >
+        <action
+            android:id="@+id/action_detailLeaderboardFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/countdownFragment"
@@ -122,7 +126,11 @@
         android:id="@+id/playingHistoryFragment"
         android:name="com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragment"
         android:label="@string/playing_history"
-        tools:layout="@layout/fragment_playing_history" />
+        tools:layout="@layout/fragment_playing_history" >
+        <action
+            android:id="@+id/action_playingHistoryFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/scoreResultFragment"

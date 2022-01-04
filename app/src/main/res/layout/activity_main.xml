@@ -29,21 +29,23 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_menu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-        app:navGraph="@navigation/api_nav" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_main"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/footer"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextAppearance="@style/SejarahKitaTextView.Semibold"
-        app:titleTextColor="@color/textPrimary" />
+        app:layout_constraintVertical_bias="0.0"
+        app:navGraph="@navigation/api_nav" />
+
+    <!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar_main"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/footer"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        android:theme="?attr/actionBarTheme"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:titleTextAppearance="@style/SejarahKitaTextView.Semibold"-->
+<!--        app:titleTextColor="@color/textPrimary" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,20 +7,26 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
+import com.uc.sejarahkita_mobile.view.GameView.ScoreResult.ScoreResultFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayingHistoryFragment extends Fragment {
+    Toolbar toolbar_playing_history_fragment;
 
     private PlayingHistoryViewModel playingHistoryViewModel;
     private PlayingHistoryAdapter playingHistoryAdapter;
@@ -39,8 +45,7 @@ public class PlayingHistoryFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+        super.onCreate(savedInstanceState);}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +63,15 @@ public class PlayingHistoryFragment extends Fragment {
         playingHistoryViewModel.init(helper.getAccessToken());
         playingHistoryViewModel.getPlayingHistories();
         playingHistoryViewModel.getResultPlayingHistories().observe(getActivity(), showPlayingHistory);
+        toolbar_playing_history_fragment = view.findViewById(R.id.toolbar_playing_history_fragment);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_playing_history_fragment);
+        toolbar_playing_history_fragment.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = PlayingHistoryFragmentDirections.actionPlayingHistoryFragmentToProfileFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 
     List<PlayingHistory.Playinghistories> results = new ArrayList<>();

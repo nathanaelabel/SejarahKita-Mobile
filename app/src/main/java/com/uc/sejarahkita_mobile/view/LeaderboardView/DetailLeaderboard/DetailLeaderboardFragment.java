@@ -7,9 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,12 +21,13 @@ import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardAdapter;
+import com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DetailLeaderboardFragment extends Fragment {
-
+    Toolbar toolbar_detail_leaderboard;
     private DetailLeaderboardViewModel detailLeaderboardView;
     private LeaderboardAdapter leaderboardAdapter;
     private RecyclerView rv_detail_leaderboard_fragment;
@@ -55,6 +60,15 @@ public class DetailLeaderboardFragment extends Fragment {
         detailLeaderboardView.init(helper.getAccessToken());
         detailLeaderboardView.getLeaderboards();
         detailLeaderboardView.getResultLeaderboards().observe(getActivity(), showLeaderboard);
+        toolbar_detail_leaderboard = view.findViewById(R.id.toolbar_detail_leaderboard);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_detail_leaderboard);
+        toolbar_detail_leaderboard.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = DetailLeaderboardFragmentDirections.actionDetailLeaderboardFragmentToLeaderboardFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 
     private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {

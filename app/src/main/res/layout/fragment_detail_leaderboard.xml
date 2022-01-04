@@ -7,14 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".view.LeaderboardView.DetailLeaderboard.DetailLeaderboardFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_detail_leaderboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Detail Leaderboard"
+        app:titleTextAppearance="@style/SejarahKitaTextView.Semibold"
+        app:titleTextColor="@color/textPrimary" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_detail_leaderboard_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_detail_leaderboard"
         tools:listitem="@layout/layout_detail_leaderboard" />
 </androidx.constraintlayout.widget.ConstraintLayout>
