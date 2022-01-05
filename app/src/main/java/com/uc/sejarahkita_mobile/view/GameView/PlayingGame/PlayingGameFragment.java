@@ -13,9 +13,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -103,12 +105,25 @@ public class PlayingGameFragment extends Fragment {
 
         //* Mengatur jumlah awal Nyawa pada Ranked Mode
         rb_nyawa_ranked_playing_game_fragment.setNumStars(life);
+        linearLayout_nyawa_ranked_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(requireActivity(), "Nyawa" +life, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //* Untuk Exit Game
         btn_exit_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playingGameListener.onExitClicked();
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+                builder.setTitle("Exit").setMessage("Kamu yakin mau keluar dari permainan?")
+                        .setPositiveButton("Iya", (dialogInterface, i) -> {
+                            playingGameListener.onExitClicked();
+                        })
+                        .setNegativeButton("Tidak", ((dialogInterface, i) -> {
+                            dialogInterface.dismiss();
+                        })).show();
             }
         });
 
@@ -302,13 +317,17 @@ public class PlayingGameFragment extends Fragment {
         }
     };
 
+    //* Kalkulasi penghitungan skor
     public void gameScore() {
+        //? Ranked Mode
         if (gameType == GameType.EASY || gameType == GameType.HARD) {
             skor = skor + 5;
+            //? Casual Mode
         } else {
+            //? Jika tidak klik Button 'Lihat Jawaban'
             if (!isShowAnswer) {
                 skor = skor + 10;
-            } 
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
 import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
 import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 import com.uc.sejarahkita_mobile.retrofit.RetrofitService;
 
 import retrofit2.Call;
@@ -84,5 +85,29 @@ public class PlayingHistoryRepository {
         });
 
         return listSubmitScore;
+    }
+
+    public MutableLiveData<RankedPointTerkiniResponse> getRankedPointTerkini(String id) {
+        final MutableLiveData<RankedPointTerkiniResponse> list = new MutableLiveData<>();
+
+        apiService.rankedPointTerkini(id).enqueue(new Callback<RankedPointTerkiniResponse>() {
+            @Override
+            public void onResponse(Call<RankedPointTerkiniResponse> call, Response<RankedPointTerkiniResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse" + response.body());
+                        list.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RankedPointTerkiniResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return list;
     }
 }

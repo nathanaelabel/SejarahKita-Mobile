@@ -1,7 +1,6 @@
 package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
 import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.Question;
@@ -10,6 +9,7 @@ import com.uc.sejarahkita_mobile.model.TokenResponse;
 import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -56,8 +56,8 @@ public interface ApiEndPoints {
     Call<PlayingHistoryResponse> submitScore(@Body PlayingHistoryBody body);
 
     //* Leaderboard
-    @GET("leaderboards")
-    Call<Leaderboard> leaderboard();
+//    @GET("leaderboards")
+//    Call<Leaderboard> leaderboard();
 
     @GET("leaderboards-easy")
     Call<LeaderboardResponse> leaderboardEasy();
@@ -68,4 +68,8 @@ public interface ApiEndPoints {
     //* Playing History
     @GET("playing-history/{id}")
     Call<PlayingHistory> playingHistory(@Path("id") String id);
+
+    //* Ranked Point Terkini
+    @GET("ranked-point-terkini/{id}")
+    Call<RankedPointTerkiniResponse> rankedPointTerkini(@Path("id") String id);
 }

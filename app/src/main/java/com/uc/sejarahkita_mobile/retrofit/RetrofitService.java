@@ -2,7 +2,6 @@ package com.uc.sejarahkita_mobile.retrofit;
 
 import com.google.gson.JsonObject;
 import com.uc.sejarahkita_mobile.helper.Const;
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.PlayingHistory;
 import com.uc.sejarahkita_mobile.model.Profile;
 import com.uc.sejarahkita_mobile.model.Question;
@@ -11,6 +10,7 @@ import com.uc.sejarahkita_mobile.model.TokenResponse;
 import com.uc.sejarahkita_mobile.model.body.PlayingHistoryBody;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.PlayingHistoryResponse;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -87,9 +87,9 @@ public class RetrofitService {
         return api.submitScore(body);
     }
 
-    public Call<Leaderboard> leaderboard() {
-        return api.leaderboard();
-    }
+//    public Call<Leaderboard> leaderboard() {
+//        return api.leaderboard();
+//    }
 
     public Call<LeaderboardResponse> leaderboardEasy() {
         return api.leaderboardEasy();
@@ -101,5 +101,9 @@ public class RetrofitService {
 
     public Call<PlayingHistory> playingHistory(String id) {
         return api.playingHistory(id);
+    }
+
+    public Call<RankedPointTerkiniResponse> rankedPointTerkini(String id) {
+        return api.rankedPointTerkini(id);
     }
 }

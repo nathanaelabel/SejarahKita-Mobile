@@ -4,7 +4,6 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.retrofit.RetrofitService;
 
@@ -37,12 +36,12 @@ public class LeaderboardRepository {
         }
     }
 
-    public MutableLiveData<Leaderboard> getLeaderboards() {
-        final MutableLiveData<Leaderboard> listLeaderboards = new MutableLiveData<>();
+    public MutableLiveData<LeaderboardResponse> getLeaderboards() {
+        final MutableLiveData<LeaderboardResponse> listLeaderboards = new MutableLiveData<>();
 
-        apiService.leaderboard().enqueue(new Callback<Leaderboard>() {
+        apiService.leaderboardEasy().enqueue(new Callback<LeaderboardResponse>() {
             @Override
-            public void onResponse(Call<Leaderboard> call, Response<Leaderboard> response) {
+            public void onResponse(Call<LeaderboardResponse> call, Response<LeaderboardResponse> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -53,7 +52,7 @@ public class LeaderboardRepository {
             }
 
             @Override
-            public void onFailure(Call<Leaderboard> call, Throwable t) {
+            public void onFailure(Call<LeaderboardResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });

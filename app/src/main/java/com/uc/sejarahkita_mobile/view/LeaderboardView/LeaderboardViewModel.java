@@ -8,8 +8,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 import com.uc.sejarahkita_mobile.repositories.LeaderboardRepository;
 
 public class LeaderboardViewModel extends AndroidViewModel {
@@ -25,13 +25,13 @@ public class LeaderboardViewModel extends AndroidViewModel {
         leaderboardRepository = LeaderboardRepository.getInstance(token);
     }
 
-    private MutableLiveData<Leaderboard> resultLeaderboards = new MutableLiveData<>();
+    private MutableLiveData<RankedPointTerkiniResponse> resultLeaderboards = new MutableLiveData<>();
 
     public void getLeaderboards() {
-        resultLeaderboards = leaderboardRepository.getLeaderboards();
+        resultLeaderboards = leaderboardRepository.getLeaderboardEasy();
     }
 
-    public LiveData<Leaderboard> getResultLeaderboards() {
+    public LiveData<RankedPointTerkiniResponse> getResultLeaderboards() {
         return resultLeaderboards;
     }
 

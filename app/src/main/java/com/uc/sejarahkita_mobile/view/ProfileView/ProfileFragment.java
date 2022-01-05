@@ -22,6 +22,11 @@ import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.helper.TimeUtils;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.Profile;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.EasyItem;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.HardItem;
+import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardViewModel;
 
 import java.util.ArrayList;
@@ -41,8 +46,10 @@ public class ProfileFragment extends Fragment {
     private SharedPreferenceHelper helper;
     private static final String TAG = "ProfileFragment";
 
-    List<Leaderboard.Leaderboards> easyLeaderboard = new ArrayList<>();
-    List<Leaderboard.Leaderboards> hardLeaderboard = new ArrayList<>();
+    List<LeaderboardsItem> easyLeaderboard = new ArrayList<>();
+    List<LeaderboardsItem> hardLeaderboard = new ArrayList<>();
+    List<EasyItem> easyItem = new ArrayList<>();
+    List<HardItem> hardItem = new ArrayList<>();
 
     public ProfileFragment() {
     }
@@ -130,15 +137,15 @@ public class ProfileFragment extends Fragment {
         }
     };
 
-    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
+    private Observer<RankedPointTerkiniResponse> showLeaderboard = new Observer<RankedPointTerkiniResponse>() {
         @Override
-        public void onChanged(Leaderboard leaderboard) {
-            easyLeaderboard = leaderboard.getLeaderboards();
-            hardLeaderboard = leaderboard.getLeaderboards();
+        public void onChanged(RankedPointTerkiniResponse response) {
+            easyItem = response.getEasy();
+            hardItem = response.getHard();
 
-            if (!leaderboard.getLeaderboards().isEmpty()) {
-                lbl_easy_ranked_point_profile_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRanked_point()) + " RP");
-                lbl_hard_ranked_point_profile_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRanked_point()) + " RP");
+            if (!response.getEasy().isEmpty()) {
+                lbl_easy_ranked_point_profile_fragment.setText(String.valueOf(easyItem.get(0).getRankedPoint()) + " RP");
+                lbl_hard_ranked_point_profile_fragment.setText(String.valueOf(hardItem.get(0).getRankedPoint()) + " RP");
             } else {
                 lbl_easy_ranked_point_profile_fragment.setText("0 RP");
                 lbl_hard_ranked_point_profile_fragment.setText("0 RP");

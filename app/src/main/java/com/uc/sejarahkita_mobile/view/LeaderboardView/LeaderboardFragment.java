@@ -18,6 +18,7 @@ import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
+import com.uc.sejarahkita_mobile.model.response.StudentsItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,9 +76,22 @@ public class LeaderboardFragment extends Fragment {
                 easyLeaderboard = leaderboardResponse.getLeaderboards();
 
                 if (!easyLeaderboard.isEmpty() && easyLeaderboard.size() > 2) {
-                    tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getIdStudent()));
-                    tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getIdStudent()));
-                    tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getIdStudent()));
+                    String student0 = "", student1 = "", student2 = "";
+
+                    for (int i = 0; i < leaderboardResponse.getStudents().size(); i++) {
+                        StudentsItem current = leaderboardResponse.getStudents().get(i);
+                        if (current.getId() == easyLeaderboard.get(0).getIdStudent()) {
+                            student0 = current.getUsername() + "";
+                        } else if (current.getId() == easyLeaderboard.get(1).getIdStudent()) {
+                            student1 = current.getUsername() + "";
+                        } else if (current.getId() == easyLeaderboard.get(2).getIdStudent()) {
+                            student2 = current.getUsername() + "";
+                        }
+                    }
+
+                    tbody1_easy_username_leaderboard_fragment.setText(student0);
+                    tbody2_easy_username_leaderboard_fragment.setText(student1);
+                    tbody3_easy_username_leaderboard_fragment.setText(student2);
                     tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRankedPoint()));
                     tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getRankedPoint()));
                     tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getRankedPoint()));
@@ -92,9 +106,22 @@ public class LeaderboardFragment extends Fragment {
                 hardLeaderboard = leaderboardResponse.getLeaderboards();
 
                 if (!hardLeaderboard.isEmpty() && hardLeaderboard.size() > 2) {
-                    tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getIdStudent()));
-                    tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getIdStudent()));
-                    tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getIdStudent()));
+                    String student0 = "", student1 = "", student2 = "";
+
+                    for (int i = 0; i < leaderboardResponse.getStudents().size(); i++) {
+                        StudentsItem current = leaderboardResponse.getStudents().get(i);
+                        if (current.getId() == hardLeaderboard.get(0).getIdStudent()) {
+                            student0 = current.getUsername() + "";
+                        } else if (current.getId() == hardLeaderboard.get(1).getIdStudent()) {
+                            student1 = current.getUsername() + "";
+                        } else if (current.getId() == hardLeaderboard.get(2).getIdStudent()) {
+                            student2 = current.getUsername() + "";
+                        }
+                    }
+
+                    tbody1_hard_username_leaderboard_fragment.setText(student0);
+                    tbody2_hard_username_leaderboard_fragment.setText(student1);
+                    tbody3_hard_username_leaderboard_fragment.setText(student2);
                     tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRankedPoint()));
                     tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getRankedPoint()));
                     tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getRankedPoint()));

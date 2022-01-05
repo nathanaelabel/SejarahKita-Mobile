@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.uc.sejarahkita_mobile.model.Leaderboard;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.repositories.LeaderboardRepository;
 
 public class DetailLeaderboardViewModel extends AndroidViewModel{
@@ -24,13 +24,13 @@ public class DetailLeaderboardViewModel extends AndroidViewModel{
         leaderboardRepository = LeaderboardRepository.getInstance(token);
     }
 
-    private MutableLiveData<Leaderboard> resultLeaderboards = new MutableLiveData<>();
+    private MutableLiveData<LeaderboardResponse> resultLeaderboards = new MutableLiveData<>();
 
     public void getLeaderboards() {
-        resultLeaderboards = leaderboardRepository.getLeaderboards();
+        resultLeaderboards = leaderboardRepository.getLeaderboardEasy();
     }
 
-    public LiveData<Leaderboard> getResultLeaderboards() {
+    public LiveData<LeaderboardResponse> getResultLeaderboards() {
         return resultLeaderboards;
     }
 

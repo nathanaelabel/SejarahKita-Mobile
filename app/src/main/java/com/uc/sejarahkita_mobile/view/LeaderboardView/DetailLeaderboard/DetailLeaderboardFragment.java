@@ -20,8 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
+import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
 import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardAdapter;
-import com.uc.sejarahkita_mobile.view.ProfileView.PlayingHistory.PlayingHistoryFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class DetailLeaderboardFragment extends Fragment {
     private RecyclerView rv_detail_leaderboard_fragment;
     private SharedPreferenceHelper helper;
 
-    List<Leaderboard.Leaderboards> results = new ArrayList<>();
+    List<LeaderboardsItem> results = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
 
     public DetailLeaderboardFragment() {
@@ -71,10 +72,10 @@ public class DetailLeaderboardFragment extends Fragment {
         });
     }
 
-    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
+    private Observer<LeaderboardResponse> showLeaderboard = new Observer<LeaderboardResponse>() {
         @Override
-        public void onChanged(Leaderboard leaderboard) {
-            results = leaderboard.getLeaderboards();
+        public void onChanged(LeaderboardResponse leaderboardResponse) {
+            results = leaderboardResponse.getLeaderboards();
             linearLayoutManager = new LinearLayoutManager(getActivity());
             rv_detail_leaderboard_fragment.setLayoutManager(linearLayoutManager);
             leaderboardAdapter = new LeaderboardAdapter(getActivity());
