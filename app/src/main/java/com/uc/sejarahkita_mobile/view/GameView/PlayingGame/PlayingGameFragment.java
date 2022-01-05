@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -105,26 +104,23 @@ public class PlayingGameFragment extends Fragment {
 
         //* Mengatur jumlah awal Nyawa pada Ranked Mode
         rb_nyawa_ranked_playing_game_fragment.setNumStars(life);
-        linearLayout_nyawa_ranked_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(requireActivity(), "Nyawa" +life, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //* Untuk Exit Game
-        btn_exit_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-                builder.setTitle("Exit").setMessage("Kamu yakin mau keluar dari permainan?")
-                        .setPositiveButton("Iya", (dialogInterface, i) -> {
-                            playingGameListener.onExitClicked();
-                        })
-                        .setNegativeButton("Tidak", ((dialogInterface, i) -> {
-                            dialogInterface.dismiss();
-                        })).show();
-            }
+        btn_exit_playing_game_fragment.setOnClickListener(view1 -> {
+            AlertDialog dialog = new AlertDialog.Builder(requireContext(), R.style.AlertDialogStyle).create();
+            view1 = getLayoutInflater().inflate(R.layout.layout_alert_dialog, null);
+            dialog.setView(view1);
+            dialog.setCancelable(false);
+
+            Button alertTextViewPositive = view1.findViewById(R.id.btn_positive_alert_dialog_layout);
+            Button alertTextViewNegative = view1.findViewById(R.id.btn_negative_alert_dialog_layout);
+
+            alertTextViewNegative.setOnClickListener(v -> dialog.dismiss());
+            alertTextViewPositive.setOnClickListener(v -> {
+                dialog.dismiss();
+                playingGameListener.onExitClicked();
+            });
+            dialog.show();
         });
 
         //* Tampilkan Button 'Show Answer' / Nyawa berdasarkan Mode
@@ -139,34 +135,21 @@ public class PlayingGameFragment extends Fragment {
         }
 
         //* Ketika Button 'Show Answer' diklik, maka tampilkan Modal Bottom Sheet
-        btn_show_answer_casual_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isShowAnswer = true;
-                if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
-                } else {
-                    bottomSheetBehavior.setState(bottomSheetBehavior.STATE_EXPANDED);
-                    lbl_jawaban_show_answer_casual_layout.setText(questionItem.getKunci_jawaban());
-                }
+        btn_show_answer_casual_playing_game_fragment.setOnClickListener(view12 -> {
+            isShowAnswer = true;
+            if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
+            } else {
+                bottomSheetBehavior.setState(bottomSheetBehavior.STATE_EXPANDED);
+                lbl_jawaban_show_answer_casual_layout.setText(questionItem.getKunci_jawaban());
             }
         });
 
         //* Menutup Modal Bottom Sheet melalui Button Silang
-        btn_close_show_answer_casual_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
-            }
-        });
+        btn_close_show_answer_casual_layout.setOnClickListener(view13 -> bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED));
 
         //* Menutup Modal Bottom Sheet melalui Button 'Lanjut Bermain'
-        btn_lanjut_show_answer_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
-            }
-        });
+        btn_lanjut_show_answer_layout.setOnClickListener(view14 -> bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED));
 
         //* States dari Modal Bottom Sheet pada kondisi sembunyi saat tidak diklik + ketika terbuka + tertutup (swipeable)
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -189,26 +172,23 @@ public class PlayingGameFragment extends Fragment {
         });
 
         //* Untuk mengirim jawaban sesuai input User
-        btn_jawab_playing_game_fragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gameViewModel.getCheckAnswer(String.valueOf(questionItem.getId_question()),
-                        et_jawaban_playing_game_fragment.getText().toString());
-                gameViewModel.getResultCheckAnswer().observe(getActivity(), showCheckAnswer);
-                //? User diwajibkan mengisi EditText pada TextInputLayout terlebih dahulu sebelum klik Button 'Jawab'
-                if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
-                    //? Tampilkan validasi peringatan input kosongnya
-                    til_jawaban_playing_game_fragment.setError("Silakan isi jawaban terlebih dahulu.");
+        btn_jawab_playing_game_fragment.setOnClickListener(view15 -> {
+            gameViewModel.getCheckAnswer(String.valueOf(questionItem.getId_question()),
+                    et_jawaban_playing_game_fragment.getText().toString());
+            gameViewModel.getResultCheckAnswer().observe(getActivity(), showCheckAnswer);
+            //? User diwajibkan mengisi EditText pada TextInputLayout terlebih dahulu sebelum klik Button 'Jawab'
+            if (et_jawaban_playing_game_fragment.getText().toString().equals("")) {
+                //? Tampilkan validasi peringatan input kosongnya
+                til_jawaban_playing_game_fragment.setError("Silakan isi jawaban terlebih dahulu.");
+                hideKeyboard();
+            } else {
+                //? Cek kecocokan input jawaban terhadap kolom "kunci_jawaban" dengan mengabaikan uppercase & lowercase
+                if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
+                    gameScore();
+                    playingGameListener.onSubmitClicked(page + 1, life, skor);
                     hideKeyboard();
                 } else {
-                    //? Cek kecocokan input jawaban terhadap kolom "kunci_jawaban" dengan mengabaikan uppercase & lowercase
-                    if (answer.equalsIgnoreCase(et_jawaban_playing_game_fragment.getText().toString())) {
-                        gameScore();
-                        playingGameListener.onSubmitClicked(page + 1, life, skor);
-                        hideKeyboard();
-                    } else {
-                        calculateAnswer(life);
-                    }
+                    calculateAnswer(life);
                 }
             }
         });
