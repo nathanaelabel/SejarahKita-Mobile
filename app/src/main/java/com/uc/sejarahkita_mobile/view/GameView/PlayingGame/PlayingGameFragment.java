@@ -22,10 +22,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.textfield.TextInputLayout;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.Const;
 import com.uc.sejarahkita_mobile.helper.GameType;
@@ -194,6 +193,8 @@ public class PlayingGameFragment extends Fragment {
         });
     }
 
+    private static final String TAG = "adnakdn";
+
     //* Menampilkan Bank Soal pada User
     public void showQuestionItem() {
         lbl_pertanyaan_playing_game_fragment.setText(questionItem.getPertanyaan_kalimat());
@@ -201,32 +202,8 @@ public class PlayingGameFragment extends Fragment {
         answer = questionItem.getKunci_jawaban();
         if (!questionItem.getPertanyaan_path_gambar().equals("-")) {
             String URL = Const.BASE_PERTANYAAN_PATH_GAMBAR_URL + questionItem.getPertanyaan_path_gambar();
-            Picasso.get().load(URL).into(img_pertanyaan_path_gambar_playing_game_fragment, new Callback() {
-                @Override
-                public void onSuccess() {
-                    Log.e("TAG", "Success");
-                }
-
-                @Override
-                public void onError(Exception e) {
-                    Log.e("TAG", "onLoadFailed: " + e.getMessage());
-                }
-            });
-
-//            Glide.with(requireContext()).load(URL)
-//                    .listener(new RequestListener<Drawable>() {
-//                        @Override
-//                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-//                            Log.e("TAG", "onLoadFailed: " + e.getMessage());
-//                            return false;
-//                        }
-//
-//                        @Override
-//                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-//                            return false;
-//                        }
-//                    })
-//                    .into(img_pertanyaan_path_gambar_playing_game_fragment);
+            Glide.with(img_pertanyaan_path_gambar_playing_game_fragment).load(URL).placeholder(R.drawable.ic_pertanyaan_path_gambar)
+                    .into(img_pertanyaan_path_gambar_playing_game_fragment);
             img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.VISIBLE);
         } else {
             img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.GONE);

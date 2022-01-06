@@ -22,11 +22,9 @@ import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.helper.TimeUtils;
 import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.Profile;
-import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
 import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.EasyItem;
 import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.HardItem;
-import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardViewModel;
 
 import java.util.ArrayList;
@@ -93,18 +91,30 @@ public class ProfileFragment extends Fragment {
         lbl_hard_ranked_point_profile_fragment = view.findViewById(R.id.lbl_hard_ranked_point_profile_fragment);
         btn_logout_profile_fragment = view.findViewById(R.id.btn_logout_profile_fragment);
 
-//        profileViewModel.getProfile();
         profileViewModel.getProfile(helper.getId());
         profileViewModel.getResultProfiles().observe(getActivity(), showProfile);
-        leaderboardViewModel.getLeaderboards();
-        leaderboardViewModel.getResultLeaderboards().observe(getActivity(), showLeaderboard);
 
-        linearLayout_playing_history_profile_fragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavDirections action = ProfileFragmentDirections.actionProfileFragmentToPlayingHistoryFragment();
-                Navigation.findNavController(view).navigate(action);
+        leaderboardViewModel.setTerkini(helper.getId());
+        leaderboardViewModel.getTerkini().observe(getActivity(), response -> {
+            easyItem = response.getEasy();
+            hardItem = response.getHard();
+
+            if (!response.getEasy().isEmpty()) {
+                lbl_easy_ranked_point_profile_fragment.setText(String.valueOf(easyItem.get(0).getRankedPoint()) + " RP");
+            } else {
+                lbl_easy_ranked_point_profile_fragment.setText("0 RP");
             }
+
+            if (!response.getHard().isEmpty()) {
+                lbl_hard_ranked_point_profile_fragment.setText(String.valueOf(hardItem.get(0).getRankedPoint()) + " RP");
+            } else {
+                lbl_hard_ranked_point_profile_fragment.setText("0 RP");
+            }
+        });
+
+        linearLayout_playing_history_profile_fragment.setOnClickListener(view12 -> {
+            NavDirections action = ProfileFragmentDirections.actionProfileFragmentToPlayingHistoryFragment();
+            Navigation.findNavController(view12).navigate(action);
         });
 
         btn_logout_profile_fragment.setOnClickListener(view1 -> {
@@ -133,22 +143,6 @@ public class ProfileFragment extends Fragment {
                 String registerSince = TimeUtils.getNewDateFormat("yyyy-MM-dd'T'HH:mm:ss.'000000Z'",
                         "'Register: 'dd/MM/yyyy", students.getCreated_at());
                 lbl_register_since_profile_fragment.setText(registerSince);
-            }
-        }
-    };
-
-    private Observer<RankedPointTerkiniResponse> showLeaderboard = new Observer<RankedPointTerkiniResponse>() {
-        @Override
-        public void onChanged(RankedPointTerkiniResponse response) {
-            easyItem = response.getEasy();
-            hardItem = response.getHard();
-
-            if (!response.getEasy().isEmpty()) {
-                lbl_easy_ranked_point_profile_fragment.setText(String.valueOf(easyItem.get(0).getRankedPoint()) + " RP");
-                lbl_hard_ranked_point_profile_fragment.setText(String.valueOf(hardItem.get(0).getRankedPoint()) + " RP");
-            } else {
-                lbl_easy_ranked_point_profile_fragment.setText("0 RP");
-                lbl_hard_ranked_point_profile_fragment.setText("0 RP");
             }
         }
     };

@@ -50,7 +50,7 @@ public class PlayingHistoryAdapter extends RecyclerView.Adapter<PlayingHistoryAd
         } else {
             holder.lbl_id_level_playing_history.setText("Hard");
         }
-        String createdAt = TimeUtils.getNewDateFormat("yyyy-MM-dd'T'HH:mm:ss.'000000Z'", "dd/MM/yyyy", results.getCreated_at());
+        String createdAt = TimeUtils.getNewDateFormat("yyyy-MM-dd'T'HH:mm:ss.'000000Z'", "dd/MM/yyyy HH:mm:ss", results.getCreated_at());
         holder.lbl_waktu_bermain_playing_history_fragment.setText(createdAt);
         holder.lbl_skor_playing_history_fragment.setText(String.valueOf(results.getSkor()));
     }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ public class PlayingHistoryFragment extends Fragment {
     private PlayingHistoryViewModel playingHistoryViewModel;
     private PlayingHistoryAdapter playingHistoryAdapter;
     private RecyclerView rv_playing_history_fragment;
+    private LinearLayout llEmpty;
     private SharedPreferenceHelper helper;
 
     public PlayingHistoryFragment() {
@@ -44,7 +46,8 @@ public class PlayingHistoryFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);}
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,10 +63,14 @@ public class PlayingHistoryFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         playingHistoryViewModel = new ViewModelProvider(getActivity()).get(PlayingHistoryViewModel.class);
         playingHistoryViewModel.init(helper.getAccessToken());
+        rv_playing_history_fragment.setVisibility(View.GONE);
+        llEmpty = view.findViewById(R.id.ll_empty);
+        llEmpty.setVisibility(View.VISIBLE);
+
         playingHistoryViewModel.getPlayingHistories(helper.getId());
         playingHistoryViewModel.getResultPlayingHistories().observe(getActivity(), showPlayingHistory);
         toolbar_playing_history_fragment = view.findViewById(R.id.toolbar_playing_history_fragment);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_playing_history_fragment);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar_playing_history_fragment);
         toolbar_playing_history_fragment.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,11 +87,15 @@ public class PlayingHistoryFragment extends Fragment {
         @Override
         public void onChanged(PlayingHistory playingHistory) {
             results = playingHistory.getPlayinghistories();
-            linearLayoutManager = new LinearLayoutManager(getActivity());
-            rv_playing_history_fragment.setLayoutManager(linearLayoutManager);
-            playingHistoryAdapter = new PlayingHistoryAdapter(getActivity());
-            playingHistoryAdapter.setPlayingHistoryList(results);
-            rv_playing_history_fragment.setAdapter(playingHistoryAdapter);
+            if (results.size() > 0) {
+                llEmpty.setVisibility(View.GONE);
+                rv_playing_history_fragment.setVisibility(View.VISIBLE);
+                linearLayoutManager = new LinearLayoutManager(getActivity());
+                rv_playing_history_fragment.setLayoutManager(linearLayoutManager);
+                playingHistoryAdapter = new PlayingHistoryAdapter(getActivity());
+                playingHistoryAdapter.setPlayingHistoryList(results);
+                rv_playing_history_fragment.setAdapter(playingHistoryAdapter);
+            }
         }
     };
 

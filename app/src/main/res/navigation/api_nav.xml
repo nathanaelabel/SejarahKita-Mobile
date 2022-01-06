@@ -68,6 +68,10 @@
         <action
             android:id="@+id/action_leaderboardFragment_to_detailLeaderboardFragment"
             app:destination="@id/detailLeaderboardFragment" />
+        <argument
+            android:name="level"
+            android:defaultValue="1"
+            app:argType="integer" />
     </fragment>
 
     <fragment

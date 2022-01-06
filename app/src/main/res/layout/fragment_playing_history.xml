@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.ProfileView.PlayingHistory.PlayingHistoryFragment">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_playing_history_fragment"
         android:layout_width="match_parent"
@@ -33,4 +32,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_playing_history_fragment"
         tools:listitem="@layout/layout_playing_history" />
+
+    <LinearLayout
+        android:id="@+id/ll_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_playing_history_fragment"
+        tools:visibility="visible">
+
+        <TextView
+            style="@style/SejarahKitaTextView.Semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum ada permainan yang diselesaikan.\n\nAyo mulai bermain sekarang."
+            android:textColor="@color/textPrimary" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
