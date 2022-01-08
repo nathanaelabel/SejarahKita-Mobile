@@ -24,15 +24,7 @@ public class ProfileViewModel extends AndroidViewModel {
         profileRepository = ProfileRepository.getInstance(token);
     }
 
-    //== Begin of ViewModel to get user profile
-//    private MutableLiveData<Profile> resultProfiles = new MutableLiveData<>();
-//    public void getProfile() {
-//        resultProfiles = profileRepository.getProfile();
-//    }
-//    public LiveData<Profile> getResultProfiles() {
-//        return resultProfiles;
-//    }
-
+    //* Begin of ViewModel to get user profile
     private MutableLiveData<Profile> resultProfiles = new MutableLiveData<>();
     public void getProfile(String id) {
         resultProfiles = profileRepository.getProfile(id);
@@ -41,7 +33,7 @@ public class ProfileViewModel extends AndroidViewModel {
         return resultProfiles;
     }
 
-    //== Begin of ViewModel to logout user
+    //* Begin of ViewModel to logout user
     public LiveData<String> logout() {
         profileRepository.resetInstances();
         return profileRepository.logout();

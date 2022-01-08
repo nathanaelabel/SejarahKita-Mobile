@@ -68,7 +68,6 @@ public class CountdownFragment extends Fragment {
 
     //* Mengarahkan ke Match sesuai kolom "id_level" berdasarkan tombol yang diklik User
     public void goToPlayingGame(View view, int gameType) {
-//        NavDirections actions = PlayingGameFragmentDirections.actionPlayingGameFragmentToGameEndedFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("GameTypeArgument", gameType);
         Navigation.findNavController(view).navigate(R.id.action_countdownFragment_to_playingGameBaseFragment, bundle);

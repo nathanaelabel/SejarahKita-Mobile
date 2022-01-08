@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +19,7 @@ import androidx.navigation.Navigation;
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
 import com.uc.sejarahkita_mobile.helper.TimeUtils;
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.Profile;
-import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
 import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.EasyItem;
 import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.HardItem;
 import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardViewModel;
@@ -31,21 +28,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
-    Button btn_logout_profile_fragment;
-    LinearLayout linearLayout_playing_history_profile_fragment;
+    Button btn_playing_history_profile_fragment, btn_logout_profile_fragment;
     TextView lbl_register_since_profile_fragment, lbl_username_profile_fragment, lbl_name_profile_fragment, lbl_email_profile_fragment,
             lbl_school_profile_fragment, lbl_city_profile_fragment, lbl_birthyear_profile_fragment,
             lbl_easy_ranked_point_profile_fragment, lbl_hard_ranked_point_profile_fragment;
     Profile.Students students;
-    Leaderboard.Leaderboards leaderboards;
 
     private ProfileViewModel profileViewModel;
     private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
     private static final String TAG = "ProfileFragment";
 
-    List<LeaderboardsItem> easyLeaderboard = new ArrayList<>();
-    List<LeaderboardsItem> hardLeaderboard = new ArrayList<>();
     List<EasyItem> easyItem = new ArrayList<>();
     List<HardItem> hardItem = new ArrayList<>();
 
@@ -79,7 +72,6 @@ public class ProfileFragment extends Fragment {
         profileViewModel.init(helper.getAccessToken());
         leaderboardViewModel.init(helper.getAccessToken());
 
-        linearLayout_playing_history_profile_fragment = view.findViewById(R.id.linearLayout_playing_history_profile_fragment);
         lbl_register_since_profile_fragment = view.findViewById(R.id.lbl_register_since_profile_fragment);
         lbl_username_profile_fragment = view.findViewById(R.id.lbl_username_profile_fragment);
         lbl_name_profile_fragment = view.findViewById(R.id.lbl_name_profile_fragment);
@@ -89,6 +81,7 @@ public class ProfileFragment extends Fragment {
         lbl_birthyear_profile_fragment = view.findViewById(R.id.lbl_birthyear_profile_fragment);
         lbl_easy_ranked_point_profile_fragment = view.findViewById(R.id.lbl_easy_ranked_point_profile_fragment);
         lbl_hard_ranked_point_profile_fragment = view.findViewById(R.id.lbl_hard_ranked_point_profile_fragment);
+        btn_playing_history_profile_fragment = view.findViewById(R.id.btn_playing_history_profile_fragment);
         btn_logout_profile_fragment = view.findViewById(R.id.btn_logout_profile_fragment);
 
         profileViewModel.getProfile(helper.getId());
@@ -112,7 +105,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        linearLayout_playing_history_profile_fragment.setOnClickListener(view12 -> {
+        btn_playing_history_profile_fragment.setOnClickListener(view12 -> {
             NavDirections action = ProfileFragmentDirections.actionProfileFragmentToPlayingHistoryFragment();
             Navigation.findNavController(view12).navigate(action);
         });

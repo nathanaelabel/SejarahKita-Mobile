@@ -36,7 +36,6 @@ public class DetailLeaderboardAdapter extends RecyclerView.Adapter<DetailLeaderb
 
     public void setLeaderboardList(List<LeaderboardsItem> leaderboardList) {
         List<LeaderboardsItem> header = new ArrayList<>();
-//        header.add(new Leaderboard.Leaderboards());
         header.addAll(leaderboardList);
         this.leaderboardList = header;
     }

@@ -87,10 +87,6 @@ public class RetrofitService {
         return api.submitScore(body);
     }
 
-//    public Call<Leaderboard> leaderboard() {
-//        return api.leaderboard();
-//    }
-
     public Call<LeaderboardResponse> leaderboardEasy() {
         return api.leaderboardEasy();
     }

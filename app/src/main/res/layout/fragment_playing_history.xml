@@ -31,7 +31,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_playing_history_fragment"
-        tools:listitem="@layout/layout_playing_history" />
+        tools:listitem="@layout/layout_playing_history" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
         android:id="@+id/ll_empty"
@@ -48,10 +50,12 @@
         tools:visibility="visible">
 
         <TextView
+            android:id="@+id/txt_empty"
             style="@style/SejarahKitaTextView.Semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Belum ada permainan yang diselesaikan.\n\nAyo mulai bermain sekarang."
             android:textColor="@color/textPrimary" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

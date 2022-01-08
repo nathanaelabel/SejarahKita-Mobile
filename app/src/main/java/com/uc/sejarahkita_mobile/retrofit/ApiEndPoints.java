@@ -56,9 +56,6 @@ public interface ApiEndPoints {
     Call<PlayingHistoryResponse> submitScore(@Body PlayingHistoryBody body);
 
     //* Leaderboard
-//    @GET("leaderboards")
-//    Call<Leaderboard> leaderboard();
-
     @GET("leaderboards-easy")
     Call<LeaderboardResponse> leaderboardEasy();
 

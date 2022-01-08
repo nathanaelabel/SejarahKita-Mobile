@@ -32,7 +32,7 @@
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/drawable/states.xml" value="0.13717105263157894" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/font/poppins.xml" value="0.23125" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/font/poppins_medium.xml" value="0.23125" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/activity_main.xml" value="0.13333333333333333" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_blank.xml" value="0.12697368421052632" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_countdown.xml" value="0.16666666666666666" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_detail_course.xml" value="0.12090163934426229" />
@@ -42,16 +42,16 @@
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_game_loading.xml" value="0.13333333333333333" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_leaderboard.xml" value="0.22" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_playing_game.xml" value="0.22" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_playing_game.xml" value="0.17708333333333334" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_playing_game_base.xml" value="0.14666666666666667" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_playing_history.xml" value="0.14666666666666667" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_playing_history.xml" value="0.3333333333333333" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_register.xml" value="0.22" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_score_result.xml" value="0.12" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/fragment_splash.xml" value="0.13333333333333333" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/gameplay.xml" value="0.22" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/layout_alert_dialog.xml" value="0.22" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/layout_detail_leaderboard.xml" value="0.22" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/layout_detail_leaderboard.xml" value="0.10666666666666667" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/layout_exit_game.xml" value="0.16666666666666666" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/layout_game_over.xml" value="0.13333333333333333" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/2.Tugas/SejarahKita-Mobile/app/src/main/res/layout/layout_nyawa_ranked.xml" value="0.4466666666666667" />
@@ -65,7 +65,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -6,6 +6,10 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +19,15 @@ import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
-import com.uc.sejarahkita_mobile.view.MainActivity;
 
 public class SplashFragment extends Fragment {
-    private static int splashtime = 500;
+    LinearLayout linearLayout_splash_screen_fragment;
+    TextView txt_app_version_splash_screen_fragment;
+
+    private static int splashtime = 3000;
     private static final String TAG = "SplashFragment";
+
+    Animation bottomAnimation;
 
     public SplashFragment() {
     }
@@ -41,6 +49,14 @@ public class SplashFragment extends Fragment {
 
         SharedPreferenceHelper helper = SharedPreferenceHelper.getInstance(requireActivity());
 
+        bottomAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_animation);
+
+        linearLayout_splash_screen_fragment = view.findViewById(R.id.linearLayout_splash_screen_fragment);
+        txt_app_version_splash_screen_fragment = view.findViewById(R.id.txt_app_version_splash_screen_fragment);
+
+        linearLayout_splash_screen_fragment.setAnimation(bottomAnimation);
+        txt_app_version_splash_screen_fragment.setAnimation(bottomAnimation);
+
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             NavDirections action;
             if (helper.getAccessToken().isEmpty()) {
@@ -51,22 +67,4 @@ public class SplashFragment extends Fragment {
             Navigation.findNavController(view).navigate(action);
         }, splashtime);
     }
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        ((MainActivity) getActivity()).getSupportActionBar().hide();
-//    }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        ((MainActivity) getActivity()).getSupportActionBar().hide();
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        ((MainActivity) getActivity()).getSupportActionBar().show();
-//    }
 }

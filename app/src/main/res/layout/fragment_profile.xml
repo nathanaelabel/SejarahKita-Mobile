@@ -266,41 +266,65 @@
                 app:layout_constraintEnd_toEndOf="@+id/btn_hard_profile_fragment"
                 app:layout_constraintTop_toTopOf="@+id/btn_hard_profile_fragment" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout_playing_history_profile_fragment"
-                android:layout_width="0dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_playing_history_profile_fragment"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
+                app:cardBackgroundColor="@color/buttonPrimary"
+                app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_hard_profile_fragment">
 
-                <TextView
-                    android:id="@+id/txt_playing_history_profile_fragment"
-                    style="@style/SejarahKitaTextView.Medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Playing History"
-                    android:textColor="@color/buttonSecondary" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_cv_playing_history_profile_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/btn_playing_history_profile_fragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="235dp"
-                    app:srcCompat="@drawable/ic_arrow"
-                    app:tint="@color/buttonSecondary" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/txt_playing_history_profile_fragment"
+                        style="@style/SejarahKitaTextView.Medium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Pantau performamu. Tingkatkan untuk hasil yang lebih optimal."
+                        android:textColor="@color/textPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_playing_history_profile_fragment"
+                        style="@style/SejarahKitaTextView.Semibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/btn_primary"
+                        android:backgroundTint="@color/buttonSecondary"
+                        android:padding="10dp"
+                        android:text="@string/playing_history"
+                        android:textAllCaps="false"
+                        android:textColor="@color/textSecondary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/txt_playing_history_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/txt_playing_history_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_playing_history_profile_fragment" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btn_logout_profile_fragment"
                 style="@style/SejarahKitaTextView.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="88dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/btn_primary"
                 android:backgroundTint="@color/design_default_color_error"
@@ -315,9 +339,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/textPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_playing_history_profile_fragment" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_playing_history_profile_fragment" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

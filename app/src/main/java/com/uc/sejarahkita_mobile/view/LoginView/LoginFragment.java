@@ -88,22 +88,4 @@ public class LoginFragment extends Fragment {
             }
         });
     }
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        ((MainActivity) getActivity()).getSupportActionBar().hide();
-//    }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        ((MainActivity) getActivity()).getSupportActionBar().hide();
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        ((MainActivity) getActivity()).getSupportActionBar().show();
-//    }
 }

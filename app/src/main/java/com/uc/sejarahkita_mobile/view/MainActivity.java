@@ -30,20 +30,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         navigationView = findViewById(R.id.bottom_nav_menu);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.gameFragment, R.id.leaderboardFragment, R.id.profileFragment).build();
-//        NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navHostFragment.getNavController());
 
         navHostFragment.getNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.gameFragment || destination.getId() == R.id.leaderboardFragment || destination.getId() == R.id.profileFragment) {
                 navigationView.setVisibility(View.VISIBLE);
             } else if (destination.getId() == R.id.countdownFragment) {
-//                toolbar.setVisibility(View.GONE);
                 navigationView.setVisibility(View.GONE);
             } else {
                 navigationView.setVisibility(View.GONE);

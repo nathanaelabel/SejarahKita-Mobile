@@ -32,8 +32,6 @@ public class DetailLeaderboardFragment extends Fragment {
     private RecyclerView rv_detail_leaderboard_fragment;
     private SharedPreferenceHelper helper;
 
-    List<LeaderboardsItem> results = new ArrayList<>();
-
     List<LeaderboardsItem> easyLeaderboard = new ArrayList<>();
     List<LeaderboardsItem> hardLeaderboard = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
@@ -108,18 +106,6 @@ public class DetailLeaderboardFragment extends Fragment {
             Navigation.findNavController(view1).navigate(action);
         });
     }
-
-//    private Observer<LeaderboardResponse> showLeaderboard = new Observer<LeaderboardResponse>() {
-//        @Override
-//        public void onChanged(LeaderboardResponse leaderboardResponse) {
-//            results = leaderboardResponse.getLeaderboards();
-//            linearLayoutManager = new LinearLayoutManager(getActivity());
-//            rv_detail_leaderboard_fragment.setLayoutManager(linearLayoutManager);
-//            leaderboardAdapter = new LeaderboardAdapter(getActivity());
-//            leaderboardAdapter.setLeaderboardList(results);
-//            rv_detail_leaderboard_fragment.setAdapter(leaderboardAdapter);
-//        }
-//    };
 
     @Override
     public void onDetach() {

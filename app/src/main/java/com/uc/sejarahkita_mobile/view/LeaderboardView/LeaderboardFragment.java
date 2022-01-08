@@ -32,9 +32,6 @@ public class LeaderboardFragment extends Fragment {
     private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
 
-//    List<Leaderboard.Leaderboards> easyLeaderboard = new ArrayList<>();
-//    List<Leaderboard.Leaderboards> hardLeaderboard = new ArrayList<>();
-
     List<LeaderboardsItem> easyLeaderboard = new ArrayList<>();
     List<LeaderboardsItem> hardLeaderboard = new ArrayList<>();
 
@@ -66,8 +63,6 @@ public class LeaderboardFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
         leaderboardViewModel.init(helper.getAccessToken());
-//        leaderboardViewModel.getLeaderboards();
-//        leaderboardViewModel.getResultLeaderboards().observe(getActivity(), showLeaderboard);
         leaderboardViewModel.getLeaderboardEasy();
         leaderboardViewModel.getResultLeaderboardEasy().observe(getActivity(), new Observer<LeaderboardResponse>() {
             @Override
@@ -148,7 +143,6 @@ public class LeaderboardFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("level", 2);
-//                NavDirections action = LeaderboardFragmentDirections.actionLeaderboardFragmentToDetailLeaderboardFragment();
                 Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_detailLeaderboardFragment, bundle);
             }
         });
@@ -158,41 +152,10 @@ public class LeaderboardFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("level", 3);
-//                NavDirections action = LeaderboardFragmentDirections.actionLeaderboardFragmentToDetailLeaderboardFragment();
                 Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_detailLeaderboardFragment, bundle);
             }
         });
     }
-
-//    private Observer<Leaderboard> showLeaderboard = new Observer<Leaderboard>() {
-//        @Override
-//        public void onChanged(Leaderboard leaderboard) {
-//            easyLeaderboard = leaderboard.getLeaderboards();
-//            hardLeaderboard = leaderboard.getLeaderboards();
-//
-//            if (!easyLeaderboard.isEmpty() && easyLeaderboard.size() > 2) {
-//                tbody1_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getId_student()));
-//                tbody2_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getId_student()));
-//                tbody3_easy_username_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getId_student()));
-//                tbody1_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(0).getRanked_point()));
-//                tbody2_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(1).getRanked_point()));
-//                tbody3_easy_rp_leaderboard_fragment.setText(String.valueOf(easyLeaderboard.get(2).getRanked_point()));
-//                tbody1_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getId_student()));
-//                tbody2_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getId_student()));
-//                tbody3_hard_username_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getId_student()));
-//                tbody1_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(0).getRanked_point()));
-//                tbody2_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(1).getRanked_point()));
-//                tbody3_hard_rp_leaderboard_fragment.setText(String.valueOf(hardLeaderboard.get(2).getRanked_point()));
-//            }
-//        }
-//    };
-
-//    public void getFilteredLeaderboard(List<Leaderboard.Leaderboards> leaderboards){
-//        List<Leaderboard.Leaderboards> filteredLeaderboard = new ArrayList<Leaderboard.Leaderboards>();
-//        for (Leaderboard.Leaderboards leaderboard:leaderboards){
-//            if (leaderboard.get);
-//        }
-//    }
 
     @Override
     public void onDetach() {
