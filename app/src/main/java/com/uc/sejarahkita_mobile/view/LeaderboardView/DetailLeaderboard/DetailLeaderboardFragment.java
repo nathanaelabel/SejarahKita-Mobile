@@ -19,10 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.uc.sejarahkita_mobile.R;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
-import com.uc.sejarahkita_mobile.model.Leaderboard;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardsItem;
-import com.uc.sejarahkita_mobile.view.LeaderboardView.LeaderboardAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +28,14 @@ import java.util.List;
 public class DetailLeaderboardFragment extends Fragment {
     Toolbar toolbar_detail_leaderboard;
     private DetailLeaderboardViewModel detailLeaderboardView;
-    private LeaderboardAdapter leaderboardAdapter;
+    private DetailLeaderboardAdapter detailLeaderboardAdapter;
     private RecyclerView rv_detail_leaderboard_fragment;
     private SharedPreferenceHelper helper;
 
     List<LeaderboardsItem> results = new ArrayList<>();
+
+    List<LeaderboardsItem> easyLeaderboard = new ArrayList<>();
+    List<LeaderboardsItem> hardLeaderboard = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
 
     public DetailLeaderboardFragment() {
@@ -59,30 +60,66 @@ public class DetailLeaderboardFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         detailLeaderboardView = new ViewModelProvider(getActivity()).get(DetailLeaderboardViewModel.class);
         detailLeaderboardView.init(helper.getAccessToken());
-        detailLeaderboardView.getLeaderboards();
-        detailLeaderboardView.getResultLeaderboards().observe(getActivity(), showLeaderboard);
-        toolbar_detail_leaderboard = view.findViewById(R.id.toolbar_detail_leaderboard);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_detail_leaderboard);
-        toolbar_detail_leaderboard.setNavigationOnClickListener(new View.OnClickListener() {
+
+        if (getArguments().getInt("level") == 2) {
+            detailLeaderboardView.getLeaderboardEasy();
+        } else if (getArguments().getInt("level") == 3) {
+            detailLeaderboardView.getLeaderboardHard();
+        }
+
+        detailLeaderboardView.getResultLeaderboardEasy().observe(getActivity(), new Observer<LeaderboardResponse>() {
             @Override
-            public void onClick(View view) {
-                NavDirections action = DetailLeaderboardFragmentDirections.actionDetailLeaderboardFragmentToLeaderboardFragment();
-                Navigation.findNavController(view).navigate(action);
+            public void onChanged(LeaderboardResponse leaderboardResponse) {
+                easyLeaderboard = leaderboardResponse.getLeaderboards();
+
+                if (!easyLeaderboard.isEmpty()) {
+                    easyLeaderboard = leaderboardResponse.getLeaderboards();
+                    linearLayoutManager = new LinearLayoutManager(getActivity());
+                    rv_detail_leaderboard_fragment.setLayoutManager(linearLayoutManager);
+                    detailLeaderboardAdapter = new DetailLeaderboardAdapter(getActivity());
+                    detailLeaderboardAdapter.setLeaderboardList(easyLeaderboard);
+                    detailLeaderboardAdapter.setStudents(leaderboardResponse.getStudents());
+                    rv_detail_leaderboard_fragment.setAdapter(detailLeaderboardAdapter);
+                }
             }
+        });
+
+        detailLeaderboardView.getResultLeaderboardHard().observe(getActivity(), new Observer<LeaderboardResponse>() {
+            @Override
+            public void onChanged(LeaderboardResponse leaderboardResponse) {
+                hardLeaderboard = leaderboardResponse.getLeaderboards();
+
+                if (!hardLeaderboard.isEmpty()) {
+                    hardLeaderboard = leaderboardResponse.getLeaderboards();
+                    linearLayoutManager = new LinearLayoutManager(getActivity());
+                    rv_detail_leaderboard_fragment.setLayoutManager(linearLayoutManager);
+                    detailLeaderboardAdapter = new DetailLeaderboardAdapter(getActivity());
+                    detailLeaderboardAdapter.setLeaderboardList(hardLeaderboard);
+                    detailLeaderboardAdapter.setStudents(leaderboardResponse.getStudents());
+                    rv_detail_leaderboard_fragment.setAdapter(detailLeaderboardAdapter);
+                }
+            }
+        });
+
+        toolbar_detail_leaderboard = view.findViewById(R.id.toolbar_detail_leaderboard);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar_detail_leaderboard);
+        toolbar_detail_leaderboard.setNavigationOnClickListener(view1 -> {
+            NavDirections action = DetailLeaderboardFragmentDirections.actionDetailLeaderboardFragmentToLeaderboardFragment();
+            Navigation.findNavController(view1).navigate(action);
         });
     }
 
-    private Observer<LeaderboardResponse> showLeaderboard = new Observer<LeaderboardResponse>() {
-        @Override
-        public void onChanged(LeaderboardResponse leaderboardResponse) {
-            results = leaderboardResponse.getLeaderboards();
-            linearLayoutManager = new LinearLayoutManager(getActivity());
-            rv_detail_leaderboard_fragment.setLayoutManager(linearLayoutManager);
-            leaderboardAdapter = new LeaderboardAdapter(getActivity());
-            leaderboardAdapter.setLeaderboardList(results);
-            rv_detail_leaderboard_fragment.setAdapter(leaderboardAdapter);
-        }
-    };
+//    private Observer<LeaderboardResponse> showLeaderboard = new Observer<LeaderboardResponse>() {
+//        @Override
+//        public void onChanged(LeaderboardResponse leaderboardResponse) {
+//            results = leaderboardResponse.getLeaderboards();
+//            linearLayoutManager = new LinearLayoutManager(getActivity());
+//            rv_detail_leaderboard_fragment.setLayoutManager(linearLayoutManager);
+//            leaderboardAdapter = new LeaderboardAdapter(getActivity());
+//            leaderboardAdapter.setLeaderboardList(results);
+//            rv_detail_leaderboard_fragment.setAdapter(leaderboardAdapter);
+//        }
+//    };
 
     @Override
     public void onDetach() {

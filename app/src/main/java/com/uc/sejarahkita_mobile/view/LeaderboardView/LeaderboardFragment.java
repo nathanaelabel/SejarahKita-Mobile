@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.uc.sejarahkita_mobile.R;
@@ -147,16 +146,20 @@ public class LeaderboardFragment extends Fragment {
         btn_detail_easy_leaderboard_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavDirections action = LeaderboardFragmentDirections.actionLeaderboardFragmentToDetailLeaderboardFragment();
-                Navigation.findNavController(view).navigate(action);
+                Bundle bundle = new Bundle();
+                bundle.putInt("level", 2);
+//                NavDirections action = LeaderboardFragmentDirections.actionLeaderboardFragmentToDetailLeaderboardFragment();
+                Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_detailLeaderboardFragment, bundle);
             }
         });
 
         btn_detail_hard_leaderboard_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavDirections action = LeaderboardFragmentDirections.actionLeaderboardFragmentToDetailLeaderboardFragment();
-                Navigation.findNavController(view).navigate(action);
+                Bundle bundle = new Bundle();
+                bundle.putInt("level", 3);
+//                NavDirections action = LeaderboardFragmentDirections.actionLeaderboardFragmentToDetailLeaderboardFragment();
+                Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_detailLeaderboardFragment, bundle);
             }
         });
     }

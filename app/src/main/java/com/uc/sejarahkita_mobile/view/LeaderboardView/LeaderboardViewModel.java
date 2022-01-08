@@ -11,9 +11,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.uc.sejarahkita_mobile.model.response.LeaderboardResponse;
 import com.uc.sejarahkita_mobile.model.response.rankedPointTerkini.RankedPointTerkiniResponse;
 import com.uc.sejarahkita_mobile.repositories.LeaderboardRepository;
+import com.uc.sejarahkita_mobile.repositories.PlayingHistoryRepository;
 
 public class LeaderboardViewModel extends AndroidViewModel {
     private LeaderboardRepository leaderboardRepository;
+    private PlayingHistoryRepository playingHistoryRepository;
     private static final String TAG = "LeaderboardViewModel";
 
     public LeaderboardViewModel(@NonNull Application application) {
@@ -23,15 +25,16 @@ public class LeaderboardViewModel extends AndroidViewModel {
     public void init(String token) {
         Log.d(TAG, "init: " + token);
         leaderboardRepository = LeaderboardRepository.getInstance(token);
+        playingHistoryRepository = PlayingHistoryRepository.getInstance(token);
     }
 
-    private MutableLiveData<RankedPointTerkiniResponse> resultLeaderboards = new MutableLiveData<>();
+    private MutableLiveData<LeaderboardResponse> resultLeaderboards = new MutableLiveData<>();
 
     public void getLeaderboards() {
         resultLeaderboards = leaderboardRepository.getLeaderboardEasy();
     }
 
-    public LiveData<RankedPointTerkiniResponse> getResultLeaderboards() {
+    public LiveData<LeaderboardResponse> getResultLeaderboards() {
         return resultLeaderboards;
     }
 
@@ -55,6 +58,17 @@ public class LeaderboardViewModel extends AndroidViewModel {
 
     public LiveData<LeaderboardResponse> getResultLeaderboardHard() {
         return resultLeaderboardHard;
+    }
+
+    //* Ranked Point Terkini
+    private MutableLiveData<RankedPointTerkiniResponse> terkini = new MutableLiveData<>();
+
+    public void setTerkini(String id) {
+        terkini = playingHistoryRepository.getRankedPointTerkini(id);
+    }
+
+    public LiveData<RankedPointTerkiniResponse> getTerkini() {
+        return terkini;
     }
 
     @Override
