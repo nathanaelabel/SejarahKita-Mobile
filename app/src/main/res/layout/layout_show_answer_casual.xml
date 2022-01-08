@@ -51,7 +51,7 @@
             <TextView
                 android:id="@+id/lbl_jawaban_show_answer_casual_layout"
                 style="@style/SejarahKitaTextView.Bold"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp"
@@ -59,6 +59,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/textPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/btn_lanjut_show_answer_layout"
+                app:layout_constraintEnd_toEndOf="@+id/btn_close_show_answer_casual_layout"
                 app:layout_constraintStart_toStartOf="@+id/txt_title_show_answer_casual_layout"
                 app:layout_constraintTop_toBottomOf="@+id/txt_title_show_answer_casual_layout" />
 

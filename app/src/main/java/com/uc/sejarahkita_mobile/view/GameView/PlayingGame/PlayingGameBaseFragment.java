@@ -102,15 +102,6 @@ public class PlayingGameBaseFragment extends Fragment implements PlayingGameList
                     goToNextQuestion(hardQuestions.get(page), gameType, life);
                     break;
             }
-//            List<Question.QuestionItem> questionsNew = null;
-
-//            for (int i = 0; i < questions.size(); i++) {
-//                if (questions.get(i).getId_level() == 1) {
-//                    assert questionsNew != null;
-//                    questionsNew.add(questions.get(i));
-//                }
-//            }
-//            Log.i("onChanged: ", String.valueOf(questionsNew.size()));
         }
     };
 
