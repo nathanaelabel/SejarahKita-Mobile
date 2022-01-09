@@ -22,9 +22,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.textfield.TextInputLayout;
 import com.uc.sejarahkita_mobile.R;
+import com.uc.sejarahkita_mobile.helper.Const;
 import com.uc.sejarahkita_mobile.helper.GameType;
 import com.uc.sejarahkita_mobile.helper.PlayingGameListener;
 import com.uc.sejarahkita_mobile.helper.SharedPreferenceHelper;
@@ -81,7 +83,7 @@ public class PlayingGameFragment extends Fragment {
         lbl_jawaban_show_answer_casual_layout = view.findViewById(R.id.lbl_jawaban_show_answer_casual_layout);
         til_jawaban_playing_game_fragment = view.findViewById(R.id.til_jawaban_playing_game_fragment);
         et_jawaban_playing_game_fragment = view.findViewById(R.id.et_jawaban_playing_game_fragment);
-//        img_pertanyaan_path_gambar_playing_game_fragment = view.findViewById(R.id.img_pertanyaan_path_gambar_playing_game_fragment);
+        img_pertanyaan_path_gambar_playing_game_fragment = view.findViewById(R.id.img_pertanyaan_path_gambar_playing_game_fragment);
         btn_close_show_answer_casual_layout = view.findViewById(R.id.btn_close_show_answer_casual_layout);
         btn_lanjut_show_answer_layout = view.findViewById(R.id.btn_lanjut_show_answer_layout);
         bottomSheetLayout = view.findViewById(R.id.bottomSheetLayout);
@@ -198,14 +200,14 @@ public class PlayingGameFragment extends Fragment {
         lbl_pertanyaan_playing_game_fragment.setText(questionItem.getPertanyaan_kalimat());
         lbl_anagram_playing_game_fragment.setText(getAnagram(questionItem.getKunci_jawaban()));
         answer = questionItem.getKunci_jawaban();
-//        if (!questionItem.getPertanyaan_path_gambar().equals("-")) {
-//            String URL = Const.BASE_PERTANYAAN_PATH_GAMBAR_URL + questionItem.getPertanyaan_path_gambar();
-//            Glide.with(img_pertanyaan_path_gambar_playing_game_fragment).load(URL).placeholder(R.drawable.ic_pertanyaan_path_gambar)
-//                    .into(img_pertanyaan_path_gambar_playing_game_fragment);
-//            img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.VISIBLE);
-//        } else {
-//            img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.GONE);
-//        }
+        if (!questionItem.getPertanyaan_path_gambar().equals("-")) {
+            String URL = Const.BASE_PERTANYAAN_PATH_GAMBAR_URL + questionItem.getPertanyaan_path_gambar();
+            Glide.with(img_pertanyaan_path_gambar_playing_game_fragment).load(URL).placeholder(R.drawable.ic_pertanyaan_path_gambar)
+                    .into(img_pertanyaan_path_gambar_playing_game_fragment);
+            img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.VISIBLE);
+        } else {
+            img_pertanyaan_path_gambar_playing_game_fragment.setVisibility(View.GONE);
+        }
         Log.i("showQuestionItem: ", questionItem.getKunci_jawaban());
     }
 
